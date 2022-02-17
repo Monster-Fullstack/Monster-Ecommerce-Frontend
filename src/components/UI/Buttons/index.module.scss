@@ -1,0 +1,11 @@
+@use "../../../assets/scss/helpers/var" as *;
+
+.btnSite {
+  transition: $trans !important;
+  background: $main-color !important;
+
+  &:focus {
+    box-shadow: $main-box-shadow !important;
+  }
+
+}

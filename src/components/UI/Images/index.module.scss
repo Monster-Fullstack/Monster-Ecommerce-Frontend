@@ -1,0 +1,16 @@
+@use "../../../assets/scss/helpers/global" as *;
+
+.productImage {
+  width: 150px !important;
+  transition: all 0.3s;
+  display: block;
+  height: 250px !important;
+  transform: scale(1);
+  @extend .center;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}

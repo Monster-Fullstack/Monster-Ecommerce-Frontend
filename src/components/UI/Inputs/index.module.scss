@@ -1,0 +1,15 @@
+@use "../../../assets/scss/helpers/var" as *;
+
+.inputSite {
+  transition: $trans !important;
+  border: none !important;
+
+  &:focus {
+    box-shadow: $strong-box-shadow !important;
+    border: none !important;
+  }
+
+  &:hover {
+    transform: translateX(-5px);
+  }
+}

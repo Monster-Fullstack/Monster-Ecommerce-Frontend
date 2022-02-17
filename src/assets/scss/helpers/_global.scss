@@ -1,0 +1,44 @@
+@use "var" as *;
+
+body {
+  overflow-x: hidden;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.btn {
+  border: none !important;
+  border-radius: 0px !important;
+
+  &:focus {
+    box-shadow: none;
+  }
+}
+
+
+.slick-dots {
+  top: 90%;
+}
+
+.move {
+  &:hover {
+    input {
+      transform: translateX(-5px);
+    }
+
+    button {
+      transform: translateX(5px);
+    }
+  }
+}
+
+.btn.none {
+  &:focus {
+    box-shadow: none !important;
+  }
+}
