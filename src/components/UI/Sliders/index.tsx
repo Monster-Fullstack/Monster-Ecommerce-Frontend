@@ -2,7 +2,7 @@ import React from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import {DUMMY_PRODUCTS} from "../../main/FeaturedProducts";
 import ProductCard from "../AllCards/ProductCard";
-import {Mousewheel, Pagination} from "swiper";
+import {Autoplay, Mousewheel, Pagination} from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -28,6 +28,8 @@ export const ProductSlider: React.FC = () => {
         <MainContainer>
             <Swiper
                 spaceBetween={10}
+                loop={true}
+                autoplay={{delay: 2000, disableOnInteraction: false}}
                 breakpoints={{
                     640: {
                         slidesPerView: 2,
@@ -42,7 +44,7 @@ export const ProductSlider: React.FC = () => {
                         spaceBetween: 50,
                     },
                 }}
-                modules={[Pagination]}
+                modules={[Pagination, Autoplay]}
                 className="mySwiper"
             >
                 {products}
@@ -61,10 +63,11 @@ export const MainSlider: React.FC = () => {
                 className={`mySwiper ${cl.sliderBig}`}
                 mousewheel={true}
                 loop={true}
+                autoplay={{delay: 3000, disableOnInteraction: false}}
                 pagination={{
                     clickable: true,
                 }}
-                modules={[Mousewheel, Pagination]}
+                modules={[Mousewheel, Pagination, Autoplay]}
             >
                 <SwiperSlide>
                     <img
