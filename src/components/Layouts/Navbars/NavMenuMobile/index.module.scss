@@ -1,3 +1,28 @@
-.parent {
-  // parent
+.grand {
+  height: 76px;
+  display: flex;
+  align-items: center;
+
+  .parent {
+    position: relative;
+
+    .logo {
+      width: 200px;
+      height: 60px;
+      position: absolute;
+      right: 20px;
+    }
+  }
+}
+
+@media (max-width: 325px) {
+  .logo {
+    width: 125px !important;
+  }
+}
+
+@media (max-width: 245px) {
+  .logo {
+    width: 95px !important;
+  }
 }

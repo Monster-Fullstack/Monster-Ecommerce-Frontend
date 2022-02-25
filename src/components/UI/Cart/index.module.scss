@@ -20,3 +20,36 @@
   }
 }
 
+
+@media (max-width: 870px) {
+  .cartBtn {
+    padding: 3px 13px 3px 13px !important;
+    transition: $trans;
+    color: #FFFFFF;
+    border-radius: 20px !important;
+    border: 0.25px solid $main-color;
+    background: $main-color !important;
+    text-decoration: none;
+    margin-left: 10px;
+  }
+}
+
+.cartMob {
+  padding: 8px 25px 8px 25px !important;
+  transition: $trans;
+  color: #FFFFFF;
+  border-radius: 20px !important;
+  border: 0.5px solid $main-color;
+  background: $main-color !important;
+  text-decoration: none;
+  width: max-content;
+
+  svg {
+    font-size: 24px !important;
+  }
+
+  &:hover {
+    background: rgba($main-color, 0.8) !important;
+    transform: scale(1.10);
+  }
+}

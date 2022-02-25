@@ -8,10 +8,11 @@ import ProductCard from "../../UI/AllCards/ProductCard";
 
 const Collection: React.FC = () => {
     const products = DUMMY_PRODUCTS.map((product, idx) => (
-        <Col key={idx} xl={3} lg={3} md={3} sm={6} xs={12}>
+        <Col key={idx} xl={3} lg={3} md={3} sm={6} xs={10}>
             <ProductCard
                 alt={product.alt}
                 src={product.src}
+                description={product.description}
                 name={product.name}
                 price={product.price}
             />

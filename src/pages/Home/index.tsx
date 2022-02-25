@@ -3,12 +3,12 @@ import FeaturedProducts from "../../components/main/FeaturedProducts";
 import CategorySection from "../../components/main/CategorySection";
 import Collection from "../../components/main/Collection";
 import NewArrival from "../../components/main/NewArrival";
-import HomeTop from "../../components/main/HomeTop";
+import HomeTopResponsive from "../../components/main/HomeTop/HomeTopResponsive";
 
 const Home: React.FC = () => {
     return (
         <Fragment>
-            <HomeTop/>
+            <HomeTopResponsive/>
             <FeaturedProducts/>
             <NewArrival/>
             <CategorySection/>

@@ -1,0 +1,15 @@
+.sliderBig {
+  height: 380px !important;
+
+  img {
+    width: 100% !important;
+    height: 380px !important;
+  }
+}
+
+@media (max-width: 775px) {
+  .card {
+    width: 83.33333333% !important;
+    margin: 0 auto;
+  }
+}

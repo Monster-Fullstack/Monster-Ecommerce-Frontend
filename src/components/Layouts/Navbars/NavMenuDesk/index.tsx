@@ -9,14 +9,15 @@ import MainContainer from "../../../UI/MainContainer";
 import {ButtonSite} from "../../../UI/Buttons";
 import {InputSite} from "../../../UI/Inputs";
 import {AiOutlineBell} from "react-icons/ai";
-import {GoDeviceMobile} from "react-icons/go";
 import Cart from "../../../UI/Cart";
+import TopNav from "../../../UI/TopSectionNav";
+import {motion} from "framer-motion";
 
 const NavMenuDesk: React.FC = () => {
     return (
-        <div className={cl.topSectionDown}>
+        <TopNav>
             <Navbar bg="dark" fixed="top" className={cl.navbar}>
-                <MainContainer className="fixed-top shadow-sm p-2 mb-0 bg-dark">
+                <MainContainer fluid={true} className="fixed-top shadow-sm p-2 mb-0 bg-dark">
                     <Row className="w-100">
                         <NavCol className="text-start">
                             <Link to="/">
@@ -24,7 +25,11 @@ const NavMenuDesk: React.FC = () => {
                             </Link>
                         </NavCol>
                         <NavCol className="p-1 mt-1">
-                            <div className="input-group w-100 move">
+                            <motion.div
+                                initial="hidden"
+                                animate="visible"
+                                whileHover="hover"
+                                className="input-group w-100">
                                 <InputSite settings={{
                                     type: "text",
                                     placeholder: "Search The Products"
@@ -32,7 +37,7 @@ const NavMenuDesk: React.FC = () => {
                                 <ButtonSite title="Search The Products">
                                     <BiSearchAlt/>
                                 </ButtonSite>
-                            </div>
+                            </motion.div>
                         </NavCol>
                         <NavCol className="p-1 mt-1 text-start">
                             <NavLink to="/" className="btn none">
@@ -41,9 +46,6 @@ const NavMenuDesk: React.FC = () => {
                                     5
                                 </span></sup>
                             </NavLink>
-                            <a className="btn none">
-                                <GoDeviceMobile title="Mobile Mode" className={`h4 ${cl.icon}`}/>
-                            </a>
                             <NavLink to="/" className="h4 btn text-white none">
                                 Login
                             </NavLink>
@@ -52,7 +54,7 @@ const NavMenuDesk: React.FC = () => {
                     </Row>
                 </MainContainer>
             </Navbar>
-        </div>
+        </TopNav>
     );
 };
 

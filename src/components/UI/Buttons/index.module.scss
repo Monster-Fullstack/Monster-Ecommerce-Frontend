@@ -1,11 +1,39 @@
 @use "../../../assets/scss/helpers/var" as *;
+@use "../../../assets/scss/helpers/global" as *;
 
 .btnSite {
-  transition: $trans !important;
+  border: none !important;
   background: $main-color !important;
+  border-radius: 10px !important;
+  color: white !important;
+  padding: 5px 10px;
+}
 
-  &:focus {
-    box-shadow: $main-box-shadow !important;
+.btnProduct {
+  border: none !important;
+  background: $main-color !important;
+  color: white !important;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .buy {
+    position: absolute;
+    font-size: 22px;
+    font-weight: 700;
+    color: $second-color;
+    height: 10px !important;
+  }
+
+  p {
+    text-align: center;
+    align-items: center;
+    height: 5px;
   }
 
 }

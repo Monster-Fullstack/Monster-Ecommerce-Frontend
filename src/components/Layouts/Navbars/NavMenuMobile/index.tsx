@@ -1,26 +1,35 @@
-import React from "react";
+import React, {useState} from "react";
 import cl from "./index.module.scss";
-import {Row} from "react-bootstrap";
+import {Col, Row} from "react-bootstrap";
 import MainContainer from "../../../UI/MainContainer";
-import NavCol from "../../../UI/NavCol";
 import {Link} from "react-router-dom";
 import Logo from "../../../../assets/images/Logo.png";
-import Cart from "../../../UI/Cart";
+import Hamburger from "../../../UI/HamburgerMenu";
+import TopNav from "../../../UI/TopSectionNav";
+import NavMenu from "../../../UI/NavMenu";
+import {AnimatePresence} from "framer-motion";
 
 const NavMenuMobile: React.FC = () => {
+    const [openNav, setOpenNav] = useState(false);
+    const toggleNav = () => {
+        setOpenNav(!openNav);
+    };
     return (
-        <div className={cl.topSectionDown}>
-            <MainContainer className="fixed-top shadow-sm p-2 mb-0 bg-dark">
+        <TopNav>
+            <MainContainer fluid={true} className={`fixed-top shadow-sm p-2 mb-0 bg-dark ${cl.grand}`}>
                 <Row className="w-100">
-                    <NavCol className="text-start">
+                    <Col className={`text-start ${cl.parent}`}>
+                        <Hamburger toggleNav={toggleNav}/>
                         <Link to="/">
                             <img className={cl.logo} src={Logo} alt={"Store Logo"}/>
                         </Link>
-                        <Cart/>
-                    </NavCol>
+                    </Col>
                 </Row>
             </MainContainer>
-        </div>
+            <AnimatePresence>
+                {openNav && <NavMenu toggleNav={toggleNav}/>}
+            </AnimatePresence>
+        </TopNav>
     );
 };
 

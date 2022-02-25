@@ -1,0 +1,33 @@
+@use "../../../assets/scss/helpers/var" as *;
+
+.sideNavOpen {
+  height: 100%;
+  width: 240px;
+  margin-top: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  overflow-x: hidden;
+  font-size: 16px;
+  padding-top: 10px;
+  transition: 0.1s;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px 0 rgba(57, 78, 234, 0.1)
+}
+
+.appTitle {
+  font-weight: 700;
+  text-align: center;
+}
+
+.items {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+@media (max-width: 350px) {
+  .sideNavOpen {
+    width: 100vw !important;
+  }
+}

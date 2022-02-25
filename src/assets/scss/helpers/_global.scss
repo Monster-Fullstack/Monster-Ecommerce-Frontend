@@ -2,8 +2,10 @@
 
 body {
   overflow-x: hidden;
+  transition: $trans;
 }
 
+// for center
 .center {
   display: block;
   margin-left: auto;
@@ -11,6 +13,14 @@ body {
   width: 50%;
 }
 
+// to center position relative | fixed
+.center-pos {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// important styles for any .btn class
 .btn {
   border: none !important;
   border-radius: 0px !important;
@@ -20,25 +30,16 @@ body {
   }
 }
 
-
-.slick-dots {
-  top: 90%;
-}
-
-.move {
-  &:hover {
-    input {
-      transform: translateX(-5px);
-    }
-
-    button {
-      transform: translateX(5px);
-    }
-  }
-}
-
+// remove focus shadow for any .btn class
 .btn.none {
   &:focus {
     box-shadow: none !important;
+  }
+}
+
+@media (max-width: 577px) {
+  .row {
+    justify-content: center !important;
+    align-items: center !important;
   }
 }

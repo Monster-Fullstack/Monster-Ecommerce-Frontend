@@ -1,6 +1,8 @@
 import React, {useEffect, useRef} from "react";
 import cl from "./index.module.scss";
 import EmptyImage from "../../../assets/images/global/image.png";
+import {motion} from "framer-motion";
+import {itemsAni} from "../../Animations/Item";
 
 const Menu: React.FC<{ name: string, items: { name: string, url: string }[] }>
     = ({name, items}) => {
@@ -32,11 +34,18 @@ const Menu: React.FC<{ name: string, items: { name: string, url: string }[] }>
 
     return (
         <div>
-            <button ref={accordion} className={cl.accordion}>
+            <motion.button
+                ref={accordion}
+                className={cl.accordion}
+                variants={itemsAni}
+                initial="hidden"
+                animate="visible"
+                whileHover="hover"
+            >
                 <img className={cl.accordionMenuIcon} alt="Photo"
                      src={EmptyImage}
                 /> {name}
-            </button>
+            </motion.button>
             <div className={cl.panel}>
                 <ul>
                     {menus}
