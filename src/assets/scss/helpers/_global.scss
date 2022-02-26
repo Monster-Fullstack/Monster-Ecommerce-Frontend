@@ -37,9 +37,25 @@ body {
   }
 }
 
+// handling row element when the screen will be phone
 @media (max-width: 577px) {
   .row {
     justify-content: center !important;
     align-items: center !important;
   }
+}
+
+// to remove any text under the a element
+a {
+  text-decoration: none !important;
+}
+
+// when link is active
+.active {
+  border: none !important;
+  background-color: rgba($main-color, 0.5) !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: $main-color !important;
 }

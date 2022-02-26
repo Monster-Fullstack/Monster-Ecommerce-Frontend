@@ -14,5 +14,16 @@ const SectionTitle: React.FC<SectionTitleModel> =
         );
     };
 
+export const NormalTitle: React.FC<SectionTitleModel> =
+    ({title}) => {
+        return (
+            <div className={cl.norTitle}>
+                <h2>
+                    {title.toUpperCase()}
+                </h2>
+            </div>
+        );
+    };
+
 
 export default SectionTitle;

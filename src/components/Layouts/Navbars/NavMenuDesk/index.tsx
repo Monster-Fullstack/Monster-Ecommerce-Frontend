@@ -40,13 +40,13 @@ const NavMenuDesk: React.FC = () => {
                             </motion.div>
                         </NavCol>
                         <NavCol className="p-1 mt-1 text-start">
-                            <NavLink to="/" className="btn none">
+                            <Link to="/" className="btn none">
                                 <AiOutlineBell title="You have 5 notifications" className={`h4 ${cl.icon}`}/>
                                 <sup><span className="bg-danger badge text-white">
                                     5
                                 </span></sup>
-                            </NavLink>
-                            <NavLink to="/" className="h4 btn text-white none">
+                            </Link>
+                            <NavLink to="/login" className="h4 btn text-white none">
                                 Login
                             </NavLink>
                             <Cart/>

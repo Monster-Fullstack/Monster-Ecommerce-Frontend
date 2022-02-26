@@ -1,19 +1,34 @@
-import React from "react";
+import React, {useState} from "react";
 import cl from "./index.module.scss";
 import {motion} from "framer-motion";
-import {itemsAni} from "../../Animations/Item";
+import {NavLink} from "react-router-dom";
+import {itemsNavAni} from "../../Animations/Item";
 
-const NavMenuItem: React.FC = ({children}) => {
+const NavMenuItem: React.FC<{ to: string }>
+    = ({to, children}) => {
+    const [isItemClicked, setIsItemClicked] = useState(false);
+    const handlingItems = (eo: any) => {
+        if (!eo.target.classList.contains("active")) {
+            setIsItemClicked(true);
+            const timer = setTimeout(() => {
+                setIsItemClicked(false);
+                clearTimeout(timer);
+            }, 500);
+        }
+    };
     return (
-        <motion.a
-            className={`list-group-item nav-font nav-itemmenu list-group-item-action ${cl.items}`}
-            variants={itemsAni}
-            initial="hidden"
-            animate="visible"
-            whileHover="hover"
+        <motion.div
+            variants={itemsNavAni}
+            animate={isItemClicked ? "clicked" : "init"}
+            onClick={handlingItems}
         >
-            {children}
-        </motion.a>
+            <NavLink
+                className={`list-group-item nav-font nav-itemmenu list-group-item-action ${cl.items}`}
+                to={to}
+            >
+                {children}
+            </NavLink>
+        </motion.div>
     );
 };
 

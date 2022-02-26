@@ -4,7 +4,7 @@ import MainContainer from "../../UI/MainContainer";
 import SectionTitle from "../../UI/SectionTitle";
 import Category from "../../../interfaces/Category";
 import CategoryCard from "../../UI/AllCards/CategoryCard";
-import MainCol from "../../UI/MainCol";
+import MainCol from "../../UI/Cols/MainCol";
 
 const CategorySection: React.FC = () => {
     let DUMMY_CATEGORIES: Category[] = [

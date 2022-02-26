@@ -3,13 +3,10 @@
 .inputSite {
   transition: $trans !important;
   border: none !important;
+  margin-right: 15px;
 
   &:focus {
     box-shadow: $strong-box-shadow !important;
     border: none !important;
-  }
-
-  &:hover {
-    transform: translateX(-5px);
   }
 }

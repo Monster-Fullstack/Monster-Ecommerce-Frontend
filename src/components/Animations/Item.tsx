@@ -20,3 +20,15 @@ export const itemsAni = {
         }
     }
 };
+
+export const itemsNavAni = {
+    init: {
+        x: 0
+    },
+    clicked: {
+        x: [0, -15, 15, 0],
+        transition: {
+            duration: 0.3
+        }
+    }
+};

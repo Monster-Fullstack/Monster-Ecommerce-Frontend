@@ -4,7 +4,7 @@ import SectionTitle from "../../UI/SectionTitle";
 import MainContainer from "../../UI/MainContainer";
 import ProductCard from "../../UI/AllCards/ProductCard";
 import Product from "../../../interfaces/Product";
-import MainCol from "../../UI/MainCol";
+import MainCol from "../../UI/Cols/MainCol";
 
 export let DUMMY_PRODUCTS: Product[] = [
     {

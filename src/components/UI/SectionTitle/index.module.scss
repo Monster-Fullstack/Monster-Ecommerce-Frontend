@@ -1,34 +1,33 @@
-.titles {
+@mixin titles($isNormal: false) {
   font-size: 30px;
   font-weight: 600;
   position: relative;
   display: inline-block;
   font-family: "Roboto Condensed", sans-serif;
   margin: 0;
-
-  &:before {
-    position: absolute;
-    top: 17px;
-    left: -100px;
-    width: 80px;
-    height: 2px;
-    content: "";
-    background-color: #000;
+  @if ($isNormal == false) {
+    &:before {
+      position: absolute;
+      top: 17px;
+      left: -100px;
+      width: 80px;
+      height: 2px;
+      content: "";
+      background-color: #000;
+    }
+    &:after {
+      position: absolute;
+      top: 17px;
+      right: -100px;
+      width: 80px;
+      height: 2px;
+      content: "";
+      background-color: #000;
+    }
   }
-
-  &:after {
-    position: absolute;
-    top: 17px;
-    right: -100px;
-    width: 80px;
-    height: 2px;
-    content: "";
-    background-color: #000;
-  }
-
 }
 
-.sectionTitle {
+.main-titles {
   margin-top: 50px;
   margin-bottom: 50px;
   color: #051b35;
@@ -36,9 +35,13 @@
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: 400;
   overflow-x: hidden;
+}
+
+.sectionTitle {
+  @extend .main-titles;
 
   h2 {
-    @extend .titles;
+    @include titles();
   }
 }
 
@@ -50,6 +53,14 @@
   overflow-x: hidden;
 
   h2 {
-    @extend .titles;
+    @include titles();
+  }
+}
+
+.norTitle {
+  @extend .main-titles;
+
+  h2 {
+    @include titles(true);
   }
 }

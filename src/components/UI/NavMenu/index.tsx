@@ -10,6 +10,7 @@ import {motion} from "framer-motion";
 import {menuAni} from "./NavAnimation";
 import Categories from "../Categories";
 import Cart from "../Cart";
+import {BiLogInCircle} from "react-icons/bi";
 
 const NavMenu: React.FC<{ toggleNav: () => void }> = ({toggleNav}) => {
     return (
@@ -26,13 +27,16 @@ const NavMenu: React.FC<{ toggleNav: () => void }> = ({toggleNav}) => {
                 <Cart cart="mobile"/>
             </div>
             <ListGroup>
-                <NavMenuItem>
+                <NavMenuItem to="/">
                     <AiFillHome/> Home
                 </NavMenuItem>
-                <NavMenuItem>
+                <NavMenuItem to="/login">
+                    <BiLogInCircle/> Login
+                </NavMenuItem>
+                <NavMenuItem to="/shop">
                     <FaStoreAlt/> Shop
                 </NavMenuItem>
-                <NavMenuItem>
+                <NavMenuItem to="/about">
                     <FcAbout/> About Us
                 </NavMenuItem>
             </ListGroup>
