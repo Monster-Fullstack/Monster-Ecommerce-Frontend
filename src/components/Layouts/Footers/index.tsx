@@ -5,8 +5,8 @@ import cl from "./index.module.scss";
 import {BsGithub, BsLinkedin} from "react-icons/bs";
 import {ImTwitter} from "react-icons/im";
 import {Link} from "react-router-dom";
-import Apple from "../../../assets/images/apple.png";
-import Google from "../../../assets/images/google.png";
+// import Apple from "../../../assets/images/apple.png";
+// import Google from "../../../assets/images/google.png";
 import useResponsive from "../../../hooks/useResponsive";
 
 const FooterDesk: React.FC = () => {
@@ -54,9 +54,9 @@ const FooterDesk: React.FC = () => {
                     }
                     <FooterCol>
                         <h5 className={cl.footerMenuTitle}>DOWNLOAD APPS</h5>
-                        <a href="#"><img src={Google} alt="google play"/></a>
+                        <a href="#"><img src="/" alt="google play"/></a>
                         <br/>
-                        <a href="#"><img className="mt-2" src={Apple} alt="apple store"/></a>
+                        <a href="#"><img className="mt-2" src="/" alt="apple store"/></a>
                     </FooterCol>
                 </Row>
             </Container>
