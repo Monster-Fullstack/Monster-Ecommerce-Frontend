@@ -3,24 +3,64 @@ import { Col, Row } from "react-bootstrap";
 import MainContainer from "../../UI/MainContainer";
 import cl from "./index.module.scss";
 import useResponsive from "../../../hooks/useResponsive";
+import { motion } from "framer-motion";
 
-const MainForm: React.FC<{
+interface Props {
   UsedForm: ReactComponentElement<FC>;
-  rightPhoto: string;
-}> = ({ UsedForm, rightPhoto }) => {
+  rightSection: ReactComponentElement<any>;
+}
+
+const secSectionAnimate = {
+  hidden: {
+    x: -50,
+    y: 100,
+  },
+  visible: {
+    x: -10,
+    y: 10,
+    transition: {
+      duration: 1.5,
+      delay: 0.5,
+    },
+  },
+};
+const formAnime = {
+  hidden: {
+    rotateY: 80,
+  },
+  visible: {
+    rotateY: 0,
+    transition: {
+      duration: 1.5,
+      delay: 1,
+    },
+  },
+};
+
+const MainForm: React.FC<Props> = ({ UsedForm, rightSection }) => {
   const mode = useResponsive();
   return (
     <MainContainer>
       <Row>
         <Col sm={12}>
           <Row>
-            <Col md={6} lg={6} sm={12} xs={12} className={cl.formParent}>
+            <motion.div
+              className={`col md-6 lg-6 sm-6 xs-6 p-0 m-0 ${cl.formParent}`}
+              variants={formAnime}
+              initial="hidden"
+              animate="visible"
+            >
               {UsedForm}
-            </Col>
+            </motion.div>
             {mode !== "phone" && mode !== "tablet" && (
-              <Col className="p-0 m-0" md={6} lg={6} sm={6} xs={6}>
-                <img src={rightPhoto} alt="Login Now" />
-              </Col>
+              <motion.div
+                className="col md-6 lg-6 sm-6 xs-6 p-0 m-0"
+                variants={secSectionAnimate}
+                initial="hidden"
+                animate="visible"
+              >
+                {rightSection}
+              </motion.div>
             )}
           </Row>
         </Col>

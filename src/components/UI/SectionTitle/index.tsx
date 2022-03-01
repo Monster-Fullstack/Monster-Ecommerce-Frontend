@@ -15,9 +15,9 @@ const SectionTitle: React.FC<SectionTitleModel> =
     };
 
 export const NormalTitle: React.FC<SectionTitleModel> =
-    ({title}) => {
+    ({title, className}) => {
         return (
-            <div className={cl.norTitle}>
+            <div className={`${cl.norTitle} ${className}`}>
                 <h2>
                     {title.toUpperCase()}
                 </h2>

@@ -40,29 +40,29 @@ const FooterTemplate: React.FC = () => {
             <>
               <FooterCol>
                 <h5 className={cl.footerMenuTitle}>THE COMPANY</h5>
-                <Link to="/" className={cl.footerLink}>
+                <Link to="/about" className={cl.footerLink}>
                   About Us
                 </Link>
                 <br />
-                <Link to="/" className={cl.footerLink}>
+                <Link to="company" className={cl.footerLink}>
                   Company Profile
                 </Link>
                 <br />
-                <Link to="/" className={cl.footerLink}>
+                <Link to="/contact" className={cl.footerLink}>
                   Contact Us
                 </Link>
               </FooterCol>
               <FooterCol>
                 <h5 className={cl.footerMenuTitle}>MORE INFO</h5>
-                <Link to="/" className={cl.footerLink}>
+                <Link to="/purchase" className={cl.footerLink}>
                   How To Purchase
                 </Link>
                 <br />
-                <Link to="/" className={cl.footerLink}>
+                <Link to="/privacy" className={cl.footerLink}>
                   Privacy Policy
                 </Link>
                 <br />
-                <Link to="/" className={cl.footerLink}>
+                <Link to="refund" className={cl.footerLink}>
                   Refund Policy
                 </Link>
               </FooterCol>

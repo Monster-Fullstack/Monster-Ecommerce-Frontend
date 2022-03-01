@@ -1,7 +1,8 @@
 interface SectionTitleModel {
-    title: string,
-    content: string,
-    main?: boolean
+  title: string;
+  content: string;
+  className?: string;
+  main?: boolean;
 }
 
 export default SectionTitleModel;

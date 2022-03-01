@@ -7,7 +7,10 @@ import PagesParent from "./PagesParent";
 const Login: React.FC = () => {
   return (
     <PagesParent>
-      <MainForm UsedForm={<LoginForm />} rightPhoto={LoginPhoto} />
+      <MainForm
+        UsedForm={<LoginForm />}
+        rightSection={<img src={LoginPhoto} alt="Login Now" />}
+      />
     </PagesParent>
   );
 };

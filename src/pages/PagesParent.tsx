@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 
 const PagesAnimation = {
@@ -23,6 +23,9 @@ const PagesAnimation = {
 };
 
 const PagesParent: React.FC = ({ children }) => {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
   return (
     <motion.div
       variants={PagesAnimation}
