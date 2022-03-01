@@ -5,6 +5,10 @@ body {
   transition: $trans;
 }
 
+#root {
+  min-height: 100vh;
+}
+
 // for center
 .center {
   display: block;
@@ -56,6 +60,7 @@ a {
   background-color: rgba($main-color, 0.5) !important;
 }
 
+// swiper bullets
 .swiper-pagination-bullet-active {
   background: $main-color !important;
 }

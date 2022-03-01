@@ -2,13 +2,9 @@
   width: 100% !important;
   height: auto;
   object-fit: cover;
-}
-
-.input {
-}
-
-.onboardForm {
-  margin-top: 70px;
-  margin-bottom: 70px;
-  width: 90%;
+  padding: 10px 55px;
+  h2 {
+    text-align: center !important;
+    display: block;
+  }
 }
