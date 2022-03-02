@@ -5,6 +5,7 @@ import Contact from "../pages/Contact";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
 import Privacy from "../pages/Privacy";
+import Product from "../pages/Product";
 import Purchase from "../pages/Purchase";
 import Refund from "../pages/Refund";
 
@@ -19,6 +20,7 @@ const AllRoutes: React.FC = () => {
         <Route path="/purchase" element={<Purchase />} />
         <Route path="/privacy" element={<Privacy />} />
         <Route path="/refund" element={<Refund />} />
+        <Route path="/product/:id" element={<Product />} />
       </Routes>
     </AnimatePresence>
   );
