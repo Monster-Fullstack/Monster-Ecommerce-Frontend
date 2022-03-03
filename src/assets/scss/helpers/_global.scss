@@ -6,7 +6,7 @@ body {
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 // for center
@@ -58,9 +58,17 @@ a {
 .active {
   border: none !important;
   background-color: rgba($main-color, 0.5) !important;
+  border-radius: 7px !important;
 }
 
 // swiper bullets
 .swiper-pagination-bullet-active {
   background: $main-color !important;
+}
+
+// remove all fav button
+.linkStyle {
+  color: $main-color;
+  text-align: left;
+  cursor: pointer;
 }

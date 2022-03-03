@@ -1,10 +1,13 @@
-import React from 'react'
-import PagesParent from './PagesParent'
+import React from "react";
+import Notifications from "../components/main/Notifications";
+import PagesParent from "./PagesParent";
 
 const Notification: React.FC = () => {
   return (
-    <PagesParent>Notification</PagesParent>
-  )
-}
+    <PagesParent>
+      <Notifications />
+    </PagesParent>
+  );
+};
 
-export default Notification
+export default Notification;

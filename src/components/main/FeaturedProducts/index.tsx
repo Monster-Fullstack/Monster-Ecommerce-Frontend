@@ -1,7 +1,7 @@
 import React from "react";
 import SectionTitle from "../../UI/SectionTitle";
 import MainContainer from "../../UI/MainContainer";
-import SlicesProducts from "../../UI/SlicesProducts";
+import SlicesProducts from "../../UI/Products/ShowProducts";
 import Product from "../../../interfaces/Product";
 
 export let DUMMY_PRODUCTS: Product[] = [
@@ -71,7 +71,7 @@ const FeaturedProducts: React.FC = () => {
         title="featured products"
         content="Some Of Our Exclusive Collection, You May Like"
       />
-      <SlicesProducts products={DUMMY_PRODUCTS} />
+      <SlicesProducts products={DUMMY_PRODUCTS} slices={6} />
     </MainContainer>
   );
 };

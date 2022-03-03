@@ -1,8 +1,8 @@
 import React from "react";
 import SectionTitle from "../../UI/SectionTitle";
 import MainContainer from "../../UI/MainContainer";
-import SlicesProducts from "../../UI/SlicesProducts";
 import { DUMMY_PRODUCTS } from "../FeaturedProducts";
+import ShowProducts from "../../UI/Products/ShowProducts";
 
 const FeaturedProducts: React.FC = () => {
   return (
@@ -11,7 +11,7 @@ const FeaturedProducts: React.FC = () => {
         title="Related Products"
         content="Some Of Related Products, You May Like"
       />
-      <SlicesProducts products={DUMMY_PRODUCTS} />
+      <ShowProducts products={DUMMY_PRODUCTS} slices={6} />
     </MainContainer>
   );
 };

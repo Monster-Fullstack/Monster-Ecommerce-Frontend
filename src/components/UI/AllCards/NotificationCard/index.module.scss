@@ -1,0 +1,13 @@
+@use "../../../../assets/scss/helpers/var" as *;
+.card {
+  cursor: pointer !important;
+  p {
+    color: $main-color-dark !important;
+  }
+}
+
+.done {
+  p {
+    color: $main-color !important;
+  }
+}

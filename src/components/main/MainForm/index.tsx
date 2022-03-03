@@ -45,7 +45,7 @@ const MainForm: React.FC<Props> = ({ UsedForm, rightSection }) => {
         <Col sm={12}>
           <Row>
             <motion.div
-              className={`col md-6 lg-6 sm-6 xs-6 p-0 m-0 ${cl.formParent}`}
+              className={`col-lg-6 col-md-6 col-sm-12 p-0 m-0 ${cl.formParent}`}
               variants={formAnime}
               initial="hidden"
               animate="visible"
@@ -54,7 +54,7 @@ const MainForm: React.FC<Props> = ({ UsedForm, rightSection }) => {
             </motion.div>
             {mode !== "phone" && mode !== "tablet" && (
               <motion.div
-                className="col md-6 lg-6 sm-6 xs-6 p-0 m-0"
+                className="col-lg-6 col-md-6 col-sm-12 p-0 m-0"
                 variants={secSectionAnimate}
                 initial="hidden"
                 animate="visible"

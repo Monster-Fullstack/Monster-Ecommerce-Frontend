@@ -13,7 +13,7 @@
   padding-top: 10px;
   transition: 0.1s;
   background-color: #ffffff;
-  box-shadow: 0 0 8px 0 rgba(57, 78, 234, 0.1)
+  box-shadow: 0 0 8px 0 rgba(57, 78, 234, 0.1);
 }
 
 .appTitle {
@@ -32,3 +32,8 @@
   }
 }
 
+.icons {
+  font-size: 28px;
+  color: $main-color;
+  margin-top: 8px;
+}

@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import cl from "./index.module.scss";
 
-export const ProductSlider: React.FC<{ items: Product[] }> = ({ items }) => {
+export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   // products
   const products = items.map((product, idx) => (
     <SwiperSlide key={idx}>
@@ -96,9 +96,9 @@ export const MainSlider: React.FC = () => {
   );
 };
 
-export const GroupItemsSlider: React.FC<{ items: Product[] }> = ({ items }) => {
+export const GroupItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   const allItems = items.map((product, idx) => (
-    <SwiperSlide key={idx}>
+    <SwiperSlide key={product.id}>
       <ProductCard
         description={product.description}
         alt={product.alt}
