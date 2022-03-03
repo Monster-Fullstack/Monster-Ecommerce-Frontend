@@ -5,7 +5,7 @@ import cl from "./index.module.scss";
 const DetailsCard: React.FC<{ photos: string[] }> = ({ photos }) => {
   return (
     <Col md={6} lg={6} sm={12} xs={12}>
-      <div style={{ padding: "30px 8.5rem" }}>
+      <div className={cl.topImage}>
         <img
           alt="product images"
           className={`w-100 ${cl.photos}`}

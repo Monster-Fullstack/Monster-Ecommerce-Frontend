@@ -1,6 +1,5 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { DUMMY_PRODUCTS } from "../../main/FeaturedProducts";
 import ProductCard from "../AllCards/ProductCard";
 import { Autoplay, Mousewheel, Pagination } from "swiper";
 import MainContainer from "../MainContainer";
@@ -12,9 +11,9 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import cl from "./index.module.scss";
 
-export const ProductSlider: React.FC = () => {
+export const ProductSlider: React.FC<{ items: Product[] }> = ({ items }) => {
   // products
-  const products = DUMMY_PRODUCTS.map((product, idx) => (
+  const products = items.map((product, idx) => (
     <SwiperSlide key={idx}>
       <ProductCard
         description={product.description}

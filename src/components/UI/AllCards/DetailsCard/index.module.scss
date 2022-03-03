@@ -5,3 +5,13 @@
 .belowPhotos {
   height: 150px;
 }
+
+.topImage {
+  padding: 30px 8.5rem;
+}
+
+@media (max-width: 450px) {
+  .topImage {
+    padding: 20px 8px;
+  }
+}
