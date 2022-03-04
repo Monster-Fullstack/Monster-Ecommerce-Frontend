@@ -1,0 +1,7 @@
+@use "../../../assets/scss/helpers/var" as *;
+.price {
+  color: $main-color;
+  font-family: $main-font;
+  font-size: 20px;
+  font-weight: 700;
+}

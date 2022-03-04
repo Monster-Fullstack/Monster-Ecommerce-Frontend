@@ -1,6 +1,7 @@
 import { AnimatePresence } from "framer-motion";
 import React from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import Cart from "../pages/Cart";
 import Contact from "../pages/Contact";
 import Favourite from "../pages/Favourite";
 import Home from "../pages/Home";
@@ -25,6 +26,7 @@ const AllRoutes: React.FC = () => {
         <Route path="/product/:id" element={<Product />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/favourite" element={<Favourite />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </AnimatePresence>
   );

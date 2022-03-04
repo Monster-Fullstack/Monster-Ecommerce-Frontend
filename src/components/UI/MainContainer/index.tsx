@@ -1,13 +1,23 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-const MainContainer: React.FC<{ className?: string; fluid?: boolean }> = ({
+interface ContainerModel {
+  className?: string;
+  fluid?: boolean;
+  inCenter?: boolean;
+}
+
+const MainContainer: React.FC<ContainerModel> = ({
   className,
   fluid = true,
+  inCenter = true,
   children,
 }) => {
   return (
-    <Container className={`text-center ${className}`} fluid={fluid}>
+    <Container
+      className={`pt-2 ${inCenter ? "text-center" : ""} ${className}`}
+      fluid={fluid}
+    >
       {children}
     </Container>
   );

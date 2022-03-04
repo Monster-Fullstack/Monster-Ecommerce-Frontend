@@ -3,7 +3,7 @@ import { Card } from "react-bootstrap";
 import cl from "./index.module.scss";
 import { ProductImages } from "../../Images";
 import Product from "../../../../interfaces/Product";
-import { ButtonProduct } from "../../Buttons";
+import { ButtonBig } from "../../Buttons";
 import { Link } from "react-router-dom";
 
 const ProductCard: React.FC<Product> = ({
@@ -22,7 +22,7 @@ const ProductCard: React.FC<Product> = ({
         <Card.Body>
           <p className={cl.name}>{name}</p>
           <p className={cl.description}>
-            {description.slice(0, 55)}
+            {description.slice(0, 45)}
             {description.length > 55 && "..."}
           </p>
           <p className={cl.price}>
@@ -31,7 +31,7 @@ const ProductCard: React.FC<Product> = ({
           </p>
         </Card.Body>
       </Link>
-      <ButtonProduct />
+      <ButtonBig secondText="Buy">Add To Cart</ButtonBig>
     </Card>
   );
 };

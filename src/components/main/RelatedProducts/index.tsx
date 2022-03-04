@@ -4,7 +4,7 @@ import MainContainer from "../../UI/MainContainer";
 import { DUMMY_PRODUCTS } from "../FeaturedProducts";
 import ShowProducts from "../../UI/Products/ShowProducts";
 
-const FeaturedProducts: React.FC = () => {
+const RelatedProducts: React.FC = () => {
   return (
     <MainContainer>
       <SectionTitle
@@ -16,4 +16,4 @@ const FeaturedProducts: React.FC = () => {
   );
 };
 
-export default FeaturedProducts;
+export default RelatedProducts;

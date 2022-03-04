@@ -27,7 +27,9 @@ const NavMenu: React.FC<{ toggleNav: () => void }> = ({ toggleNav }) => {
       <OverLay toggleLay={toggleNav} />
       <h3 className={cl.appTitle}>MonStore</h3>
       <div className="mt-3 mb-2 d-flex align-items-center flex-column justify-content-center">
-        <Cart cart="mobile" />
+        <Link to="/cart">
+          <Cart cart="mobile" />
+        </Link>
         <Row className="w-75 mt-2">
           <Col>
             <Link to="/favourite">

@@ -61,7 +61,9 @@ const NavMenuDeskTop: React.FC = () => {
               <NavLink to="/login" className="h4 btn text-white none">
                 Login
               </NavLink>
-              <Cart />
+              <Link to="/cart">
+                <Cart />
+              </Link>
             </Col>
           </Row>
         </MainContainer>
