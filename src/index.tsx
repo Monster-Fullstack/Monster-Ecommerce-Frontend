@@ -3,16 +3,18 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/app.scss";
-import {BrowserRouter} from "react-router-dom";
-
+import { BrowserRouter } from "react-router-dom";
+import { SiteInfoProvider } from "./store/SiteInfo";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <BrowserRouter>
-            <App/>
-        </BrowserRouter>
-    </React.StrictMode>,
-    document.getElementById("root")
+  <React.StrictMode>
+    <BrowserRouter>
+      <SiteInfoProvider>
+        <App />
+      </SiteInfoProvider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

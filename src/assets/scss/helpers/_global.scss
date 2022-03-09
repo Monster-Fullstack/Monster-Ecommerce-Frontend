@@ -73,3 +73,15 @@ a {
   cursor: pointer;
   font-size: 14px;
 }
+
+// for forms
+.onboardBanner {
+  width: 100% !important;
+  height: auto;
+  object-fit: cover;
+  padding: 10px 55px;
+  h2 {
+    text-align: center !important;
+    display: block;
+  }
+}

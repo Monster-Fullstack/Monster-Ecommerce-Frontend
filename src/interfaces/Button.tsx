@@ -4,6 +4,7 @@ export interface Button {
   title?: string;
   className?: string;
   background?: string;
+  type?: "submit" | "button";
 }
 
 export interface BigButtonModel extends Button {

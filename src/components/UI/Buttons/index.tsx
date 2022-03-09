@@ -14,6 +14,7 @@ export const ButtonSite: React.FC<Button> = ({
   width = "auto",
   title,
   children,
+  type = "button",
 }) => {
   return (
     <motion.button
@@ -21,6 +22,7 @@ export const ButtonSite: React.FC<Button> = ({
       title={title}
       className={`${cl.btnSite} ${className}`}
       style={{ width: width }}
+      type={type}
       variants={ButtonSiteAni}
       whileHover="hover"
     >
@@ -33,7 +35,7 @@ export const ButtonBig: React.FC<BigButtonModel> = ({
   onClick,
   background,
   secondText,
-  children
+  children,
 }) => {
   return (
     <motion.button

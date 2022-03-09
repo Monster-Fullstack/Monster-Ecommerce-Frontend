@@ -1,11 +1,15 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 import { NormalTitle } from "../SectionTitle";
-import cl from "./FormParent.module.scss";
 
-const FormParent: React.FC<{ title: string }> = ({ children, title }) => {
+interface FormModel {
+  title: string;
+  onSubmit: () => void;
+}
+
+const FormParent: React.FC<FormModel> = ({ children, title, onSubmit }) => {
   return (
-    <Form className={`text-start ${cl.onboardBanner}`}>
+    <Form onSubmit={onSubmit} className={`text-start onboardBanner`}>
       <NormalTitle title={title} main={false} content={""} />
       {children}
     </Form>
