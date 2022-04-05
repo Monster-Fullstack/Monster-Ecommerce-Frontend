@@ -10,6 +10,8 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import cl from "./index.module.scss";
+import CategoryCard from "../AllCards/CategoryCard";
+import { Link } from "react-router-dom";
 
 export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   // products
@@ -19,7 +21,7 @@ export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
         description={product.description}
         alt={product.alt}
         id={product.id}
-        src={product.src}
+        src={product.main_image}
         name={product.name}
         className={cl.card}
         price={product.price}
@@ -103,11 +105,40 @@ export const GroupItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
         description={product.description}
         alt={product.alt}
         id={product.id}
-        src={product.src}
+        src={product.main_image}
         name={product.name}
         className={cl.card}
         price={product.price}
       />
+    </SwiperSlide>
+  ));
+
+  return (
+    <Swiper
+      slidesPerView={5}
+      spaceBetween={30}
+      slidesPerGroup={5}
+      loop={true}
+      loopFillGroupWithBlank={true}
+      className="mySwiper"
+    >
+      {allItems}
+    </Swiper>
+  );
+};
+
+export const GroupItemsSliderCategory: React.FC<{ items: any[] }> = ({
+  items,
+}) => {
+  const allItems = items.map((cat) => (
+    <SwiperSlide key={cat.cat_name.id}>
+      <Link to={`/category/${cat.cat_name.id}`}>
+        <CategoryCard
+          src={cat.cat_name.cat_image}
+          name={cat.cat_name.cat_name}
+          className={cl.card}
+        />
+      </Link>
     </SwiperSlide>
   ));
 

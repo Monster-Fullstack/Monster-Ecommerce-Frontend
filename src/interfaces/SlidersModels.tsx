@@ -1,5 +1,5 @@
 interface SlidersModels {
-  items: any[];
+  items?: any[];
   groupSlider?: boolean;
 }
 

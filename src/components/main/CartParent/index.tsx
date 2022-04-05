@@ -5,20 +5,24 @@ import TotalPriceCard from "../../UI/AllCards/TotalPriceCard";
 import MainContainer from "../../UI/MainContainer";
 import ShowManyInSlider from "../../UI/Products/ShowManyInSlider";
 import SectionTitle, { NormalTitle } from "../../UI/SectionTitle";
-import { DUMMY_PRODUCTS } from "../FeaturedProducts";
+import useGet from "./../../../hooks/useGet";
 
 const CartParent = () => {
-  const products = DUMMY_PRODUCTS.slice(0, 2).map((product, idx) => (
-    <Col key={idx} xs={12}>
-      <CartCard
-        name={product.name}
-        id={product.id}
-        price={product.price}
-        description={product.description}
-        src={product.src}
-      />
-    </Col>
-  ));
+  const { isDataReady, data } = useGet("collection_products");
+
+  const products =
+    isDataReady &&
+    data.slice(0, 2).map((product, idx) => (
+      <Col key={idx} xs={12}>
+        <CartCard
+          name={product.name}
+          id={product.id}
+          price={product.price}
+          description={product.description}
+          src={product.src}
+        />
+      </Col>
+    ));
   return (
     <MainContainer className="text-start" inCenter={false} fluid={false}>
       <NormalTitle title="Shopping Cart" content="" />
@@ -35,7 +39,7 @@ const CartParent = () => {
           title="Related Products"
           content="Related Products, You May Like"
         />
-        <ShowManyInSlider groupSlider={true} items={DUMMY_PRODUCTS} />
+        {isDataReady && <ShowManyInSlider groupSlider={true} items={data} />}
       </div>
     </MainContainer>
   );

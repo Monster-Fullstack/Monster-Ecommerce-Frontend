@@ -12,6 +12,8 @@ import Product from "../pages/Product";
 import Purchase from "../pages/Small/Purchase";
 import Refund from "../pages/Small/Refund";
 import About from "./../pages/Small/About";
+import SubCategory from "./../pages/SubCategory";
+import Category from "./../pages/Category";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -26,6 +28,8 @@ const AllRoutes: React.FC = () => {
         <Route path="/notification" element={<Notification />} />
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/sub-cat/:id" element={<SubCategory />} />
+        <Route path="/category/:id" element={<Category />} />
         {/* Small Pages */}
         <Route path="/about" element={<About />} />
         <Route path="/purchase" element={<Purchase />} />

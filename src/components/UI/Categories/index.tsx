@@ -5,7 +5,6 @@ import Menu from "../MegaMenu/Menu";
 const Categories: React.FC = () => {
   const { isDataReady, data } = useGet("category");
 
-  console.log(data);
   const allCategories =
     isDataReady &&
     data.map((el) => (

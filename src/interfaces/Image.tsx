@@ -1,7 +1,8 @@
 import ClassName from "./ClassName";
 
 interface Image extends ClassName {
-  src: string;
+  src?: string;
+  main_image?: string;
   alt?: string;
   style?: string;
 }

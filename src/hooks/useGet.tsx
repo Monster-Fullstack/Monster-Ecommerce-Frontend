@@ -3,10 +3,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import AppURL from "./../api/AppURL";
 
-type GetType = "visitor" | "contact" | "siteinfo" | "category";
-
 const useGet = (
-  type: GetType,
+  type: string,
   sessionName = "",
   setInSessionAndSetData: (data, setData) => void | null = null
 ) => {

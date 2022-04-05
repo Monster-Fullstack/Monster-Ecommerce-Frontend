@@ -2,9 +2,11 @@ import React from "react";
 import MainContainer from "../../UI/MainContainer";
 import ShowManyInSlider from "../../UI/Products/ShowManyInSlider";
 import SectionTitle from "../../UI/SectionTitle";
-import { DUMMY_PRODUCTS } from "../FeaturedProducts";
+import useGet from "./../../../hooks/useGet";
 
 const Favourites = () => {
+  const { isDataReady, data } = useGet("collection_products");
+
   return (
     <MainContainer>
       <SectionTitle
@@ -12,7 +14,7 @@ const Favourites = () => {
         content="Add Them To Card Now &#128293;"
       />
       <p className="linkStyle">Remove All Favourite</p>
-      <ShowManyInSlider groupSlider={true} items={DUMMY_PRODUCTS} />
+      {isDataReady && <ShowManyInSlider groupSlider={true} items={data} />}
     </MainContainer>
   );
 };

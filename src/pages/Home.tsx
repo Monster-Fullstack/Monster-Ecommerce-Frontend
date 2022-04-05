@@ -1,21 +1,16 @@
 import React, { useEffect } from "react";
-import FeaturedProducts, {
-  DUMMY_PRODUCTS,
-} from "../components/main/FeaturedProducts";
 import CategorySection from "../components/main/CategorySection";
 import Collection from "../components/main/Collection";
 import NewArrival from "../components/main/NewArrival";
 import HomeTopResponsive from "../components/main/HomeTop/HomeTopResponsive";
 import PagesParent from "./PagesParent";
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import AppURL from "../api/AppURL";
+import FeaturedProducts from "./../components/main/FeaturedProducts/index";
 
 const Home: React.FC = () => {
   const GetVisitorDetails = () => {
-    axios
-      .get(AppURL.VisitorDetails)
-      .then()
-      .catch();
+    axios.get(AppURL.VisitorDetails).then().catch();
   };
 
   useEffect(() => {
@@ -25,7 +20,7 @@ const Home: React.FC = () => {
     <PagesParent>
       <HomeTopResponsive />
       <FeaturedProducts />
-      <NewArrival items={DUMMY_PRODUCTS} />
+      <NewArrival />
       <CategorySection />
       <Collection />
     </PagesParent>

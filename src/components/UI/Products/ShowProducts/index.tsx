@@ -1,8 +1,9 @@
 import React from "react";
-import { Row } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import Product from "../../../../interfaces/Product";
 import ProductCard from "../../AllCards/ProductCard";
-import MainCol from "../../Cols/MainCol";
+import CategoryCard from "./../../AllCards/CategoryCard/index";
+import { Link } from "react-router-dom";
 
 type Model = {
   products: Product[];
@@ -14,24 +15,35 @@ type Model = {
  * @param slices => if you want to show all the data put the length of array
  * for example: ShowProducts(products, products.length)
  * if you don't want to show all of them just type the number
- * for example: ShowProducts(products, 10) 
+ * for example: ShowProducts(products, 10)
  * then the products that showen are just 10 products
  * @returns all products
  */
 const ShowProducts: React.FC<Model> = ({ products, slices }) => {
   const allProducts = products.slice(0, slices).map((product, idx) => (
-    <MainCol key={idx}>
+    <Col key={idx} lg={3} md={4} sm={6} xs={12}>
       <ProductCard
         alt={product.alt}
-        src={product.src}
+        src={product.main_image}
         name={product.name}
         description={product.description}
         id={product.id}
         price={product.price}
       />
-    </MainCol>
+    </Col>
   ));
-  return <Row>{allProducts}</Row>;
+  return <Row className="w-100">{allProducts}</Row>;
+};
+
+export const ShowSubCat: React.FC<{ categories: any[] }> = ({ categories }) => {
+  const allProducts = categories.map((cat, idx) => (
+    <Col key={idx} lg={3} md={4} sm={6} xs={12}>
+      <Link to={`/sub-cat/${cat.id}`}>
+        <CategoryCard src={cat.main_image} name={cat.subcat_name} />
+      </Link>
+    </Col>
+  ));
+  return <Row className="w-100">{allProducts}</Row>;
 };
 
 export default ShowProducts;

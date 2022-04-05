@@ -3,6 +3,7 @@ import cl from "./index.module.scss";
 import EmptyImage from "../../../assets/images/global/image.png";
 import { motion } from "framer-motion";
 import { itemsAni } from "../../Animations/Item";
+import { Link } from "react-router-dom";
 
 const Menu: React.FC<{ name: string; items: any[] }> = ({ name, items }) => {
   const accordion = useRef<HTMLButtonElement>(null);
@@ -27,11 +28,11 @@ const Menu: React.FC<{ name: string; items: any[] }> = ({ name, items }) => {
 
   let menus =
     items.length > 0 ? (
-      items.map(({ sub_image, subcat_name }, idx) => (
+      items.map(({ sub_image, subcat_name, id }, idx) => (
         <li key={idx}>
-          <a href={sub_image} className={cl.accordionItem}>
+          <Link to={`/sub-cat/${id}`} className={cl.accordionItem}>
             {subcat_name}
-          </a>
+          </Link>
         </li>
       ))
     ) : (
