@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 import cl from "./index.module.scss";
 import { Col, Navbar, Row } from "react-bootstrap";
@@ -13,8 +13,15 @@ import Cart from "../../../UI/Cart";
 import TopNav from "../../../UI/TopSectionNav";
 import { motion } from "framer-motion";
 import NotificationsNo from "../../../UI/NotificationsNo";
+import Hamburger from "./../../../UI/HamburgerMenu/index";
+import NavMenu from "./../../../UI/NavMenu/index";
+import { AnimatePresence } from "framer-motion";
 
 const NavMenuDeskTop: React.FC = () => {
+  const [openNav, setOpenNav] = useState(false);
+  const toggleNav = () => {
+    setOpenNav(!openNav);
+  };
   return (
     <TopNav>
       <Navbar bg="dark" fixed="top" className={cl.navbar}>
@@ -22,13 +29,32 @@ const NavMenuDeskTop: React.FC = () => {
           fluid={true}
           className="fixed-top shadow-sm p-2 mb-0 bg-dark"
         >
-          <Row className="w-100 justify-content-between">
-            <Col lg={3} md={3} sm={12} xs={12} className="text-start">
-              <Link to="/">
-                <img className={cl.logo} src={Logo} alt={"Store Logo"} />
-              </Link>
+          <Row className="w-100 justify-content-around pt-2">
+            <Col
+              lg={3}
+              md={4}
+              sm={12}
+              xs={12}
+              className="justify-content-between"
+              style={{ maxHeight: "60px" }}
+            >
+              <TopNav>
+                <Row>
+                  <Col xs={2} className={`text-start ${cl.parent}`}>
+                    <Hamburger toggleNav={toggleNav} />
+                  </Col>
+                  <Col xs={10}>
+                    <Link to="/">
+                      <img className={cl.logo} src={Logo} alt={"Store Logo"} />
+                    </Link>
+                  </Col>
+                </Row>
+                <AnimatePresence>
+                  {openNav && <NavMenu toggleNav={toggleNav} />}
+                </AnimatePresence>
+              </TopNav>
             </Col>
-            <Col lg={3} md={3} sm={12} xs={12} className="p-1 mt-1">
+            <Col lg={4} md={3} sm={12} xs={12} className="p-1 mt-1">
               <motion.div
                 initial="hidden"
                 animate="visible"
@@ -46,7 +72,7 @@ const NavMenuDeskTop: React.FC = () => {
                 </ButtonSite>
               </motion.div>
             </Col>
-            <Col lg={6} md={6} sm={12} xs={12} className="p-1 mt-1 text-center">
+            <Col lg={4} md={5} sm={12} xs={12} className="p-1 mt-1 text-center">
               <Link to="/favourite">
                 <AiOutlineHeart className={`h4 ${cl.icon}`} />
                 <NotificationsNo many={10} />

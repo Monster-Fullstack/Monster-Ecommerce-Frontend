@@ -17,7 +17,7 @@ const ShowCategory = () => {
           <Col>
             {isDataReady && !loading && (
               <>
-                <NormalTitle title={data.cat_name.cat_name} content="" />
+                <NormalTitle title={data.main_cat.cat_name} content="" />
                 {data.sub_cats.length > 0 ? (
                   <ShowSubCat categories={data.sub_cats} />
                 ) : (

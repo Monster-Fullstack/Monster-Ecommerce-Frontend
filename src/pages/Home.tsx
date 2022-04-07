@@ -7,6 +7,9 @@ import PagesParent from "./PagesParent";
 import axios from "axios";
 import AppURL from "../api/AppURL";
 import FeaturedProducts from "./../components/main/FeaturedProducts/index";
+import BestSellerProducts from "./../components/main/BestSellerProducts/index";
+import UnderXDollars from "../components/main/UnderXDollars";
+import BestFor from "../components/main/BestFor";
 
 const Home: React.FC = () => {
   const GetVisitorDetails = () => {
@@ -19,9 +22,12 @@ const Home: React.FC = () => {
   return (
     <PagesParent>
       <HomeTopResponsive />
-      <FeaturedProducts />
-      <NewArrival />
       <CategorySection />
+      <BestFor type="Gaming" />
+      <FeaturedProducts />
+      <BestSellerProducts />
+      <UnderXDollars dollars={100} />
+      <NewArrival />
       <Collection />
     </PagesParent>
   );

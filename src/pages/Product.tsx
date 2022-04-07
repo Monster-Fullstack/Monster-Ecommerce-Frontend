@@ -1,4 +1,5 @@
 import React from "react";
+import BestFor from "../components/main/BestFor";
 import NewArrival from "../components/main/NewArrival";
 import ProductDetails from "../components/main/ProductDetails";
 import RelatedProducts from "../components/main/RelatedProducts";
@@ -8,8 +9,9 @@ const Product: React.FC = () => {
   return (
     <PagesParent>
       <ProductDetails />
-      <RelatedProducts />
       <NewArrival groupSlider={true} />
+      <BestFor type="Gaming" />
+      <RelatedProducts />
     </PagesParent>
   );
 };

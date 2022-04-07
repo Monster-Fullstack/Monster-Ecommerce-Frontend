@@ -45,7 +45,50 @@ export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
             spaceBetween: 40,
           },
           1024: {
-            slidesPerView: 5,
+            slidesPerView: 4,
+            spaceBetween: 50,
+          },
+        }}
+        modules={[Pagination, Autoplay]}
+        className="mySwiper"
+      >
+        {products}
+      </Swiper>
+    </MainContainer>
+  );
+};
+
+export const CategorySlider: React.FC<{ items: any[] }> = ({ items }) => {
+  // products
+  const products = items.map((cat, idx) => (
+    <SwiperSlide key={idx}>
+      <Link to={`/category/${cat.id}`}>
+        <CategoryCard
+          src={cat.cat_image}
+          name={cat.cat_name}
+          className={cl.card}
+        />
+      </Link>
+    </SwiperSlide>
+  ));
+
+  return (
+    <MainContainer>
+      <Swiper
+        spaceBetween={10}
+        loop={true}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
+        breakpoints={{
+          640: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+          },
+          768: {
+            slidesPerView: 3,
+            spaceBetween: 40,
+          },
+          1024: {
+            slidesPerView: 4,
             spaceBetween: 50,
           },
         }}
@@ -99,7 +142,7 @@ export const MainSlider: React.FC = () => {
 };
 
 export const GroupItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
-  const allItems = items.map((product, idx) => (
+  const allItems = items.map((product) => (
     <SwiperSlide key={product.id}>
       <ProductCard
         description={product.description}
@@ -115,9 +158,9 @@ export const GroupItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
 
   return (
     <Swiper
-      slidesPerView={5}
+      slidesPerView={4}
       spaceBetween={30}
-      slidesPerGroup={5}
+      slidesPerGroup={4}
       loop={true}
       loopFillGroupWithBlank={true}
       className="mySwiper"
@@ -131,11 +174,11 @@ export const GroupItemsSliderCategory: React.FC<{ items: any[] }> = ({
   items,
 }) => {
   const allItems = items.map((cat) => (
-    <SwiperSlide key={cat.cat_name.id}>
-      <Link to={`/category/${cat.cat_name.id}`}>
+    <SwiperSlide key={cat.id}>
+      <Link to={`/category/${cat.id}`}>
         <CategoryCard
-          src={cat.cat_name.cat_image}
-          name={cat.cat_name.cat_name}
+          src={cat.cat_image}
+          name={cat.cat_name}
           className={cl.card}
         />
       </Link>

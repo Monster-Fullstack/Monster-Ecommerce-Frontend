@@ -31,7 +31,7 @@ const ProductDetails: React.FC = () => {
             >
               <Row>
                 <DetailsCard photos={[product.main_image]} />
-                <DetailsRightCard name={product.name} price={product.price} />
+                <DetailsRightCard product={product} />
               </Row>
 
               <Row>

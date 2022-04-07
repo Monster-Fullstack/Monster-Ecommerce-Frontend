@@ -9,9 +9,10 @@
   position: relative;
   overflow: hidden;
   width: 100% !important;
-  height: 445px;
   margin-top: 15px;
   padding-top: 20px;
+  min-height: 465px;
+  max-height: 650px;
 
   .name {
     color: #051b35;

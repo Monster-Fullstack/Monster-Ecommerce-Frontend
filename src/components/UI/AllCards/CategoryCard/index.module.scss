@@ -3,6 +3,9 @@
 .categoryCard {
   cursor: pointer;
   transition: .3s;
+  text-align: center;
+  align-items: center;
+  height: 100%;
 
   .categoryName {
     color: #000000;

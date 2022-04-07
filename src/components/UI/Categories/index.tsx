@@ -8,7 +8,7 @@ const Categories: React.FC = () => {
   const allCategories =
     isDataReady &&
     data.map((el) => (
-      <Menu name={el.cat_name.cat_name} items={el.subs_names} />
+      <Menu name={el.main_cat.cat_name} items={el.subs_names} />
     ));
 
   return <div>{isDataReady && allCategories}</div>;

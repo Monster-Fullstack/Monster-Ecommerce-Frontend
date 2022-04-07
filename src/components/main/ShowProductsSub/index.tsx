@@ -11,7 +11,7 @@ const ShowProductsSub = () => {
   const { id } = useParams();
   const { loading, isDataReady, data } = useGet(`subcategory/${id}`);
 
-  console.log(isDataReady && data);
+  console.log(data);
   return (
     <>
       <MainContainer className="ps-5 pe-5">
@@ -19,7 +19,7 @@ const ShowProductsSub = () => {
           <Col>
             {isDataReady && !loading && (
               <>
-                <NormalTitle title={data.cat_name} content="" />
+                <NormalTitle title={data.main_cat} content="" />
                 {data.products.length > 0 ? (
                   <ShowProducts
                     slices={data.products.length}
