@@ -16,6 +16,7 @@ import NotificationsNo from "../../../UI/NotificationsNo";
 import Hamburger from "./../../../UI/HamburgerMenu/index";
 import NavMenu, { NavMenu2 } from "./../../../UI/NavMenu/index";
 import { AnimatePresence } from "framer-motion";
+import { IoLogoGameControllerB } from "react-icons/io";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -27,7 +28,7 @@ const NavMenuDeskTop: React.FC = () => {
     setOpenNav2(!openNav2);
   };
   return (
-    <TopNav>
+    <TopNav className="w-100">
       <Navbar bg="dark" fixed="top" className={cl.navbar}>
         <MainContainer
           fluid={true}
@@ -99,8 +100,21 @@ const NavMenuDeskTop: React.FC = () => {
         </MainContainer>
       </Navbar>
       <div className={cl.secNav}>
-        <TopNav>
-          <Hamburger toggleNav={toggleNav2} />
+        {/* Second Navbar */}
+        <TopNav className="w-100 h-100">
+          <Row className="justify-content-end">
+            <Col md={1}>
+              <Link to="/gamers">
+                <IoLogoGameControllerB
+                  title="Are you a gamer?"
+                  className={cl.gamesIcon}
+                />
+              </Link>
+            </Col>
+            <Col md={1}>
+              <Hamburger toggleNav={toggleNav2} />
+            </Col>
+          </Row>
           <AnimatePresence>
             {openNav2 && <NavMenu2 toggleNav={toggleNav2} />}
           </AnimatePresence>

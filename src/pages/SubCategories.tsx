@@ -1,7 +1,7 @@
 import React from "react";
 import PagesParent from "./PagesParent";
 import MainContainer from "./../components/UI/MainContainer/index";
-import ShowAllCategories from "../components/main/ShowAllCategories";
+import ShowAllCategories from "../components/main/Category/ShowAllCategories";
 import useGet from "./../hooks/useGet";
 import { NormalTitle } from "./../components/UI/SectionTitle/index";
 

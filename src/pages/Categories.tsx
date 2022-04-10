@@ -1,5 +1,5 @@
 import React from "react";
-import ShowAllCategories from "../components/main/ShowAllCategories";
+import ShowAllCategories from "../components/main/Category/ShowAllCategories";
 import MainContainer from "../components/UI/MainContainer";
 import { NormalTitle } from "../components/UI/SectionTitle";
 import PagesParent from "./PagesParent";

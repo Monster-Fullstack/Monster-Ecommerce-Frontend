@@ -1,10 +1,10 @@
 import React from "react";
 import PagesParent from "./PagesParent";
-import ShowProductsSub from "./../components/main/ShowProductsSub/index";
-import UnderXDollars from "../components/main/UnderXDollars";
-import NewArrival from "../components/main/NewArrival";
-import FeaturedProducts from "../components/main/FeaturedProducts";
-import BestFor from "../components/main/BestFor";
+import ShowProductsSub from "./../components/main/Product/ShowProductsSub/index";
+import UnderXDollars from "../components/main/Product/UnderXDollars";
+import NewArrival from "../components/main/Product/NewArrival";
+import FeaturedProducts from "../components/main/Product/FeaturedProducts";
+import BestFor from "../components/main/Product/BestFor";
 
 const SubCategory: React.FC = () => {
   return (

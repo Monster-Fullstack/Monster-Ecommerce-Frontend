@@ -1,8 +1,8 @@
 import React from "react";
-import BestFor from "../components/main/BestFor";
-import NewArrival from "../components/main/NewArrival";
-import ProductDetails from "../components/main/ProductDetails";
-import RelatedProducts from "../components/main/RelatedProducts";
+import BestFor from "../components/main/Product/BestFor";
+import NewArrival from "../components/main/Product/NewArrival";
+import ProductDetails from "../components/main/Product/ProductDetails";
+import RelatedProducts from "../components/main/Product/RelatedProducts";
 import PagesParent from "./PagesParent";
 
 const Product: React.FC = () => {

@@ -1,7 +1,7 @@
 import React from "react";
 import PagesParent from "./../PagesParent";
 import ShowInPagination from "./../../components/UI/ShowInPagination/index";
-import ShowProductsNoSliders from "./../../components/main/ShowProductsNoSliders/index";
+import ShowProductsNoSliders from "./../../components/main/Product/ShowProductsNoSliders/index";
 
 const PremiumProducts = () => {
   return (

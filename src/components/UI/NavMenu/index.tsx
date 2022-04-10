@@ -14,7 +14,7 @@ import Cart from "../Cart";
 import { BiLogInCircle } from "react-icons/bi";
 import NotificationsNo from "../NotificationsNo";
 import { Link } from "react-router-dom";
-import ShowSubCateogories from "./../../main/ShowSubCategories/index";
+import ShowSubCateogories from "./../../main/Category/ShowSubCategories/index";
 import useGet from "./../../../hooks/useGet";
 import Loader from "../../main/Loader";
 

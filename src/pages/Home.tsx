@@ -1,15 +1,15 @@
 import React, { useEffect } from "react";
-import CategorySection from "../components/main/CategorySection";
+import CategorySection from "../components/main/Category/CategorySection";
 import Collection from "../components/main/Collection";
-import NewArrival from "../components/main/NewArrival";
+import NewArrival from "../components/main/Product/NewArrival";
 import HomeTopResponsive from "../components/main/HomeTop/HomeTopResponsive";
 import PagesParent from "./PagesParent";
 import axios from "axios";
 import AppURL from "../api/AppURL";
-import FeaturedProducts from "./../components/main/FeaturedProducts/index";
-import BestSellerProducts from "./../components/main/BestSellerProducts/index";
-import UnderXDollars from "../components/main/UnderXDollars";
-import BestFor from "../components/main/BestFor";
+import FeaturedProducts from "./../components/main/Product/FeaturedProducts/index";
+import BestSellerProducts from "./../components/main/Product/BestSellerProducts/index";
+import UnderXDollars from "../components/main/Product/UnderXDollars";
+import BestFor from "../components/main/Product/BestFor";
 
 const Home: React.FC = () => {
   const GetVisitorDetails = () => {

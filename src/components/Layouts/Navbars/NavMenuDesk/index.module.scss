@@ -13,6 +13,19 @@
   }
 }
 
+.gamesIcon {
+  background-color: $main-color !important;
+  font-size: 45px;
+  cursor: pointer;
+  padding: 2px 3px;
+  color: white !important;
+  border-radius: 55%; 
+  transition: 0.4s;
+  &:hover {
+    transform: rotate(360deg);
+  }
+}
+
 .logo {
   height: 50px;
   width: 180px;

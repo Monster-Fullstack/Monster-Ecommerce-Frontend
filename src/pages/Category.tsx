@@ -1,9 +1,9 @@
 import React from "react";
-import ShowCategory from "../components/main/ShowCategory";
+import ShowCategory from "../components/main/Category/ShowCategory";
 import PagesParent from "./PagesParent";
-import RelatedCategories from "./../components/main/RelatedCategories/index";
-import BestSellerProducts from "../components/main/BestSellerProducts";
-import UnderXDollars from "../components/main/UnderXDollars";
+import RelatedCategories from "./../components/main/Category/RelatedCategories/index";
+import BestSellerProducts from "../components/main/Product/BestSellerProducts";
+import UnderXDollars from "../components/main/Product/UnderXDollars";
 
 const Category = () => {
   return (
