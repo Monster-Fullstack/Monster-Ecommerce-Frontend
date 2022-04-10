@@ -17,8 +17,7 @@ import Category from "./../pages/Category";
 import Categories from "../pages/Categories";
 import SubCategories from "./../pages/SubCategories";
 import PremiumProducts from "../pages/Premium/Products";
-import FullProductCard from "../components/UI/AllCards/FullProductCard";
-import Gamers from "./../pages/Gamers";
+import Gamer from "../pages/Gamer";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -38,7 +37,7 @@ const AllRoutes: React.FC = () => {
         <Route path="/categories" element={<Categories />} />
         <Route path="/subcategories" element={<SubCategories />} />
         <Route path="/premium/products" element={<PremiumProducts />} />
-        <Route path="/gamers" element={<Gamers />} />
+        <Route path="/gamer" element={<Gamer />} />
         {/* Small Pages */}
         <Route path="/about" element={<About />} />
         <Route path="/purchase" element={<Purchase />} />

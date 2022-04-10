@@ -9,8 +9,10 @@ import Loader from "../../Loader/index";
 
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
-  const { isDataReady, data } = useGet(`product/${id}`);
+  const { isDataReady, data: AllProductData } = useGet(`product/${id}`);
 
+  console.log(AllProductData);
+  const data = isDataReady && AllProductData.product;
   return (
     <Fragment>
       <Container className="BetweenTwoSection">
@@ -29,7 +31,7 @@ const ProductDetails: React.FC = () => {
                 <Loader many={3} />
               )}
               {isDataReady ? (
-                <DetailsRightCard product={data} />
+                <DetailsRightCard AllProductData={AllProductData} />
               ) : (
                 <Loader many={2} />
               )}

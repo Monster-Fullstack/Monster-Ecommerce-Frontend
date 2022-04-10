@@ -104,7 +104,7 @@ const NavMenuDeskTop: React.FC = () => {
         <TopNav className="w-100 h-100">
           <Row className="justify-content-end">
             <Col md={1}>
-              <Link to="/gamers">
+              <Link to="/gamer">
                 <IoLogoGameControllerB
                   title="Are you a gamer?"
                   className={cl.gamesIcon}
