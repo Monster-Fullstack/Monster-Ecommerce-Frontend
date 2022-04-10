@@ -4,6 +4,7 @@ import MainContainer from "../../UI/MainContainer/index";
 import useGet from "../../../hooks/useGet";
 import { GroupItemsSlider } from "./../../UI/Sliders/index";
 import ShowProducts from "../ShowProducts";
+import Loader from './../Loader/index';
 
 const BestFor: React.FC<{ type: string }> = ({ type }) => {
   const { isDataReady, data } = useGet(`products/bestfor/${type}`);
@@ -13,7 +14,7 @@ const BestFor: React.FC<{ type: string }> = ({ type }) => {
         title={`Best For ${type}`}
         content={`Best Products For ${type}`}
       />
-      {isDataReady && <ShowProducts products={data} />}
+      {isDataReady ? <ShowProducts products={data} /> : <Loader many={4} type="items" />}
     </MainContainer>
   );
 };

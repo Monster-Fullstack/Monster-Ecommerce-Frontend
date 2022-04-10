@@ -21,7 +21,7 @@ type Model = {
  */
 const ShowProducts: React.FC<Model> = ({ products, slices }) => {
   const allProducts = products.slice(0, slices).map((product, idx) => (
-    <Col key={idx} lg={3} md={4} sm={6} xs={12}>
+    <Col key={idx} xl={2} lg={3} md={4} sm={6} xs={12}>
       <ProductCard
         alt={product.alt}
         src={product.main_image}

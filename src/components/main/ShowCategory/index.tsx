@@ -6,6 +6,7 @@ import MainContainer from "./../../UI/MainContainer/index";
 import { Row, Col } from "react-bootstrap";
 import { FaSadTear } from "react-icons/fa";
 import { ShowSubCat } from "./../../UI/Products/ShowProducts/index";
+import Loader from "./../Loader/index";
 
 const ShowCategory = () => {
   const { id } = useParams();
@@ -15,7 +16,7 @@ const ShowCategory = () => {
       <MainContainer className="ps-5 pe-5">
         <Row>
           <Col>
-            {isDataReady && !loading && (
+            {isDataReady ? (
               <>
                 <NormalTitle title={data.main_cat.cat_name} content="" />
                 {data.sub_cats.length > 0 ? (
@@ -27,6 +28,8 @@ const ShowCategory = () => {
                   </h4>
                 )}
               </>
+            ) : (
+              <Loader many={1} />
             )}
           </Col>
         </Row>

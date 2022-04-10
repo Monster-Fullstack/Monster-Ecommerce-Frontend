@@ -2,6 +2,7 @@ import React from "react";
 import { Row } from "react-bootstrap";
 import MainContainer from "../../UI/MainContainer";
 import SectionTitle from "../../UI/SectionTitle";
+import Loader from "../Loader";
 import ShowCategories from "../ShowCategories";
 import useGet from "./../../../hooks/useGet";
 import { GroupItemsSliderCategory } from "./../../UI/Sliders/index";
@@ -16,7 +17,11 @@ const CategorySection: React.FC = () => {
         content="Some Of Our Exclusive Collection, You May Like"
       />
       <Row>
-        {isDataReady && !loading && <ShowCategories categories={cats} />}
+        {isDataReady ? (
+          <ShowCategories categories={cats} />
+        ) : (
+          <Loader many={6} type="items" />
+        )}
       </Row>
     </MainContainer>
   );

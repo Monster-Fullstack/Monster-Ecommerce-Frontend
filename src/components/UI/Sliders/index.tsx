@@ -12,6 +12,8 @@ import "swiper/css/pagination";
 import cl from "./index.module.scss";
 import CategoryCard from "../AllCards/CategoryCard";
 import { Link } from "react-router-dom";
+import useGet from "./../../../hooks/useGet";
+import Loader from "./../../main/Loader/index";
 
 export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   // products
@@ -102,41 +104,41 @@ export const CategorySlider: React.FC<{ items: any[] }> = ({ items }) => {
 };
 
 export const MainSlider: React.FC = () => {
+  const { isDataReady, data } = useGet("home/slider");
+  const sliders =
+    isDataReady &&
+    data.map((el) => {
+      return (
+        <SwiperSlide key={el.id}>
+          <img
+            src={el.slider_image}
+            alt="About Store"
+            className={cl.mainSliderImages}
+          />
+        </SwiperSlide>
+      );
+    });
   return (
     <>
-      <Swiper
-        direction={"vertical"}
-        slidesPerView={1}
-        spaceBetween={30}
-        className={`mySwiper ${cl.sliderBig}`}
-        mousewheel={true}
-        loop={true}
-        autoplay={{ delay: 3000, disableOnInteraction: false }}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Mousewheel, Pagination, Autoplay]}
-      >
-        <SwiperSlide>
-          <img
-            className={cl.mainSliderImages}
-            alt="Store Image"
-            src="https://images.unsplash.com/photo-1481437156560-3205f6a55735?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=895&q=80"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="Store Image"
-            src="https://images.unsplash.com/photo-1518838439236-2b73ceb4638a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-          />
-        </SwiperSlide>
-        <SwiperSlide>
-          <img
-            alt="Store Image"
-            src="https://images.unsplash.com/photo-1515711660811-48832a4c6f69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80"
-          />
-        </SwiperSlide>
-      </Swiper>
+      {isDataReady ? (
+        <Swiper
+          direction={"vertical"}
+          slidesPerView={1}
+          spaceBetween={30}
+          className={`mySwiper ${cl.sliderBig}`}
+          mousewheel={true}
+          loop={true}
+          autoplay={{ delay: 3000, disableOnInteraction: false }}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Mousewheel, Pagination, Autoplay]}
+        >
+          {sliders}
+        </Swiper>
+      ) : (
+        <Loader many={1} />
+      )}
     </>
   );
 };
@@ -187,9 +189,9 @@ export const GroupItemsSliderCategory: React.FC<{ items: any[] }> = ({
 
   return (
     <Swiper
-      slidesPerView={5}
+      slidesPerView={6}
       spaceBetween={30}
-      slidesPerGroup={5}
+      slidesPerGroup={6}
       loop={true}
       loopFillGroupWithBlank={true}
       className="mySwiper"

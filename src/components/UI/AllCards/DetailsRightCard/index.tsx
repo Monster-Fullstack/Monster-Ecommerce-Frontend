@@ -6,6 +6,8 @@ import { ButtonSite } from "../../Buttons";
 import { InputSite } from "../../Inputs";
 import cl from "./index.module.scss";
 import useGet from "./../../../../hooks/useGet";
+import PriceCard from "../PriceCard";
+import RemainCard from "../RemainCard";
 
 const DetailsRightCard: React.FC<{ product: any }> = ({ product }) => {
   const { isDataReady: isCatReady, data: cat } = useGet(
@@ -55,17 +57,11 @@ const DetailsRightCard: React.FC<{ product: any }> = ({ product }) => {
           <h6 className="section-sub-title">
             Sells: <p className="text-muted fs-5 d-inline">{product.sells}</p>
           </h6>
-          <h6 className="section-sub-title">
-            Remain:{" "}
-            <p className={`text-${color_remain} fs-5 d-inline`}>
-              {product.avilable_quantity - product.sells}
-            </p>
-          </h6>
-          <div className="input-group">
-            <div className={`text-success ${cl.ProductPriceCard} d-inline`}>
-              ${product.price}
-            </div>
-          </div>
+          <RemainCard
+            sells={product.sells}
+            quantity={product.avilable_quantity}
+          />
+          <PriceCard>{product.price}</PriceCard>
           <h6 className="mt-2">Choose Color</h6>
           <div className="input-group">{allFormChecks}</div>
 

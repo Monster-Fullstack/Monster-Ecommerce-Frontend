@@ -3,6 +3,7 @@ import SectionTitle from "../../UI/SectionTitle";
 import useGet from "./../../../hooks/useGet";
 import MainContainer from "./../../UI/MainContainer/index";
 import ShowCategories from "./../ShowCategories/index";
+import Loader from "./../Loader/index";
 
 const RelatedCategories: React.FC = () => {
   const { isDataReady, data } = useGet("new_categories");
@@ -13,7 +14,11 @@ const RelatedCategories: React.FC = () => {
         title="Related Categories"
         content="Some Of Related Categories, You May Like"
       />
-      {isDataReady && <ShowCategories categories={data.main_cat} />}
+      {isDataReady ? (
+        <ShowCategories categories={data.main_cat} />
+      ) : (
+        <Loader many={1} />
+      )}
     </MainContainer>
   );
 };

@@ -5,14 +5,17 @@ import { SectionContent } from "../../../App";
 import SlidersModels from "../../../interfaces/SlidersModels";
 import ShowManyInSlider from "../../UI/Products/ShowManyInSlider";
 import useGet from "../../../hooks/useGet";
+import Loader from "./../Loader/index";
 
 const NewArrival: React.FC<SlidersModels> = ({ groupSlider = false }) => {
-  const { isDataReady, data } = useGet("new_products"); 
+  const { isDataReady, data } = useGet("new_products");
   return (
     <MainContainer>
       <SectionTitle title="New Products" content={SectionContent} />
-      {isDataReady && (
+      {isDataReady ? (
         <ShowManyInSlider groupSlider={groupSlider} items={data} />
+      ) : (
+        <Loader many={1} />
       )}
     </MainContainer>
   );

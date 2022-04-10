@@ -6,7 +6,7 @@ const ShowCategories: React.FC<{ categories: any }> = ({ categories }) => {
   const mode = useResponsive();
   return (
     <>
-      {mode === "phone" || mode === "tablet" ? (
+      {mode === "phone" || mode === "tablet" || mode === "desktop" ? (
         <CategorySlider items={categories} />
       ) : (
         <GroupItemsSliderCategory items={categories} />

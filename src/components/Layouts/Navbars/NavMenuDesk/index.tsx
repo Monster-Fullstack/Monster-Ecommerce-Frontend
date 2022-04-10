@@ -14,13 +14,17 @@ import TopNav from "../../../UI/TopSectionNav";
 import { motion } from "framer-motion";
 import NotificationsNo from "../../../UI/NotificationsNo";
 import Hamburger from "./../../../UI/HamburgerMenu/index";
-import NavMenu from "./../../../UI/NavMenu/index";
+import NavMenu, { NavMenu2 } from "./../../../UI/NavMenu/index";
 import { AnimatePresence } from "framer-motion";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
   const toggleNav = () => {
     setOpenNav(!openNav);
+  };
+  const [openNav2, setOpenNav2] = useState(false);
+  const toggleNav2 = () => {
+    setOpenNav2(!openNav2);
   };
   return (
     <TopNav>
@@ -94,6 +98,35 @@ const NavMenuDeskTop: React.FC = () => {
           </Row>
         </MainContainer>
       </Navbar>
+      <div className={cl.secNav}>
+        <TopNav>
+          <Hamburger toggleNav={toggleNav2} />
+          <AnimatePresence>
+            {openNav2 && <NavMenu2 toggleNav={toggleNav2} />}
+          </AnimatePresence>
+        </TopNav>
+      </div>
+      <div className={cl.thirdNav}>
+        <Row className="justify-content-around w-50 align-items-center">
+          <Col sm={4}>
+            <Link className="text-white" to="/categories">
+              <ButtonSite>All Categories</ButtonSite>
+            </Link>
+          </Col>
+          <Col sm={4}>
+            <Link className="text-white" to="/subcategories">
+              <ButtonSite>All Subcategories</ButtonSite>
+            </Link>
+          </Col>
+          <Col sm={4}>
+            <Link className="text-white" to="/premium/products">
+              <ButtonSite>
+                <span className="text-warning">Premium</span> Products
+              </ButtonSite>
+            </Link>
+          </Col>
+        </Row>
+      </div>
     </TopNav>
   );
 };
