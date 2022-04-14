@@ -10,7 +10,7 @@ import Loader from "../../Loader/index";
 
 const ShowProductsSub = () => {
   const { id } = useParams();
-  const { loading, isDataReady, data } = useGet(`subcategory/${id}`);
+  const { isDataReady, data } = useGet(`subcategory/${id}`);
 
   console.log(data);
   return (
