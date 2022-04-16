@@ -8,11 +8,11 @@ import ShowProducts from "../../../UI/Products/ShowProducts/index";
 import { FaSadTear } from "react-icons/fa";
 import Loader from "../../Loader/index";
 
-const ShowProductsSub = () => {
+const ShowProductsSub = ({ isGames = false }) => {
   const { id } = useParams();
-  const { isDataReady, data } = useGet(`subcategory/${id}`);
+  const check = isGames ? "subcategory-games" : "subcategory";
+  const { isDataReady, data } = useGet(`${check}/${id}`);
 
-  console.log(data);
   return (
     <>
       <MainContainer className="ps-5 pe-5">

@@ -14,7 +14,11 @@ const Gaming: React.FC = () => {
         content="Best Products For You, Gamer &#127918;"
       />
       {isDataReady ? (
-        <ShowCategories categories={data} />
+        <ShowCategories
+          isDataReady={isDataReady}
+          showInslider={false}
+          categories={data}
+        />
       ) : (
         <Loader type="items" many={6} />
       )}

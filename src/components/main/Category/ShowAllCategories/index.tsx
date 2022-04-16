@@ -12,18 +12,30 @@ const ShowAllCategories: React.FC<{
   const check = type === "category";
   const allCats =
     isDataReady &&
-    cats.map((cat) => (
-      <Col xl={2} lg={3} md={4} sm={6} xs={12} className="mt-3">
-        <Link to={`/${check ? "category" : "sub-cat"}/${cat.id}`}>
-          <CategoryCard
-            name={check ? cat.cat_name : cat.subcat_name}
-            src={check ? cat.cat_image : cat.main_image}
-            alt={check ? cat.cat_name : cat.subcat_name}
-            id={cat.id}
-          />
-        </Link>
-      </Col>
-    ));
+    cats.map((cat) => {
+      const checkIfGame = cat.game;
+      const goTo = `/${
+        check
+          ? !checkIfGame
+            ? "category"
+            : "category-games"
+          : !checkIfGame
+          ? "sub-cat"
+          : "sub-cat-games"
+      }/${cat.id}`;
+      return (
+        <Col xl={2} lg={3} md={4} sm={6} xs={12} className="mt-3">
+          <Link to={goTo}>
+            <CategoryCard
+              name={check ? cat.cat_name : cat.subcat_name}
+              src={check ? cat.cat_image : cat.main_image}
+              alt={check ? cat.cat_name : cat.subcat_name}
+              id={cat.id}
+            />
+          </Link>
+        </Col>
+      );
+    });
   return <Row>{isDataReady ? allCats : <Loader many={18} type="items" />}</Row>;
 };
 

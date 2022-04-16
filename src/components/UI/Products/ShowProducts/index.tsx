@@ -36,13 +36,16 @@ const ShowProducts: React.FC<Model> = ({ products, slices }) => {
 };
 
 export const ShowSubCat: React.FC<{ categories: any[] }> = ({ categories }) => {
-  const allProducts = categories.map((cat, idx) => (
-    <Col key={idx} lg={3} md={4} sm={6} xs={12}>
-      <Link to={`/sub-cat/${cat.id}`}>
-        <CategoryCard src={cat.main_image} name={cat.subcat_name} />
-      </Link>
-    </Col>
-  ));
+  const allProducts = categories.map((cat, idx) => {
+    const checkIfGame = cat.game;
+    return (
+      <Col key={idx} lg={3} md={4} sm={6} xs={12}>
+        <Link to={`/sub-cat${!checkIfGame ? "" : "-games"}/${cat.id}`}>
+          <CategoryCard src={cat.main_image} name={cat.subcat_name} />
+        </Link>
+      </Col>
+    );
+  });
   return <Row className="w-100">{allProducts}</Row>;
 };
 

@@ -10,7 +10,7 @@ import Loader from "../../Loader/index";
 
 const ShowCategory = () => {
   const { id } = useParams();
-  const { loading, isDataReady, data } = useGet(`category/${id}`);
+  const { isDataReady, data } = useGet(`category/${id}`);
   return (
     <>
       <MainContainer className="ps-5 pe-5">

@@ -18,6 +18,7 @@ import Categories from "../pages/Categories";
 import SubCategories from "./../pages/SubCategories";
 import PremiumProducts from "../pages/Premium/Products";
 import Gamer from "../pages/Gamer";
+import SubCategoryGames from "../pages/SubCategoryGames";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -33,7 +34,9 @@ const AllRoutes: React.FC = () => {
         <Route path="/favourite" element={<Favourite />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/sub-cat/:id" element={<SubCategory />} />
+        <Route path="/sub-cat-games/:id" element={<SubCategoryGames />} />
         <Route path="/category/:id" element={<Category />} />
+        <Route path="/category-games/:id" element={<Category />} />
         <Route path="/categories" element={<Categories />} />
         <Route path="/subcategories" element={<SubCategories />} />
         <Route path="/premium/products" element={<PremiumProducts />} />
