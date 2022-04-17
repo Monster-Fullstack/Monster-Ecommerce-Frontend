@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PagesParent from "./PagesParent";
 import Gaming from "./../components/main/Gaming/index";
 
-const Gamer: React.FC = () => {
+const Gamer = ({setGameMode}) => {
+  setGameMode(true);
   return (
-    <PagesParent>
+    <PagesParent mode="gaming">
       <Gaming />
     </PagesParent>
   );

@@ -7,6 +7,7 @@ import { Row, Col } from "react-bootstrap";
 import ShowProducts from "../../../UI/Products/ShowProducts/index";
 import { FaSadTear } from "react-icons/fa";
 import Loader from "../../Loader/index";
+import ShowSubCatsGames from "../../Category/ShowSubCatsGames";
 
 const ShowProductsSub = ({ isGames = false }) => {
   const { id } = useParams();
@@ -21,7 +22,16 @@ const ShowProductsSub = ({ isGames = false }) => {
             {isDataReady ? (
               <>
                 <NormalTitle title={data.main_cat} content="" />
-                {data.products.length > 0 ? (
+                {isGames ? (
+                  data.games.length > 0 ? (
+                    <ShowSubCatsGames games={data.games} />
+                  ) : (
+                    <h4>
+                      <FaSadTear fill="darkred" size={40} /> Not found any games
+                      for this category
+                    </h4>
+                  )
+                ) : data.products.length > 0 ? (
                   <ShowProducts
                     slices={data.products.length}
                     products={data.products}

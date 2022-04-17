@@ -2,9 +2,10 @@ import React from "react";
 import PagesParent from "./PagesParent";
 import ShowProductsSub from "./../components/main/Product/ShowProductsSub/index";
 
-const SubCategoryGames = () => {
+const SubCategoryGames = ({ setGameMode }) => {
+  setGameMode(true);
   return (
-    <PagesParent>
+    <PagesParent mode="gaming">
       <ShowProductsSub isGames={true} />
     </PagesParent>
   );

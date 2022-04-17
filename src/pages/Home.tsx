@@ -9,7 +9,6 @@ import AppURL from "../api/AppURL";
 import FeaturedProducts from "./../components/main/Product/FeaturedProducts/index";
 import BestSellerProducts from "./../components/main/Product/BestSellerProducts/index";
 import UnderXDollars from "../components/main/Product/UnderXDollars";
-import BestFor from "../components/main/Product/BestFor";
 
 const Home: React.FC = () => {
   const GetVisitorDetails = () => {
@@ -23,7 +22,7 @@ const Home: React.FC = () => {
     <PagesParent>
       <HomeTopResponsive />
       <CategorySection />
-      <BestFor type="Gaming" />
+      {/* <BestFor type="Gaming" /> */}
       <FeaturedProducts />
       <BestSellerProducts />
       <UnderXDollars dollars={100} />

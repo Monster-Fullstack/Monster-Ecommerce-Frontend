@@ -5,9 +5,13 @@ import RelatedCategories from "./../components/main/Category/RelatedCategories/i
 import BestSellerProducts from "../components/main/Product/BestSellerProducts";
 import UnderXDollars from "../components/main/Product/UnderXDollars";
 
-const Category = () => {
+const Category: React.FC<{ mode?: "normal" | "gaming"; setGameMode: any }> = ({
+  mode = "normal",
+  setGameMode,
+}) => {
+  mode === "gaming" && setGameMode(true);
   return (
-    <PagesParent>
+    <PagesParent mode={mode === "gaming" ? "gaming" : "normal"}>
       <ShowCategory />
       <RelatedCategories />
       <BestSellerProducts />

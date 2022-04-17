@@ -1,0 +1,30 @@
+@use "../../../../assets/scss/helpers/var" as *;
+.card {
+    width: 11rem;
+    border: none !important;
+    transition: $trans;
+    img {
+        width: 100% !important;
+        height: 225px !important;
+        border-radius: 7px;
+    }
+    
+    .body {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        margin-top: 10px;
+        color: black;
+        .name {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 5px !important;
+        }
+    }
+
+    &:hover {
+        img {
+            box-shadow: $main-box-shadow;
+        }
+    }
+}
