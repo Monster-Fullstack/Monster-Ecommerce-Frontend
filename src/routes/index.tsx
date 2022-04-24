@@ -21,6 +21,8 @@ import Gamer from "../pages/Gamer";
 import SubCategoryGames from "../pages/SubCategoryGames";
 import sound from "../assets/sounds/gaming.mp3";
 import Game from "./../pages/Game";
+import Search from "./../pages/Search";
+import Register from "../pages/Register";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -44,7 +46,8 @@ const AllRoutes: React.FC = () => {
     if (
       !location.pathname.includes("gamer") &&
       !location.pathname.includes("sub-cat-games") &&
-      !location.pathname.includes("category-games")
+      !location.pathname.includes("category-games") &&
+      !location.pathname.includes("search_games")
     ) {
       setGameMode(false);
       audio.pause();
@@ -56,6 +59,7 @@ const AllRoutes: React.FC = () => {
       <Routes location={location} key={location.key}>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/notification" element={<Notification />} />
@@ -78,7 +82,12 @@ const AllRoutes: React.FC = () => {
         <Route path="/subcategories" element={<SubCategories />} />
         <Route path="/premium/products" element={<PremiumProducts />} />
         <Route path="/gamer" element={<Gamer setGameMode={setGameMode} />} />
-        <Route path="/game/:id" element={<Game />} />
+        <Route path="/game/:id" element={<Game setGameMode={setGameMode} />} />
+        <Route path="/search/:key" element={<Search />} />
+        <Route
+          path="/search_games/:key"
+          element={<Search setGameMode={setGameMode} isGames={true} />}
+        />
         {/* Small Pages */}
         <Route path="/about" element={<About />} />
         <Route path="/purchase" element={<Purchase />} />

@@ -36,11 +36,12 @@ export const ButtonBig: React.FC<BigButtonModel> = ({
   background,
   secondText,
   children,
+  className,
 }) => {
   return (
     <motion.button
       style={{ background: background }}
-      className={cl.btnProduct}
+      className={`${cl.btnProduct} ${className}`}
       onClick={onClick}
       initial="hidden"
       whileHover="hover"

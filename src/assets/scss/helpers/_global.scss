@@ -92,7 +92,6 @@ a {
   text-align: center;
 }
 
-
 #footer {
   margin-bottom: 60px !important;
 }
@@ -104,6 +103,17 @@ a {
 .background-games {
   background: url(https://wallpaperaccess.com/full/2108011.jpg);
   background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
   color: white !important;
+}
+
+.mt-pages {
+  margin-top: 11rem !important;
+}
+
+.search_items_container {
+  position: absolute;
+  top: 69px !important;
+  background-color: #212529;
 }

@@ -10,3 +10,32 @@
     border: none !important;
   }
 }
+
+.searchParent {
+  position: relative;
+}
+
+.autocom {
+  background-color: #212529;
+  color: #fff;
+  width: 100%;
+  min-height: 100px;
+  position: absolute;
+  top: 65px;
+  left: 0;
+  z-index: 60000;
+}
+
+.papa {
+  text-align: left;
+  border: 1px solid rgba(#fff, 0.2);
+  padding: 10px 15px;
+  * {
+    width: max-content;
+    cursor: pointer;
+    color: white !important;
+    &:hover {
+      border-bottom: 1px solid rgba($main-color, 0.7);
+    }
+  }
+}

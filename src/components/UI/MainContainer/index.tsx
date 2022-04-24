@@ -15,7 +15,7 @@ const MainContainer: React.FC<ContainerModel> = ({
 }) => {
   return (
     <Container
-      className={`pt-2 ${inCenter ? "text-center" : ""} ${className}`}
+      className={`${className} pt-2 ${inCenter ? "text-center" : ""}`}
       fluid={fluid}
     >
       {children}

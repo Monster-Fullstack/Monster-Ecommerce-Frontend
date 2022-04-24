@@ -1,28 +1,27 @@
 @use "../../../../assets/scss/helpers/var" as *;
 .img {
-    width: 50%;
-    height: 365px;
-    border-radius: 6px;
+  width: 75%;
+  height: 365px;
+  border-radius: 6px;
 }
 
 .card {
-    margin-bottom: 25px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid rgba(#000, 0.1);
-    * {
+  margin-bottom: 25px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(#000, 0.1);
+  * {
     color: black;
-    }
-    .rightCard {
-        height: 365px;
-    }
-    
-    .mainColor{
-        color: $main-color;
-    }
-    
-    .description {
-        overflow-y: auto !important;
-        max-height: 100px;
-    }
-}
+  }
+  .rightCard {
+    height: 365px;
+  }
 
+  .mainColor {
+    color: $main-color;
+  }
+
+  .description {
+    overflow-y: auto !important;
+    max-height: 100px;
+  }
+}

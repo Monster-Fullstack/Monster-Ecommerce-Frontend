@@ -1,9 +1,9 @@
 import React from "react";
-import useGet from "../../../hooks/useGet";
-import MainContainer from "../../UI/MainContainer";
-import ShowCategories from "../Category/ShowCategories";
-import Loader from "../Loader";
-import SectionTitle from "./../../UI/SectionTitle/index";
+import useGet from "../../../../hooks/useGet";
+import MainContainer from "../../../UI/MainContainer";
+import ShowCategories from "../../Category/ShowCategories";
+import Loader from "../../Loader";
+import SectionTitle from "../../../UI/SectionTitle/index";
 
 const Gaming: React.FC = () => {
   const { isDataReady, data } = useGet(`magic_words/get_cats/gamer`);

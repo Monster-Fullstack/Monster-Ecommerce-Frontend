@@ -54,7 +54,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
           sells={product.sells}
           quantity={product.avilable_quantity}
         />
-        <PriceCard>{product.price}</PriceCard>
+        <PriceCard price={product.price} />
         <h6 className="mt-2">Choose Color</h6>
         <div className="input-group">{allFormChecks}</div>
 

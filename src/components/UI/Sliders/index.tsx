@@ -3,7 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import ProductCard from "../AllCards/ProductCard";
 import { Autoplay, Mousewheel, Pagination } from "swiper";
 import MainContainer from "../MainContainer";
-import Product from "../../../interfaces/Product";
 
 // styles
 import "swiper/css";

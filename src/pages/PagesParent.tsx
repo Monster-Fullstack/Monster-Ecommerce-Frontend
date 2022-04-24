@@ -21,6 +21,7 @@ const PagesParent: React.FC<{ mode?: "normal" | "gaming" }> = ({
       initial="hidden"
       animate="visible"
       exit="exit"
+      className="mt-pages"
     >
       {children}
     </motion.div>

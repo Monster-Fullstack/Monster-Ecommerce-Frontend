@@ -25,7 +25,7 @@ const ShowInPagination: React.FC<{
   const { isDataReady: isCountReady, data: countitems } = useGet(countApi);
 
   // is about calculating all the pages that can hold 10 items
-  const counts = isCountReady && countitems / 10;
+  const counts = isCountReady && Math.ceil(countitems / 10);
 
   /**
    * itemsHandler(eo)

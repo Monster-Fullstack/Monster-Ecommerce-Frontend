@@ -27,7 +27,7 @@ const Collection: React.FC = () => {
   return (
     <MainContainer>
       <SectionTitle title="Product Collection" content={SectionContent} />
-      <Row>{isDataReady ? products : <Loader many={6} type="items" />}</Row>
+      <Row>{isDataReady ? products : <Loader many={12} type="items" />}</Row>
     </MainContainer>
   );
 };

@@ -4,19 +4,17 @@ import cl from "./index.module.scss";
 import { Col, Navbar, Row } from "react-bootstrap";
 import Logo from "../../../../assets/images/Logo.png";
 import { Link, NavLink } from "react-router-dom";
-import { BiSearchAlt } from "react-icons/bi";
 import MainContainer from "../../../UI/MainContainer";
 import { ButtonSite } from "../../../UI/Buttons";
-import { InputSite } from "../../../UI/Inputs";
 import { AiOutlineBell, AiOutlineHeart } from "react-icons/ai";
 import Cart from "../../../UI/Cart";
 import TopNav from "../../../UI/TopSectionNav";
-import { motion } from "framer-motion";
 import NotificationsNo from "../../../UI/NotificationsNo";
 import Hamburger from "./../../../UI/HamburgerMenu/index";
 import NavMenu, { NavMenu2 } from "./../../../UI/NavMenu/index";
 import { AnimatePresence } from "framer-motion";
 import { IoLogoGameControllerB } from "react-icons/io";
+import { SearchInput } from "./../../../UI/Inputs/index";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -60,22 +58,7 @@ const NavMenuDeskTop: React.FC = () => {
               </TopNav>
             </Col>
             <Col lg={4} md={3} sm={12} xs={12} className="p-1 mt-1">
-              <motion.div
-                initial="hidden"
-                animate="visible"
-                whileHover="hover"
-                className="input-group w-100"
-              >
-                <InputSite
-                  settings={{
-                    type: "text",
-                    placeholder: "Search The Products",
-                  }}
-                />
-                <ButtonSite title="Search The Products">
-                  <BiSearchAlt />
-                </ButtonSite>
-              </motion.div>
+              <SearchInput />
             </Col>
             <Col lg={4} md={5} sm={12} xs={12} className="p-1 mt-1 text-center">
               <Link to="/favourite">
@@ -92,6 +75,9 @@ const NavMenuDeskTop: React.FC = () => {
               <NavLink to="/login" className="h4 btn text-white none">
                 Login
               </NavLink>
+              <NavLink to="/register" className="ms-2 h4 btn text-white none">
+                Register
+              </NavLink>
               <Link to="/cart">
                 <Cart />
               </Link>
@@ -102,7 +88,11 @@ const NavMenuDeskTop: React.FC = () => {
       <div className={cl.secNav}>
         {/* Second Navbar */}
         <TopNav className="w-100 h-100">
-          <Row className="justify-content-end">
+          <Row className="align-items-center justify-content-end">
+            <Col md={5}>
+              <SearchInput isGames={true} />
+            </Col>
+            <Col md={2}></Col>
             <Col md={1}>
               <Link to="/gamer">
                 <IoLogoGameControllerB

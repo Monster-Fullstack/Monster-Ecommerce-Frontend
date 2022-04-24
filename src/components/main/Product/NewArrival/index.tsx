@@ -15,7 +15,7 @@ const NewArrival: React.FC<SlidersModels> = ({ groupSlider = false }) => {
       {isDataReady ? (
         <ShowManyInSlider groupSlider={groupSlider} items={data} />
       ) : (
-        <Loader many={1} />
+        <Loader many={4} type="items" />
       )}
     </MainContainer>
   );

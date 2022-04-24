@@ -4,7 +4,7 @@ import { NormalTitle } from "../SectionTitle";
 
 interface FormModel {
   title: string;
-  onSubmit: () => void;
+  onSubmit?: () => void;
 }
 
 const FormParent: React.FC<FormModel> = ({ children, title, onSubmit }) => {

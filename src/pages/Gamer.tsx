@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import PagesParent from "./PagesParent";
-import Gaming from "./../components/main/Gaming/index";
+import Gaming from "./../components/main/Games/Gaming/index";
 
-const Gamer = ({setGameMode}) => {
+const Gamer = ({ setGameMode }) => {
   setGameMode(true);
   return (
     <PagesParent mode="gaming">

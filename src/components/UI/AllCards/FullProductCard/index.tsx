@@ -36,7 +36,7 @@ const FullProductCard: React.FC<{ product: any }> = ({ product }) => {
                   quantity={productX.avilable_quantity}
                   sells={productX.sells}
                 />
-                <PriceCard>{productX.price}</PriceCard>
+                <PriceCard price={productX.price} />
                 <Card.Text className={cl.description}>
                   {productX.description}
                 </Card.Text>
