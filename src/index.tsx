@@ -5,13 +5,16 @@ import reportWebVitals from "./reportWebVitals";
 import "./assets/scss/app.scss";
 import { BrowserRouter } from "react-router-dom";
 import { SiteInfoProvider } from "./store/SiteInfo";
+import { AuthProvider } from "./store/Auth";
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <SiteInfoProvider>
-        <App />
-      </SiteInfoProvider>
+      <AuthProvider>
+        <SiteInfoProvider>
+          <App />
+        </SiteInfoProvider>
+      </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")

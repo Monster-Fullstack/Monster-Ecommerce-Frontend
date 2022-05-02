@@ -4,16 +4,16 @@ import { ButtonSite } from "../../Buttons";
 import FormParent from "../FormParent";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import LoginSchema, { LoginProps } from "./LoginSchema";
-import { Link, useNavigate } from "react-router-dom";
+import ForgetSchema, { ForgetProps } from "./ForgetSchema";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import AppURL from "./../../../../api/AppURL";
 import { toast } from "react-toastify";
 import { ErrorForm } from "./../../Alerts/index";
 import Toast from "../../Toasts";
-import { NormalTitle } from "../../SectionTitle";
+import { NormalTitle } from "./../../SectionTitle/index";
 
-const LoginForm: React.FC = () => {
+const ForgetForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const {
@@ -21,21 +21,21 @@ const LoginForm: React.FC = () => {
     formState: { errors },
     control,
     reset,
-  } = useForm<LoginProps>({
-    resolver: yupResolver(LoginSchema()),
+  } = useForm<ForgetProps>({
+    resolver: yupResolver(ForgetSchema()),
   });
 
-  const onSubmit = async (Formdata: LoginProps) => {
+  const onSubmit = async (Formdata: ForgetProps) => {
     // to make the button loading...
     setLoading(true);
     // sending data to db
-    axios.post(AppURL.LoginURL, Formdata).then((res) => {
+    axios.post(AppURL.ForgetURL, Formdata).then((res) => {
       // if the message sent successfully
       if (res.status === 200 && res.data == 1) {
         // reset the data from form
         reset();
         // show success toast
-        toast.success("Login Successfully", {
+        toast.success("Forget Successfully", {
           position: "bottom-right",
           autoClose: 2400,
           hideProgressBar: false,
@@ -48,7 +48,7 @@ const LoginForm: React.FC = () => {
         setLoading(false);
         // go to the home page after 2.5 seconds
         const timer = setTimeout(() => {
-          nav("/");
+          nav("/check_mail");
           clearTimeout(timer);
         }, 2500);
       } else {
@@ -68,7 +68,7 @@ const LoginForm: React.FC = () => {
   return (
     <>
       <FormParent onSubmit={handleSubmit(onSubmit)} title="">
-        <NormalTitle className="text-start" title="Login Page" />
+        <NormalTitle className="text-start" title="Forgot Password" />
         <div className="mb-4">
           <Controller
             control={control}
@@ -88,33 +88,8 @@ const LoginForm: React.FC = () => {
           />
           <ErrorForm error={errors?.email} />
         </div>
-        <div className="mb-4">
-          <Controller
-            control={control}
-            defaultValue=""
-            render={({ field: { onBlur, onChange, value } }) => (
-              <InputSite
-                settings={{
-                  type: "password",
-                  placeholder: "Enter Your Password",
-                  onChange: onChange,
-                  onBlur: onBlur,
-                  value: value,
-                }}
-              />
-            )}
-            name="password"
-          />
-          <ErrorForm error={errors?.password} />
-        </div>
-        <p>
-          Forgot your password? <Link to="/forget">Forgot Password</Link>
-        </p>
-        <p>
-          Don't have account? <Link to="/register">Register</Link>
-        </p>
         <ButtonSite width="100%" type="submit">
-          {!loading ? "Login" : "Loading..."}
+          {!loading ? "Reset Password" : "Loading..."}
         </ButtonSite>
       </FormParent>
       <Toast />
@@ -122,4 +97,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default ForgetForm;

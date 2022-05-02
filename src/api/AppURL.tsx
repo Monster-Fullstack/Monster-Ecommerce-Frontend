@@ -12,6 +12,10 @@ class AppURL {
   static SiteInfo = AppURL.CompileURL("siteinfo");
   static AllCategories = AppURL.CompileURL("category");
   static AllProducts = AppURL.CompileURL("products");
+  static LoginURL = AppURL.CompileURL("login");
+  static RegisterURL = AppURL.CompileURL("register");
+  static ForgetURL = AppURL.CompileURL("forget");
+  static ResetURL = AppURL.CompileURL("reset");
 }
 
 export default AppURL;

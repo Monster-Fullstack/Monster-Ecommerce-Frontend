@@ -4,16 +4,16 @@ import { ButtonSite } from "../../Buttons";
 import FormParent from "../FormParent";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import LoginSchema, { LoginProps } from "./LoginSchema";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AppURL from "./../../../../api/AppURL";
 import { toast } from "react-toastify";
 import { ErrorForm } from "./../../Alerts/index";
 import Toast from "../../Toasts";
-import { NormalTitle } from "../../SectionTitle";
+import RegisterSchema, { RegisterProps } from "./RegisterSchema";
+import { NormalTitle } from "./../../SectionTitle/index";
 
-const LoginForm: React.FC = () => {
+const RegisterForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const nav = useNavigate();
   const {
@@ -21,21 +21,21 @@ const LoginForm: React.FC = () => {
     formState: { errors },
     control,
     reset,
-  } = useForm<LoginProps>({
-    resolver: yupResolver(LoginSchema()),
+  } = useForm<RegisterProps>({
+    resolver: yupResolver(RegisterSchema()),
   });
 
-  const onSubmit = async (Formdata: LoginProps) => {
+  const onSubmit = async (Formdata: RegisterProps) => {
     // to make the button loading...
     setLoading(true);
     // sending data to db
-    axios.post(AppURL.LoginURL, Formdata).then((res) => {
+    axios.post(AppURL.RegisterURL, Formdata).then((res) => {
       // if the message sent successfully
       if (res.status === 200 && res.data == 1) {
         // reset the data from form
         reset();
         // show success toast
-        toast.success("Login Successfully", {
+        toast.success("Your Account Is Created Successfully", {
           position: "bottom-right",
           autoClose: 2400,
           hideProgressBar: false,
@@ -68,7 +68,26 @@ const LoginForm: React.FC = () => {
   return (
     <>
       <FormParent onSubmit={handleSubmit(onSubmit)} title="">
-        <NormalTitle className="text-start" title="Login Page" />
+        <NormalTitle className="text-start" title="Register Page" />
+        <div className="mb-4">
+          <Controller
+            control={control}
+            defaultValue=""
+            render={({ field: { onBlur, onChange, value } }) => (
+              <InputSite
+                settings={{
+                  type: "name",
+                  placeholder: "Enter Your Name",
+                  onChange: onChange,
+                  onBlur: onBlur,
+                  value: value,
+                }}
+              />
+            )}
+            name="name"
+          />
+          <ErrorForm error={errors?.name} />
+        </div>
         <div className="mb-4">
           <Controller
             control={control}
@@ -107,14 +126,30 @@ const LoginForm: React.FC = () => {
           />
           <ErrorForm error={errors?.password} />
         </div>
+        <div className="mb-4">
+          <Controller
+            control={control}
+            defaultValue=""
+            render={({ field: { onBlur, onChange, value } }) => (
+              <InputSite
+                settings={{
+                  type: "password",
+                  placeholder: "Confirm Your Password",
+                  onChange: onChange,
+                  onBlur: onBlur,
+                  value: value,
+                }}
+              />
+            )}
+            name="passwordConfirmation"
+          />
+          <ErrorForm error={errors?.passwordConfirmation} />
+        </div>
         <p>
-          Forgot your password? <Link to="/forget">Forgot Password</Link>
-        </p>
-        <p>
-          Don't have account? <Link to="/register">Register</Link>
+          Already have account ? <Link to="/login">Login Now</Link>
         </p>
         <ButtonSite width="100%" type="submit">
-          {!loading ? "Login" : "Loading..."}
+          {!loading ? "Register" : "Loading..."}
         </ButtonSite>
       </FormParent>
       <Toast />
@@ -122,4 +157,4 @@ const LoginForm: React.FC = () => {
   );
 };
 
-export default LoginForm;
+export default RegisterForm;

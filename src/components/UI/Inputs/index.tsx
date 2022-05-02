@@ -6,6 +6,7 @@ import { ButtonSite } from "./../Buttons/index";
 import { BiSearchAlt } from "react-icons/bi";
 import Loader from "../../main/Loader";
 import { Link, useNavigate } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 export const inpAni = {
   hidden: {
@@ -75,22 +76,24 @@ export const SearchInput = ({ isGames = false }) => {
       isGames ? (
         items.map((game) => (
           <div className={cl.papa}>
+            <BsSearch className="me-3" />
             <Link onClick={itemHandler} to={`game/${game.id}`}>
-              {game.name}
+              <span>{game.name}</span>
             </Link>
           </div>
         ))
       ) : (
         items.map((product) => (
           <div className={cl.papa}>
+            <BsSearch className="me-3" />
             <Link onClick={itemHandler} to={`product/${product.id}`}>
-              {product.name}
+              <span>{product.name}</span>
             </Link>
           </div>
         ))
       )
     ) : (
-      <h5 className="mt-4 text-center">Not Found Any Products!</h5>
+      <h5>Not Found Any Products!</h5>
     );
 
   const btnHandler = () => {

@@ -55,6 +55,9 @@ const NavMenu: React.FC<{ toggleNav: () => void }> = ({ toggleNav }) => {
         <NavMenuItem to="/login">
           <BiLogInCircle /> Login
         </NavMenuItem>
+        <NavMenuItem to="/register">
+          <BiLogInCircle /> Register
+        </NavMenuItem>
         <NavMenuItem to="/shop">
           <FaStoreAlt /> Shop
         </NavMenuItem>

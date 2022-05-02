@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import cl from "./index.module.scss";
 import { Col, Navbar, Row } from "react-bootstrap";
@@ -15,9 +15,11 @@ import NavMenu, { NavMenu2 } from "./../../../UI/NavMenu/index";
 import { AnimatePresence } from "framer-motion";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { SearchInput } from "./../../../UI/Inputs/index";
+import AuthContext from "../../../../store/Auth";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { loggedIn } = useContext(AuthContext);
   const toggleNav = () => {
     setOpenNav(!openNav);
   };
@@ -72,12 +74,24 @@ const NavMenuDeskTop: React.FC = () => {
                 />
                 <NotificationsNo many={4} />
               </Link>
-              <NavLink to="/login" className="h4 btn text-white none">
-                Login
-              </NavLink>
-              <NavLink to="/register" className="ms-2 h4 btn text-white none">
-                Register
-              </NavLink>
+              {loggedIn ? (
+                <NavLink to="/profile">
+                  Monster
+                  {/* <img src="" alt="" /> */}
+                </NavLink>
+              ) : (
+                <>
+                  <NavLink to="/login" className="h4 btn text-white none">
+                    Login
+                  </NavLink>
+                  <NavLink
+                    to="/register"
+                    className="ms-2 h4 btn text-white none"
+                  >
+                    Register
+                  </NavLink>
+                </>
+              )}
               <Link to="/cart">
                 <Cart />
               </Link>

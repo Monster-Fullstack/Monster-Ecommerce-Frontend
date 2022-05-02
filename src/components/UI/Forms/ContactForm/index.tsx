@@ -12,6 +12,7 @@ import ContactSchema, { ContactProps } from "./ContactSchema";
 import axios from "axios";
 import AppURL from "../../../../api/AppURL";
 import Toast from "../../Toasts";
+import { NormalTitle } from "./../../SectionTitle/index";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -66,6 +67,7 @@ const ContactForm = () => {
   return (
     <>
       <FormParent onSubmit={handleSubmit(onSubmit)} title="">
+        <NormalTitle className="text-start" title="Contact Us" />
         <div className="mb-4">
           <Controller
             control={control}

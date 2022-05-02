@@ -5,7 +5,6 @@ import Cart from "../pages/Cart";
 import Contact from "../pages/Contact";
 import Favourite from "../pages/Favourite";
 import Home from "../pages/Home";
-import Login from "../pages/Login";
 import Notification from "../pages/Notification";
 import Privacy from "../pages/Small/Privacy";
 import Product from "../pages/Product";
@@ -22,7 +21,11 @@ import SubCategoryGames from "../pages/SubCategoryGames";
 import sound from "../assets/sounds/gaming.mp3";
 import Game from "./../pages/Game";
 import Search from "./../pages/Search";
-import Register from "../pages/Register";
+import Login from "./../pages/Auth/Login";
+import Register from "./../pages/Auth/Register";
+import Forget from "../pages/Auth/Forget";
+import Reset from "./../pages/Auth/Reset";
+import CheckMail from "../pages/Auth/CheckMail";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -60,6 +63,9 @@ const AllRoutes: React.FC = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/forget" element={<Forget />} />
+        <Route path="/reset/:id" element={<Reset />} />
+        <Route path="/check_mail" element={<CheckMail />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/notification" element={<Notification />} />

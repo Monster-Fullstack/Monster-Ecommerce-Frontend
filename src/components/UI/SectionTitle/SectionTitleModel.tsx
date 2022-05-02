@@ -1,6 +1,6 @@
 interface SectionTitleModel {
   title: string;
-  content: string;
+  content?: string;
   className?: string;
   main?: boolean;
 }
