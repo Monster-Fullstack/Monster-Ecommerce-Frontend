@@ -1,18 +1,15 @@
 import * as yup from "yup";
-
-export type LoginProps = {
-  email: string;
-  password: string;
-};
+import { passwordValidation } from "../../../../App";
+import { LoginFormProps } from "../../../../interfaces/Forms";
 
 const LoginSchema = () => {
-  const schema: yup.SchemaOf<Partial<LoginProps>> = yup.object({
+  const schema: yup.SchemaOf<Partial<LoginFormProps>> = yup.object({
     email: yup.string().email().required(),
     password: yup
       .string()
       .required()
       .matches(
-        /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/,
+        passwordValidation,
         "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
       ),
   });

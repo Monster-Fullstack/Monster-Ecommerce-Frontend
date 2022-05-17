@@ -43,3 +43,15 @@ export const menuAni2 = {
     },
   },
 };
+
+export const dropdownAvatarAni = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+  },
+  exit: {
+    opacity: 0,
+  },
+};

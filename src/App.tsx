@@ -4,6 +4,8 @@ import NavResponsive from "./components/main/NavResponsive";
 import FooterDesk from "./components/Layouts/Footers";
 
 export const SectionContent = "Some Of Our Exclusive Collection, You May Like";
+export const passwordValidation =
+  /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/;
 
 const App = () => {
   return (

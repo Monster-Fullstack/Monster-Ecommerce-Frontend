@@ -1,68 +1,30 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { InputSite } from "../../Inputs";
 import { ButtonSite } from "../../Buttons";
 import FormParent from "../FormParent";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import AppURL from "./../../../../api/AppURL";
-import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 import { ErrorForm } from "./../../Alerts/index";
-import Toast from "../../Toasts";
-import RegisterSchema, { RegisterProps } from "./RegisterSchema";
+import RegisterSchema from "./RegisterSchema";
 import { NormalTitle } from "./../../SectionTitle/index";
+import { RegisterFormProps } from "../../../../interfaces/Forms";
+import AuthContext from "../../../../store/Auth";
 
 const RegisterForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const nav = useNavigate();
+  const { AuthUser } = useContext(AuthContext);
   const {
     handleSubmit,
     formState: { errors },
     control,
     reset,
-  } = useForm<RegisterProps>({
+  } = useForm<RegisterFormProps>({
     resolver: yupResolver(RegisterSchema()),
   });
 
-  const onSubmit = async (Formdata: RegisterProps) => {
-    // to make the button loading...
-    setLoading(true);
-    // sending data to db
-    axios.post(AppURL.RegisterURL, Formdata).then((res) => {
-      // if the message sent successfully
-      if (res.status === 200 && res.data == 1) {
-        // reset the data from form
-        reset();
-        // show success toast
-        toast.success("Your Account Is Created Successfully", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        // close loading
-        setLoading(false);
-        // go to the home page after 2.5 seconds
-        const timer = setTimeout(() => {
-          nav("/");
-          clearTimeout(timer);
-        }, 2500);
-      } else {
-        toast.error("Something went wrong, Please try again later", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    });
+  const onSubmit = async (formData: RegisterFormProps) => {
+    AuthUser("REGISTER", formData, reset, setLoading);
   };
 
   return (
@@ -141,9 +103,9 @@ const RegisterForm: React.FC = () => {
                 }}
               />
             )}
-            name="passwordConfirmation"
+            name="password_confirmation"
           />
-          <ErrorForm error={errors?.passwordConfirmation} />
+          <ErrorForm error={errors?.password_confirmation} />
         </div>
         <p>
           Already have account ? <Link to="/login">Login Now</Link>
@@ -152,7 +114,6 @@ const RegisterForm: React.FC = () => {
           {!loading ? "Register" : "Loading..."}
         </ButtonSite>
       </FormParent>
-      <Toast />
     </>
   );
 };

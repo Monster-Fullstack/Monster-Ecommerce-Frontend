@@ -1,5 +1,5 @@
 import { AnimatePresence } from "framer-motion";
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Cart from "../pages/Cart";
 import Contact from "../pages/Contact";
@@ -18,7 +18,6 @@ import SubCategories from "./../pages/SubCategories";
 import PremiumProducts from "../pages/Premium/Products";
 import Gamer from "../pages/Gamer";
 import SubCategoryGames from "../pages/SubCategoryGames";
-import sound from "../assets/sounds/gaming.mp3";
 import Game from "./../pages/Game";
 import Search from "./../pages/Search";
 import Login from "./../pages/Auth/Login";
@@ -26,46 +25,33 @@ import Register from "./../pages/Auth/Register";
 import Forget from "../pages/Auth/Forget";
 import Reset from "./../pages/Auth/Reset";
 import CheckMail from "../pages/Auth/CheckMail";
+import useGameMode from "../hooks/useGameMode";
+import Profile from "../pages/Profile";
+import AuthContext from "../store/Auth";
+import NotFound from './../pages/NotFound';
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
-  const [gameMode, setGameMode] = useState(false);
-  const [audio, setAudio] = useState(new Audio(sound));
-  useEffect(() => {
-    if (gameMode) {
-      audio.play();
-      const timer = setInterval(() => {
-        setAudio(new Audio(sound));
-        audio.play();
-      }, 22000);
-
-      return () => clearInterval(timer);
-    } else {
-      audio.remove();
-    }
-  }, [audio, gameMode]);
-
-  useEffect(() => {
-    if (
-      !location.pathname.includes("gamer") &&
-      !location.pathname.includes("sub-cat-games") &&
-      !location.pathname.includes("category-games") &&
-      !location.pathname.includes("search_games")
-    ) {
-      setGameMode(false);
-      audio.pause();
-    }
-  }, [audio, location.pathname]);
+  // for handling game mode
+  const setGameMode = useGameMode();
+  const { loggedIn } = useContext(AuthContext);
 
   return (
     <AnimatePresence>
       <Routes location={location} key={location.key}>
+        <Route path="*" element={<NotFound />} />
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/forget" element={<Forget />} />
-        <Route path="/reset/:id" element={<Reset />} />
-        <Route path="/check_mail" element={<CheckMail />} />
+        {!loggedIn ? (
+          <>
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/forget" element={<Forget />} />
+            <Route path="/reset/:token" element={<Reset />} />
+            <Route path="/check_mail" element={<CheckMail />} />
+          </>
+        ) : (
+          <Route path="/profile" element={<Profile />} />
+        )}
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/notification" element={<Notification />} />

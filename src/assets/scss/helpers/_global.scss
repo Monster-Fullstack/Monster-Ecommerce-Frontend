@@ -117,3 +117,10 @@ a {
   top: 69px !important;
   background-color: #212529;
 }
+
+.normalText {
+  color: white !important;
+  &:hover {
+    color: inherit !important;
+  }
+}

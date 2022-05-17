@@ -1,21 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { InputSite } from "../../Inputs";
 import { ButtonSite } from "../../Buttons";
 import FormParent from "../FormParent";
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import AppURL from "./../../../../api/AppURL";
-import { toast } from "react-toastify";
+import { useParams } from "react-router-dom";
 import { ErrorForm } from "./../../Alerts/index";
-import Toast from "../../Toasts";
 import ResetSchema, { ResetProps } from "./ResetSchema";
 import { NormalTitle } from "./../../SectionTitle/index";
+import AuthContext from "../../../../store/Auth";
 
 const ResetForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
-  const nav = useNavigate();
+  // the token
+  const { token } = useParams();
+  // auth context
+  const { Reset } = useContext(AuthContext);
+  // to redirect to the home page
+
+  // the form component
   const {
     handleSubmit,
     formState: { errors },
@@ -25,44 +28,10 @@ const ResetForm: React.FC = () => {
     resolver: yupResolver(ResetSchema()),
   });
 
-  const onSubmit = async (Formdata: ResetProps) => {
-    // to make the button loading...
-    setLoading(true);
-    // sending data to db
-    axios.post(AppURL.ResetURL, Formdata).then((res) => {
-      // if the message sent successfully
-      if (res.status === 200 && res.data == 1) {
-        // reset the data from form
-        reset();
-        // show success toast
-        toast.success("Your Account Is Reset Successfully", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        // close loading
-        setLoading(false);
-        // go to the home page after 2.5 seconds
-        const timer = setTimeout(() => {
-          nav("/");
-          clearTimeout(timer);
-        }, 2500);
-      } else {
-        toast.error("Something went wrong, Please try again later", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-      }
-    });
+  // when submit the form
+  const onSubmit = async (formData: ResetProps) => {
+    formData["token"] = token;
+    Reset(formData, reset, setLoading);
   };
 
   return (
@@ -72,29 +41,11 @@ const ResetForm: React.FC = () => {
         <div className="mb-4">
           <Controller
             control={control}
-            render={({ field: { onBlur, onChange, value } }) => (
-              <InputSite
-                settings={{
-                  type: "string",
-                  placeholder: "Enter Your Pin Code",
-                  onChange: onChange,
-                  onBlur: onBlur,
-                  value: value,
-                }}
-              />
-            )}
-            name="pincode"
-          />
-          <ErrorForm error={errors?.pincode} />
-        </div>
-        <div className="mb-4">
-          <Controller
-            control={control}
             defaultValue=""
             render={({ field: { onBlur, onChange, value } }) => (
               <InputSite
                 settings={{
-                  type: "email",
+                  type: "text",
                   placeholder: "Enter Your Email Address",
                   onChange: onChange,
                   onBlur: onBlur,
@@ -140,15 +91,14 @@ const ResetForm: React.FC = () => {
                 }}
               />
             )}
-            name="passwordConfirmation"
+            name="password_confirmation"
           />
-          <ErrorForm error={errors?.passwordConfirmation} />
+          <ErrorForm error={errors?.password_confirmation} />
         </div>
         <ButtonSite width="100%" type="submit">
           {!loading ? "Reset Password" : "Loading..."}
         </ButtonSite>
       </FormParent>
-      <Toast />
     </>
   );
 };

@@ -1,0 +1,7 @@
+.parent {
+  display: flex;
+  justify-content: center;
+  .card {
+    border: none !important;
+  }
+}

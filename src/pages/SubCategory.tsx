@@ -13,7 +13,6 @@ const SubCategory: React.FC = () => {
       <UnderXDollars dollars={99.99} type="desc" />
       <UnderXDollars dollars={999.99} type="desc" />
       <NewArrival />
-      <BestFor type="Gaming" />
       <FeaturedProducts />
     </PagesParent>
   );

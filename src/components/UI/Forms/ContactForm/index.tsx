@@ -5,14 +5,12 @@ import FormParent from "./../FormParent";
 import { InputSite, TextAreaSite } from "./../../Inputs/index";
 import { ButtonSite } from "./../../Buttons/index";
 import { ErrorForm } from "../../Alerts";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import ContactSchema, { ContactProps } from "./ContactSchema";
 import axios from "axios";
 import AppURL from "../../../../api/AppURL";
-import Toast from "../../Toasts";
 import { NormalTitle } from "./../../SectionTitle/index";
+import { ErrorToast, SuccessToast } from "../../Toasts/ToastType";
 
 const ContactForm = () => {
   const [loading, setLoading] = useState(false);
@@ -35,15 +33,7 @@ const ContactForm = () => {
         // reset the data from form
         reset();
         // show success toast
-        toast.success("Message Sent Successfully!", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        SuccessToast("Message Sent Successfully!");
         // close loading
         setLoading(false);
         // go to the home page after 2.5 seconds
@@ -52,15 +42,7 @@ const ContactForm = () => {
           clearTimeout(timer);
         }, 2500);
       } else {
-        toast.error("Something went wrong, Please try again later", {
-          position: "bottom-right",
-          autoClose: 2400,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
+        ErrorToast("Something went wrong, Please try again later");
       }
     });
   };
@@ -128,7 +110,6 @@ const ContactForm = () => {
           {!loading ? "Send Message" : "Loading..."}
         </ButtonSite>
       </FormParent>
-      <Toast />
     </>
   );
 };

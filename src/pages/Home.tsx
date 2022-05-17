@@ -22,7 +22,6 @@ const Home: React.FC = () => {
     <PagesParent>
       <HomeTopResponsive />
       <CategorySection />
-      {/* <BestFor type="Gaming" /> */}
       <FeaturedProducts />
       <BestSellerProducts />
       <UnderXDollars dollars={100} />

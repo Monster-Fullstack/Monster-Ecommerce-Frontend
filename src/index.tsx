@@ -1,11 +1,17 @@
+import "./assets/scss/app.scss";
+import "react-toastify/dist/ReactToastify.css";
+
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import "./assets/scss/app.scss";
 import { BrowserRouter } from "react-router-dom";
 import { SiteInfoProvider } from "./store/SiteInfo";
 import { AuthProvider } from "./store/Auth";
+import axios from "axios";
+import Toast from "./components/UI/Toasts";
+const token = localStorage.getItem("token");
+axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
 ReactDOM.render(
   <React.StrictMode>
@@ -13,6 +19,7 @@ ReactDOM.render(
       <AuthProvider>
         <SiteInfoProvider>
           <App />
+          <Toast />
         </SiteInfoProvider>
       </AuthProvider>
     </BrowserRouter>

@@ -16,16 +16,23 @@ import { AnimatePresence } from "framer-motion";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { SearchInput } from "./../../../UI/Inputs/index";
 import AuthContext from "../../../../store/Auth";
+import { motion } from "framer-motion";
+import { dropdownAvatarAni } from "../../../UI/NavMenu/NavAnimation";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
-  const { loggedIn } = useContext(AuthContext);
+  const { loggedIn, user, Logout } = useContext(AuthContext);
+  const [showDrop, setShowDrop] = useState(false);
   const toggleNav = () => {
     setOpenNav(!openNav);
   };
   const [openNav2, setOpenNav2] = useState(false);
   const toggleNav2 = () => {
     setOpenNav2(!openNav2);
+  };
+
+  const hidePhotoDrop = () => {
+    setShowDrop(false);
   };
   return (
     <TopNav className="w-100">
@@ -75,10 +82,7 @@ const NavMenuDeskTop: React.FC = () => {
                 <NotificationsNo many={4} />
               </Link>
               {loggedIn ? (
-                <NavLink to="/profile">
-                  Monster
-                  {/* <img src="" alt="" /> */}
-                </NavLink>
+                ""
               ) : (
                 <>
                   <NavLink to="/login" className="h4 btn text-white none">
@@ -103,6 +107,57 @@ const NavMenuDeskTop: React.FC = () => {
         {/* Second Navbar */}
         <TopNav className="w-100 h-100">
           <Row className="align-items-center justify-content-end">
+            <Col className="me-auto" md={2}>
+              {loggedIn && (
+                <div
+                  onMouseEnter={() => {
+                    setShowDrop(true);
+                  }}
+                  onMouseLeave={hidePhotoDrop}
+                  className={cl.avatarDad}
+                >
+                  <img
+                    src={user?.profile_photo_url}
+                    alt="Your Avatar"
+                    className={cl.avatar}
+                  />
+
+                  {showDrop && (
+                    <motion.div
+                      variants={dropdownAvatarAni}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                      className={cl.dropdownPapa}
+                    >
+                      <div className={cl.dropdownAvatar}>
+                        <ul>
+                          <li>
+                            <Link
+                              onClick={hidePhotoDrop}
+                              className="normalText"
+                              to="/profile"
+                            >
+                              Profile
+                            </Link>
+                          </li>
+                          <li>
+                            <Link
+                              onClick={hidePhotoDrop}
+                              className="normalText"
+                              to="/favourite"
+                            >
+                              Favorites
+                            </Link>
+                          </li>
+                          <li onClick={Logout}>logout</li>
+                        </ul>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              )}
+            </Col>
             <Col md={5}>
               <SearchInput isGames={true} />
             </Col>
