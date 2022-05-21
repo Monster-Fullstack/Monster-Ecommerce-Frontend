@@ -28,7 +28,7 @@ import CheckMail from "../pages/Auth/CheckMail";
 import useGameMode from "../hooks/useGameMode";
 import Profile from "../pages/Profile";
 import AuthContext from "../store/Auth";
-import NotFound from './../pages/NotFound';
+import NotFound from "./../pages/NotFound";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -50,13 +50,15 @@ const AllRoutes: React.FC = () => {
             <Route path="/check_mail" element={<CheckMail />} />
           </>
         ) : (
-          <Route path="/profile" element={<Profile />} />
+          <>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/cart" element={<Cart />} />
+          </>
         )}
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<Product />} />
         <Route path="/notification" element={<Notification />} />
         <Route path="/favourite" element={<Favourite />} />
-        <Route path="/cart" element={<Cart />} />
         <Route path="/sub-cat/:id" element={<SubCategory />} />
         <Route
           path="/sub-cat-games/:id"

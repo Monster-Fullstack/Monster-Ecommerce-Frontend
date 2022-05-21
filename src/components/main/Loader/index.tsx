@@ -5,7 +5,14 @@ import { Row } from "react-bootstrap";
 
 const Loader: React.FC<{
   many?: number;
-  type?: "slider" | "main" | "box" | "items" | "title" | "search";
+  type?:
+    | "cart_items"
+    | "slider"
+    | "main"
+    | "box"
+    | "items"
+    | "title"
+    | "search";
 }> = ({ many = 1, type = "main" }) => {
   if (type === "main") {
     let allLoaders = "";
@@ -24,6 +31,31 @@ const Loader: React.FC<{
           </div>
         </div>
       </div>`;
+    }
+
+    const htmlLoader = parse(allLoaders);
+    return <MainContainer>{htmlLoader}</MainContainer>;
+  } else if (type === "cart_items") {
+    let allLoaders = "";
+    for (let i = 0; i < many; i++) {
+      allLoaders += `
+      <div class="ph-item">
+
+      <div class="ph-col-2">
+          <div class="ph-picture h-100"></div>
+      </div>
+      
+      <div>
+          <div class="ph-row">
+              <div class="ph-col-4"></div>
+              <div class="ph-col-8 empty"></div>
+              <div class="ph-col-6"></div>
+              <div class="ph-col-6 empty"></div>
+              <div class="ph-col-2"></div>
+          </div>
+      </div>
+  </div>
+      `;
     }
 
     const htmlLoader = parse(allLoaders);

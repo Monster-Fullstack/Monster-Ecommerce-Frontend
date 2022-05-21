@@ -10,41 +10,29 @@ import Loader from "../../Loader/index";
 const ProductDetails: React.FC = () => {
   const { id } = useParams();
   const { isDataReady, data: AllProductData } = useGet(`product/${id}`);
-
-  console.log(AllProductData);
-  const data = isDataReady && AllProductData.product;
+  const product = isDataReady && AllProductData.product;
   return (
     <Fragment>
       <Container className="BetweenTwoSection">
         <Row className="p-2">
-          <Col
-            className="shadow-sm bg-white pb-3 mt-4"
-            md={12}
-            lg={12}
-            sm={12}
-            xs={12}
-          >
-            <Row>
-              {isDataReady ? (
-                <DetailsCard photos={[data.main_image]} />
-              ) : (
-                <Loader many={3} />
-              )}
-              {isDataReady ? (
-                <DetailsRightCard AllProductData={AllProductData} />
-              ) : (
-                <Loader many={2} />
-              )}
-            </Row>
+          {isDataReady ? (
+            <DetailsCard isDataReady={isDataReady} product={product} />
+          ) : (
+            <Loader many={3} />
+          )}
+          {isDataReady ? (
+            <DetailsRightCard AllProductData={AllProductData} />
+          ) : (
+            <Loader many={2} />
+          )}
+        </Row>
 
-            <Row>
-              {isDataReady ? (
-                <DetailsAndReviews description={data.description} />
-              ) : (
-                <Loader many={2} />
-              )}
-            </Row>
-          </Col>
+        <Row>
+          {isDataReady ? (
+            <DetailsAndReviews description={product.description} />
+          ) : (
+            <Loader many={2} />
+          )}
         </Row>
       </Container>
     </Fragment>

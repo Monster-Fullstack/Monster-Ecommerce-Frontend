@@ -1,13 +1,13 @@
 import React from "react";
 import ItemPhotos from "../../ItemPhotos";
-import Loader from "./../../Loader/index";
+import Loader from "../../Loader/index";
 
-const LeftGame = ({ isDataReady, game }) => {
+const LeftPart = ({ isDataReady, item }) => {
   return (
     <>
       {isDataReady ? (
         <>
-          <ItemPhotos photos={game.photos} />
+          <ItemPhotos photos={item.photos} />
         </>
       ) : (
         <Loader type="slider" />
@@ -16,4 +16,4 @@ const LeftGame = ({ isDataReady, game }) => {
   );
 };
 
-export default LeftGame;
+export default LeftPart;

@@ -19,7 +19,7 @@ type Model = {
  * then the products that showen are just 10 products
  * @returns all products
  */
-const ShowProducts: React.FC<Model> = ({ products, slices }) => {
+const ShowProducts = ({ products, slices }) => {
   const allProducts = products.slice(0, slices).map((product, idx) => (
     <Col key={idx} xl={3} lg={3} md={4} sm={6} xs={12}>
       <ProductCard

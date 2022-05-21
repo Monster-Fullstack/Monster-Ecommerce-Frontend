@@ -1,49 +1,11 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import cl from "./index.module.scss";
+import { Col } from "react-bootstrap";
+import LeftPart from "../../../main/Games/LeftPart/index";
 
-const DetailsCard: React.FC<{ photos: string[] }> = ({ photos }) => {
+const DetailsCard = ({ product, isDataReady }) => {
   return (
-    <Col md={6} lg={6} sm={12} xs={12}>
-      <div className={cl.topImage}>
-        <img
-          alt="product images"
-          className={`w-100 ${cl.photos}`}
-          src={photos[0]}
-        />
-      </div>
-      <Container className="my-3">
-        <Row>
-          <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-            <img
-              alt="product images"
-              className={`w-100 ${cl.belowPhotos}`}
-              src={photos[0]}
-            />
-          </Col>
-          <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-            <img
-              alt="product images"
-              className={`w-100 ${cl.belowPhotos}`}
-              src={photos[0]}
-            />
-          </Col>
-          <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-            <img
-              alt="product images"
-              className={`w-100 ${cl.belowPhotos}`}
-              src={photos[0]}
-            />
-          </Col>
-          <Col className="p-0 m-0" md={3} lg={3} sm={3} xs={3}>
-            <img
-              alt="product images"
-              className={`w-100 ${cl.belowPhotos}`}
-              src={photos[0]}
-            />
-          </Col>
-        </Row>
-      </Container>
+    <Col lg={6} md={6} xs={12}>
+      <LeftPart isDataReady={isDataReady} item={product} />
     </Col>
   );
 };

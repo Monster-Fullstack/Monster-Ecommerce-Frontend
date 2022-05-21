@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col } from "react-bootstrap";
 import { AiFillDollarCircle, AiFillHeart } from "react-icons/ai";
 import { BsFillCartPlusFill } from "react-icons/bs";
@@ -7,12 +7,25 @@ import { InputSite } from "../../Inputs";
 import cl from "./index.module.scss";
 import PriceCard from "../PriceCard";
 import RemainCard from "../RemainCard";
+import { ErrorToast, SuccessToast } from "../../Toasts/ToastType";
+import AppURL from "../../../../api/AppURL";
+import axios from "axios";
 
 const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   AllProductData,
 }) => {
   const product = AllProductData.product;
-  const formChecks = product.avilable_colors.split(",");
+  const formChecks = product.colors.split(",");
+  const [quantity, setQuantity] = useState<string>("");
+  const [color, setColor] = useState<string>("");
+
+  const quantityHandler = (eo: React.ChangeEvent<HTMLInputElement>) => {
+    setQuantity(eo.target.value);
+  };
+
+  const colorHandler = (eo: React.ChangeEvent<HTMLInputElement>) => {
+    setColor(eo.target.value);
+  };
 
   const allFormChecks = formChecks.map((el) => (
     <div className="form-check me-4">
@@ -22,6 +35,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         name="exampleRadios"
         id={`ex_${el}`}
         value={el}
+        onChange={colorHandler}
       />
       <label className="form-check-label" htmlFor={`ex_${el}`}>
         {el}
@@ -29,8 +43,32 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
     </div>
   ));
 
+  const addToCart = () => {
+    if (quantity.length > 0 && color.length > 0) {
+      axios
+        .post(AppURL.AddToCart, {
+          product_id: product.id,
+          color: color,
+          quantity: quantity,
+          price: product.price,
+        })
+        .then((response: any) => {
+          SuccessToast(response.data.message);
+        })
+        .catch((error) => {
+          ErrorToast(error.response.data.message);
+        });
+    } else {
+      if (quantity.length <= 0) {
+        ErrorToast("Please insert the quantity before adding to the cart");
+      } else {
+        ErrorToast("Please choose the color before adding to the cart");
+      }
+    }
+  };
+
   const color_remain =
-    product.avilable_quantity - product.sells < 10 ? "danger" : "success";
+    product.quantity - product.sells < 10 ? "danger" : "success";
 
   return (
     <Col className="p-3 " md={6} lg={6} sm={12} xs={12}>
@@ -50,10 +88,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         <h6 className="section-sub-title">
           Sells: <p className="text-muted fs-5 d-inline">{product.sells}</p>
         </h6>
-        <RemainCard
-          sells={product.sells}
-          quantity={product.avilable_quantity}
-        />
+        <RemainCard sells={product.sells} quantity={product.quantity} />
         <PriceCard price={product.price} />
         <h6 className="mt-2">Choose Color</h6>
         <div className="input-group">{allFormChecks}</div>
@@ -61,6 +96,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         <h6 className="mt-2">Quantity</h6>
         <InputSite
           className="text-center w-50"
+          onChange={quantityHandler}
           settings={{
             type: "number",
             max: "10",
@@ -70,7 +106,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         />
 
         <div className="input-group mt-3">
-          <ButtonSite className="m-1 ">
+          <ButtonSite onClick={addToCart} className="m-1 ">
             <BsFillCartPlusFill className={cl.icon} /> Add To Cart
           </ButtonSite>
           <ButtonSite className="m-1">

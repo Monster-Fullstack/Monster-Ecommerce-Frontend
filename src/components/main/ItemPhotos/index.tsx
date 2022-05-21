@@ -8,7 +8,7 @@ import "swiper/css/free-mode";
 import "swiper/css/thumbs";
 
 // import required modules
-import { FreeMode, Thumbs, Autoplay } from "swiper";
+import { FreeMode, Thumbs } from "swiper";
 
 const ItemPhotos: React.FC<{ photos: any[] }> = ({ photos }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
@@ -28,10 +28,9 @@ const ItemPhotos: React.FC<{ photos: any[] }> = ({ photos }) => {
           <Swiper
             spaceBetween={10}
             thumbs={{ swiper: thumbsSwiper }}
-            modules={[FreeMode, Thumbs, Autoplay]}
+            modules={[FreeMode, Thumbs]}
             loop={true}
             className="mySwiper2 mySwiperPhotos2"
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
           >
             {allPhotos}
           </Swiper>
@@ -41,8 +40,7 @@ const ItemPhotos: React.FC<{ photos: any[] }> = ({ photos }) => {
             slidesPerView={4}
             freeMode={true}
             watchSlidesProgress={true}
-            modules={[FreeMode, Thumbs, Autoplay]}
-            autoplay={{ delay: 2000, disableOnInteraction: false }}
+            modules={[FreeMode, Thumbs]}
             className="mySwiper mySwiperPhotos"
           >
             {allPhotos}

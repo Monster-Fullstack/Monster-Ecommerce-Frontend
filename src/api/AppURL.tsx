@@ -14,6 +14,9 @@ class AppURL {
   static ForgetURL = AppURL.CompileURL("forget");
   static ResetURL = AppURL.CompileURL("reset");
   static UserURL = this.CompileURL("user");
+  static AddToCart = this.CompileURL("cart");
+  static GetProductOfCartURL = this.CompileURL("cart");
+  static RemoveFromCartURL = this.CompileURL("cart_delete");
   // End Authentication Routes
   static VisitorDetails = AppURL.CompileURL("visitor");
   static ContactURL = AppURL.CompileURL("contact");
