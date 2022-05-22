@@ -96,9 +96,13 @@ const NavMenuDeskTop: React.FC = () => {
                   </NavLink>
                 </>
               )}
-              <Link to="/cart">
-                <Cart />
-              </Link>
+              {loggedIn ? (
+                <Link to="/cart">
+                  <Cart />
+                </Link>
+              ) : (
+                ""
+              )}
             </Col>
           </Row>
         </MainContainer>

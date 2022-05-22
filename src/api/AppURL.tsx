@@ -17,6 +17,7 @@ class AppURL {
   static AddToCart = this.CompileURL("cart");
   static GetProductOfCartURL = this.CompileURL("cart");
   static RemoveFromCartURL = this.CompileURL("cart_delete");
+  static CartCountURL = this.CompileURL("cart/count");
   // End Authentication Routes
   static VisitorDetails = AppURL.CompileURL("visitor");
   static ContactURL = AppURL.CompileURL("contact");

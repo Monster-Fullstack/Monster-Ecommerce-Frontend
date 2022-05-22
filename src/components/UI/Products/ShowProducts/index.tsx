@@ -24,7 +24,7 @@ const ShowProducts = ({ products, slices }) => {
     <Col key={idx} xl={3} lg={3} md={4} sm={6} xs={12}>
       <ProductCard
         alt={product.alt}
-        src={product.main_image}
+        src={product.main_image.name}
         name={product.name}
         description={product.description}
         id={product.id}

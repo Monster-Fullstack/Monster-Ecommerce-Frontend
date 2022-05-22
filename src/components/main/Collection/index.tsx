@@ -17,7 +17,7 @@ const Collection: React.FC = () => {
         <ProductCard
           alt={product.alt}
           id={product.id}
-          src={product.main_image}
+          src={product.main_image.name}
           description={product.description}
           name={product.name}
           price={product.price}

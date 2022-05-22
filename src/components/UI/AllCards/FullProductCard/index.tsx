@@ -16,7 +16,7 @@ const FullProductCard: React.FC<{ product: any }> = ({ product }) => {
             <img
               className={`${cl.img}`}
               alt={productX.name}
-              src={productX.main_image}
+              src={productX.main_image.name}
             />
           </Col>
           <Col xl={8} lg={8} sm={6} xs={12}>

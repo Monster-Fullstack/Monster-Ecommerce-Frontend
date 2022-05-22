@@ -86,7 +86,7 @@ export const AuthProvider: React.FC = ({ children }) => {
           profile_photo_url: response.data.user.profile_photo_url,
         });
         // go to the home page after 2.5 seconds
-        nav("/");
+        nav(-1);
       })
       .catch((error) => {
         ErrorToast(error.response.data.message);

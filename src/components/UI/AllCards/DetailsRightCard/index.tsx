@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Col } from "react-bootstrap";
 import { AiFillDollarCircle, AiFillHeart } from "react-icons/ai";
 import { BsFillCartPlusFill } from "react-icons/bs";
@@ -7,9 +7,12 @@ import { InputSite } from "../../Inputs";
 import cl from "./index.module.scss";
 import PriceCard from "../PriceCard";
 import RemainCard from "../RemainCard";
-import { ErrorToast, SuccessToast } from "../../Toasts/ToastType";
+import { ErrorToast, SuccessToast, WarningToast } from "../../Toasts/ToastType";
 import AppURL from "../../../../api/AppURL";
 import axios from "axios";
+import CartContext from "../../../../store/Cart";
+import AuthContext from "../../../../store/Auth";
+import { useNavigate } from "react-router-dom";
 
 const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   AllProductData,
@@ -18,6 +21,9 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   const formChecks = product.colors.split(",");
   const [quantity, setQuantity] = useState<string>("");
   const [color, setColor] = useState<string>("");
+  const { changeCount } = useContext(CartContext);
+  const { loggedIn } = useContext(AuthContext);
+  const nav = useNavigate();
 
   const quantityHandler = (eo: React.ChangeEvent<HTMLInputElement>) => {
     setQuantity(eo.target.value);
@@ -44,31 +50,34 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   ));
 
   const addToCart = () => {
-    if (quantity.length > 0 && color.length > 0) {
-      axios
-        .post(AppURL.AddToCart, {
-          product_id: product.id,
-          color: color,
-          quantity: quantity,
-          price: product.price,
-        })
-        .then((response: any) => {
-          SuccessToast(response.data.message);
-        })
-        .catch((error) => {
-          ErrorToast(error.response.data.message);
-        });
-    } else {
-      if (quantity.length <= 0) {
-        ErrorToast("Please insert the quantity before adding to the cart");
+    if (loggedIn) {
+      if (quantity.length > 0 && color.length > 0) {
+        axios
+          .post(AppURL.AddToCart, {
+            product_id: product.id,
+            color: color,
+            quantity: quantity,
+            price: product.price,
+          })
+          .then((response: any) => {
+            changeCount();
+            SuccessToast(response.data.message);
+          })
+          .catch((error) => {
+            ErrorToast(error.response.data.message);
+          });
       } else {
-        ErrorToast("Please choose the color before adding to the cart");
+        if (quantity.length <= 0) {
+          ErrorToast("Please insert the quantity before adding to the cart");
+        } else {
+          ErrorToast("Please choose the color before adding to the cart");
+        }
       }
+    } else {
+      nav("/login");
+      WarningToast("Please login first and try again");
     }
   };
-
-  const color_remain =
-    product.quantity - product.sells < 10 ? "danger" : "success";
 
   return (
     <Col className="p-3 " md={6} lg={6} sm={12} xs={12}>
@@ -76,7 +85,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         <h5 className={cl.ProductName}>{product.name}</h5>
         <h6 className="section-sub-title">
           Some Of Our Exclusive Collection, You May Like Some Of Our Exclusive
-          Collectio
+          Collection
         </h6>
         <h6 className="section-sub-title">
           Category: <p className="text-muted d-inline">{AllProductData.cat}</p>

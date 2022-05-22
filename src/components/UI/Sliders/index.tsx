@@ -16,13 +16,14 @@ import Loader from "./../../main/Loader/index";
 
 export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   // products
+  console.log(items);
   const products = items.map((product, idx) => (
     <SwiperSlide key={idx}>
       <ProductCard
         description={product.description}
         alt={product.alt}
         id={product.id}
-        src={product.main_image}
+        src={product.main_image.name}
         name={product.name}
         className={cl.card}
         price={product.price}
@@ -149,7 +150,7 @@ export const GroupItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
         description={product.description}
         alt={product.alt}
         id={product.id}
-        src={product.main_image}
+        src={product.main_image.name}
         name={product.name}
         className={cl.card}
         price={product.price}

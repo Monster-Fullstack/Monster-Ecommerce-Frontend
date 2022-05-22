@@ -1,8 +1,9 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import { Card, Col, Row } from "react-bootstrap";
 import AppURL from "../../../../api/AppURL";
 import useResponsive from "../../../../hooks/useResponsive";
+import CartContext from "../../../../store/Cart";
 import { MainImage } from "../../Images";
 import Price from "../../Price";
 import { ErrorToast, SuccessToast } from "../../Toasts/ToastType";
@@ -20,6 +21,7 @@ const CartCard = ({
   quantity,
 }) => {
   const mode = useResponsive();
+  const { changeCount } = useContext(CartContext);
   const removeItem = () => {
     setIsDataReady(false);
     axios
@@ -27,6 +29,7 @@ const CartCard = ({
         product_id: id,
       })
       .then((response: any) => {
+        changeCount();
         SuccessToast(response.data.message);
         axios
           .get(AppURL.GetProductOfCartURL)
