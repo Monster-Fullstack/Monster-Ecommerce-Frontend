@@ -4,6 +4,7 @@ export interface LoginFormProps {
 }
 
 export interface RegisterFormProps {
+  phone: string;
   name: string;
   email: string;
   password: any;

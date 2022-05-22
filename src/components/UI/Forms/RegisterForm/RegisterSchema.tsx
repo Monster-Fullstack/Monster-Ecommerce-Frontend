@@ -3,20 +3,29 @@ import { passwordValidation } from "../../../../App";
 import { RegisterFormProps } from "../../../../interfaces/Forms";
 
 const RegisterSchema = () => {
+  var nameRegex = /^[a-zA-Z ]{2,30}$/;
   const schema: yup.SchemaOf<Partial<RegisterFormProps>> = yup.object({
-    name: yup.string().min(5).required(),
+    name: yup
+      .string()
+      .required()
+      .matches(nameRegex, "Please enter a valid name"),
     email: yup.string().email().required(),
+    phone: yup
+      .string()
+      .required("your phone number is a required field")
+      .min(8)
+      .max(20),
     password: yup
       .string()
       .required()
       .matches(
         passwordValidation,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and one special case Character"
+        "Must contain 8 characters, one uppercase, one lowercase, one number and one special case Character"
       ),
     password_confirmation: yup
       .string()
-      .required("Passwords Confirmation Is Required")
-      .test("passwords-match", "Passwords Must Match", function (value) {
+      .required("Passwords confirmation is required")
+      .test("passwords-match", "Passwords must match", function (value) {
         return this.parent.password === value;
       }),
   });

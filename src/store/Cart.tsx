@@ -16,7 +16,9 @@ export const CartProvider: React.FC = ({ children }) => {
   const { loggedIn } = useContext(AuthContext);
 
   const changeCount = () => {
-    if (loggedIn) {
+    const token = localStorage.getItem("token");
+    axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+    if (loggedIn && token.length > 0) {
       setIsCountReady(false);
       axios
         .get(AppURL.CartCountURL)

@@ -10,6 +10,11 @@ import RegisterSchema from "./RegisterSchema";
 import { NormalTitle } from "./../../SectionTitle/index";
 import { RegisterFormProps } from "../../../../interfaces/Forms";
 import AuthContext from "../../../../store/Auth";
+import PhoneInput, {
+  formatPhoneNumberIntl,
+  formatPhoneNumber,
+} from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 
 const RegisterForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -23,7 +28,12 @@ const RegisterForm: React.FC = () => {
     resolver: yupResolver(RegisterSchema()),
   });
 
-  const onSubmit = async (formData: RegisterFormProps) => {
+  const onSubmit = async (formData) => {
+    formData["phone_number"] = formatPhoneNumber(formData["phone"]).trim();
+    formData["phone_country"] = formatPhoneNumberIntl(formData["phone"]).split(
+      " "
+    )[0];
+
     AuthUser("REGISTER", formData, reset, setLoading);
   };
 
@@ -31,6 +41,25 @@ const RegisterForm: React.FC = () => {
     <>
       <FormParent onSubmit={handleSubmit(onSubmit)} title="">
         <NormalTitle className="text-start" title="Register Page" />
+        <div className="mb-4">
+          <Controller
+            control={control}
+            defaultValue=""
+            render={({ field: { onBlur, onChange, value } }) => (
+              <>
+                {/* @ts-ignore */}
+                <PhoneInput
+                  placeholder="Enter your phone number"
+                  value={value}
+                  onChange={onChange}
+                  name="phone"
+                />
+              </>
+            )}
+            name="phone"
+          />
+          <ErrorForm error={errors?.phone} />
+        </div>
         <div className="mb-4">
           <Controller
             control={control}

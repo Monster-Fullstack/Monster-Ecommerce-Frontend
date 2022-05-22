@@ -18,6 +18,7 @@ import { SearchInput } from "./../../../UI/Inputs/index";
 import AuthContext from "../../../../store/Auth";
 import { motion } from "framer-motion";
 import { dropdownAvatarAni } from "../../../UI/NavMenu/NavAnimation";
+import { AiOutlineHistory } from "react-icons/ai";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -174,6 +175,16 @@ const NavMenuDeskTop: React.FC = () => {
                 />
               </Link>
             </Col>
+            {loggedIn && (
+              <Col md={1}>
+                <Link to="orders">
+                  <AiOutlineHistory
+                    title="Orders History"
+                    className={cl.gamesIcon}
+                  />
+                </Link>
+              </Col>
+            )}
             <Col md={1}>
               <Hamburger toggleNav={toggleNav2} />
             </Col>

@@ -27,7 +27,7 @@ interface inputsModels {
   settings: object;
 }
 
-export const InputSite = ({ className, onChange, settings }) => {
+export const InputSite: React.FC<any> = ({ className, onChange, settings }) => {
   return (
     <motion.input
       className={`form-control ${cl.inputSite} ${className}`}

@@ -29,6 +29,7 @@ import useGameMode from "../hooks/useGameMode";
 import Profile from "../pages/Profile";
 import AuthContext from "../store/Auth";
 import NotFound from "./../pages/NotFound";
+import Orders from "../pages/Orders";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -52,7 +53,9 @@ const AllRoutes: React.FC = () => {
         ) : (
           <>
             <Route path="/profile" element={<Profile />} />
-            <Route path="/cart" element={<Cart />} />
+            <Route path="/cart" element={<Cart type="" />} />
+            <Route path="/cart/error" element={<Cart type="error" />} />
+            <Route path="/orders" element={<Orders />} />
           </>
         )}
         <Route path="/contact" element={<Contact />} />

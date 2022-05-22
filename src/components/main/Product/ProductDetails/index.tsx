@@ -11,6 +11,7 @@ const ProductDetails: React.FC = () => {
   const { id } = useParams();
   const { isDataReady, data: AllProductData } = useGet(`product/${id}`);
   const product = isDataReady && AllProductData.product;
+  console.log(AllProductData);
   return (
     <Fragment>
       <Container className="BetweenTwoSection">

@@ -16,7 +16,6 @@ import Loader from "./../../main/Loader/index";
 
 export const ItemsSlider: React.FC<{ items: any[] }> = ({ items }) => {
   // products
-  console.log(items);
   const products = items.map((product, idx) => (
     <SwiperSlide key={idx}>
       <ProductCard

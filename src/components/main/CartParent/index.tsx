@@ -10,7 +10,7 @@ import { ErrorToast } from "../../UI/Toasts/ToastType";
 import Loader from "../Loader";
 import BestSellerProducts from "../Product/BestSellerProducts";
 
-const CartParent = () => {
+const CartParent = ({ type }) => {
   const [data, setData] = useState<any>();
   const [isDataReady, setIsDataReady] = useState(false);
 
@@ -25,10 +25,13 @@ const CartParent = () => {
         ErrorToast(error.response.data.message);
         setIsDataReady(true);
       });
-  }, []);
+    if (type === "error") {
+      ErrorToast("Something went wrong!, Please try another card");
+    }
+  }, [type]);
 
   const products = isDataReady ? (
-    data.products.map((product) => (
+    data?.products?.map((product) => (
       <Col key={product.id} xs={12}>
         <CartCard
           name={product.name}

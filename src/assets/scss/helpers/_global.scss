@@ -149,3 +149,14 @@ a {
   width: 100% !important;
   height: 35px !important;
 }
+
+// loading
+.loading {
+  animation: loader 0.6s infinite;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(360deg);
+  }
+}
