@@ -1,5 +1,4 @@
 import React from "react";
-import { Form } from "react-bootstrap";
 import { NormalTitle } from "../SectionTitle";
 
 interface FormModel {
@@ -9,10 +8,10 @@ interface FormModel {
 
 const FormParent: React.FC<FormModel> = ({ children, title, onSubmit }) => {
   return (
-    <Form onSubmit={onSubmit} className={`text-start onboardBanner`}>
+    <form onSubmit={onSubmit} className={`text-start onboardBanner`}>
       <NormalTitle title={title} main={false} content={""} />
       {children}
-    </Form>
+    </form>
   );
 };
 

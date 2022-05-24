@@ -1,9 +1,12 @@
 import React, { useContext } from "react";
 import AuthContext from "../../../store/Auth";
 import cl from "./index.module.scss";
+import AppURL from "./../../../api/AppURL";
 
 const ProfileMain = () => {
-  const { user } = useContext(AuthContext);
+  const { user, loggedIn } = useContext(AuthContext);
+  const imageArray = user?.profile_photo_url.split("/").length;
+  const imageName = user?.profile_photo_url.split("/")[imageArray - 1];
   return (
     <>
       <div className={cl.parent}>
@@ -11,7 +14,19 @@ const ProfileMain = () => {
           <div className={`card ${cl.card}`}>
             <div className="card-body little-profile text-center">
               <div className={cl.proImg}>
-                <img src={user?.profile_photo_url} alt={user?.name} />
+                {loggedIn && user?.id ? (
+                  <img
+                    src={`${AppURL.UserPhoto}/${imageName}`}
+                    alt="Your Avatar"
+                    width={300}
+                    style={{ borderRadius: "7px" }}
+                  />
+                ) : (
+                  <img
+                    className="img_cart_load"
+                    src="https://thumbs.gfycat.com/ConventionalOblongFairybluebird-size_restricted.gif"
+                  />
+                )}
               </div>
               <h3 className="m-b-0 mt-3">{user?.name}</h3>
               <p>{user?.email}</p>

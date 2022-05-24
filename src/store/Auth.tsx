@@ -18,7 +18,7 @@ const AuthContext = React.createContext({
   },
   AuthUser: (
     type: "LOGIN" | "REGISTER",
-    formData: LoginFormProps,
+    formData: any,
     reset: () => void,
     setLoading
   ) => {},
@@ -68,7 +68,15 @@ export const AuthProvider: React.FC = ({ children }) => {
   ) => {
     setLoading(true);
     axios
-      .post(type === "LOGIN" ? AppURL.LoginURL : AppURL.RegisterURL, formData)
+      .post(
+        type === "LOGIN" ? AppURL.LoginURL : AppURL.RegisterURL,
+        formData,
+        type === "REGISTER" && {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      )
       .then((response) => {
         // set the user in login mode
         setLoggedIn(true);
@@ -86,7 +94,11 @@ export const AuthProvider: React.FC = ({ children }) => {
           profile_photo_url: response.data.user.profile_photo_url,
         });
         // go to the home page after 2.5 seconds
-        nav(-1);
+        if (type === "LOGIN") {
+          nav(-1);
+        } else {
+          nav("/mail/check");
+        }
       })
       .catch((error) => {
         ErrorToast(error.response.data.message);
@@ -116,7 +128,7 @@ export const AuthProvider: React.FC = ({ children }) => {
       .then((response) => {
         reset();
         SuccessToast(response.data.message);
-        nav("/check_mail");
+        nav("/mail/check");
         setLoading(false);
       })
       .catch((error) => {

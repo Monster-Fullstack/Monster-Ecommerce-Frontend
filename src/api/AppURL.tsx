@@ -1,5 +1,6 @@
 class AppURL {
-  static BaseURL = "http://127.0.0.1:8000/api";
+  static Base = "http://127.0.0.1:8000";
+  static BaseURL = `${this.Base}/api`;
   /**
    * CompileURL() v1
    * @param methodName The Name of the method or page after the domain {BaseURL}
@@ -19,6 +20,7 @@ class AppURL {
   static RemoveFromCartURL = this.CompileURL("cart_delete");
   static CartCountURL = this.CompileURL("cart/count");
   static CheckoutURL = this.CompileURL("pay/");
+  static UserPhoto = `${this.Base}/storage/photos/users`;
   // End Authentication Routes
   static VisitorDetails = AppURL.CompileURL("visitor");
   static ContactURL = AppURL.CompileURL("contact");

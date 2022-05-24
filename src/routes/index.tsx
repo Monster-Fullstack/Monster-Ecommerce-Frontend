@@ -30,6 +30,8 @@ import Profile from "../pages/Profile";
 import AuthContext from "../store/Auth";
 import NotFound from "./../pages/NotFound";
 import Orders from "../pages/Orders";
+import VerifyMail from "../pages/Auth/VerifyMail";
+import Verified from "../pages/Auth/Verified";
 
 const AllRoutes: React.FC = () => {
   const location = useLocation();
@@ -48,7 +50,7 @@ const AllRoutes: React.FC = () => {
             <Route path="/register" element={<Register />} />
             <Route path="/forget" element={<Forget />} />
             <Route path="/reset/:token" element={<Reset />} />
-            <Route path="/check_mail" element={<CheckMail />} />
+            <Route path="/mail/check" element={<CheckMail />} />
           </>
         ) : (
           <>
@@ -56,6 +58,8 @@ const AllRoutes: React.FC = () => {
             <Route path="/cart" element={<Cart type="" />} />
             <Route path="/cart/error" element={<Cart type="error" />} />
             <Route path="/orders" element={<Orders />} />
+            <Route path="/mail/check" element={<VerifyMail />} />
+            <Route path="/mail/verify/:token" element={<Verified />} />
           </>
         )}
         <Route path="/contact" element={<Contact />} />

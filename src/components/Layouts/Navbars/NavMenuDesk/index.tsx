@@ -19,6 +19,7 @@ import AuthContext from "../../../../store/Auth";
 import { motion } from "framer-motion";
 import { dropdownAvatarAni } from "../../../UI/NavMenu/NavAnimation";
 import { AiOutlineHistory } from "react-icons/ai";
+import AppURL from "../../../../api/AppURL";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
@@ -35,6 +36,10 @@ const NavMenuDeskTop: React.FC = () => {
   const hidePhotoDrop = () => {
     setShowDrop(false);
   };
+
+  const imageArray = user?.profile_photo_url.split("/").length;
+  const imageName = user?.profile_photo_url.split("/")[imageArray - 1];
+
   return (
     <TopNav className="w-100">
       <Navbar bg="dark" fixed="top" className={cl.navbar}>
@@ -121,11 +126,18 @@ const NavMenuDeskTop: React.FC = () => {
                   onMouseLeave={hidePhotoDrop}
                   className={cl.avatarDad}
                 >
-                  <img
-                    src={user?.profile_photo_url}
-                    alt="Your Avatar"
-                    className={cl.avatar}
-                  />
+                  {loggedIn && user?.id ? (
+                    <img
+                      src={`${AppURL.UserPhoto}/${imageName}`}
+                      alt="Your Avatar"
+                      className={cl.avatar}
+                    />
+                  ) : (
+                    <img
+                      className="img_cart_load"
+                      src="https://thumbs.gfycat.com/ConventionalOblongFairybluebird-size_restricted.gif"
+                    />
+                  )}
 
                   {showDrop && (
                     <motion.div

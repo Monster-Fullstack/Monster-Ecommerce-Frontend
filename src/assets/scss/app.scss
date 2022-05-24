@@ -1,6 +1,7 @@
 @use "helpers/global" as *;
 @use "main/swiper_photo" as *;
 @use "main/scroll";
+@use "main/input_photo";
 @use "main/page404";
 @import "~bootstrap/scss/bootstrap";
 @import "~/node_modules/placeholder-loading/src/scss/placeholder-loading";

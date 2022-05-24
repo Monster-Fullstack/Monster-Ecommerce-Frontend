@@ -5,6 +5,7 @@ export interface LoginFormProps {
 
 export interface RegisterFormProps {
   phone: string;
+  photo: any;
   name: string;
   email: string;
   password: any;

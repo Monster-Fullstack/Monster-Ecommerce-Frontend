@@ -13,8 +13,20 @@ const RegisterSchema = () => {
     phone: yup
       .string()
       .required("your phone number is a required field")
-      .min(8)
-      .max(20),
+      .min(8, "Please enter a valid phone number")
+      .max(20, "Please enter a valid phone number"),
+    photo: yup
+      .mixed()
+      .required("Your photo is required")
+      .test("type", "The types supported are [ png, jpg, jpeg ]", (value) => {
+        if (value[0]?.type) {
+          return (
+            value[0].type === "image/jpg" ||
+            value[0].type === "image/png" ||
+            value[0].type === "image/jpeg"
+          );
+        }
+      }),
     password: yup
       .string()
       .required()

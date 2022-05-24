@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { InputSite } from "../../Inputs";
 import { ButtonSite } from "../../Buttons";
 import FormParent from "../FormParent";
@@ -15,51 +15,94 @@ import PhoneInput, {
   formatPhoneNumber,
 } from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { Row } from "react-bootstrap";
 
 const RegisterForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const { AuthUser } = useContext(AuthContext);
+  const imageRef = useRef<HTMLImageElement>();
+
   const {
     handleSubmit,
     formState: { errors },
     control,
     reset,
+    register,
   } = useForm<RegisterFormProps>({
     resolver: yupResolver(RegisterSchema()),
   });
 
   const onSubmit = async (formData) => {
-    formData["phone_number"] = formatPhoneNumber(formData["phone"]).trim();
-    formData["phone_country"] = formatPhoneNumberIntl(formData["phone"]).split(
-      " "
-    )[0];
+    const form = new FormData();
 
-    AuthUser("REGISTER", formData, reset, setLoading);
+    form.append("photo", formData["photo"][0]);
+    form.append("phone_number", formatPhoneNumber(formData["phone"]).trim());
+    form.append(
+      "phone_country",
+      formatPhoneNumberIntl(formData["phone"]).split(" ")[0]
+    );
+    form.append("name", formData["name"]);
+    form.append("email", formData["email"]);
+    form.append("password", formData["password"]);
+    form.append("password_confirmation", formData["password_confirmation"]);
+
+    AuthUser("REGISTER", form, reset, setLoading);
+  };
+
+  var loadFile = function (event) {
+    register("photo").onChange(event.target);
+    var image = imageRef.current;
+    image.src = URL.createObjectURL(event.target.files[0]);
   };
 
   return (
     <>
       <FormParent onSubmit={handleSubmit(onSubmit)} title="">
         <NormalTitle className="text-start" title="Register Page" />
-        <div className="mb-4">
-          <Controller
-            control={control}
-            defaultValue=""
-            render={({ field: { onBlur, onChange, value } }) => (
-              <>
-                {/* @ts-ignore */}
+        <Row>
+          <div className="mb-4 col-md-4">
+            <div className="profile-pic">
+              <label className="-label" htmlFor="file">
+                <span className="glyphicon glyphicon-camera"></span>
+                <span>Change Image</span>
+              </label>
+              <input
+                name="photo"
+                id="file"
+                type="file"
+                {...register("photo")}
+                onChange={(eo) => {
+                  register("photo").onChange(eo);
+                  loadFile(eo);
+                }}
+              />
+              <img
+                src="https://timesaver247.com/wp-content/uploads/2020/10/default-user-image.png"
+                id="output"
+                ref={imageRef}
+                width="200"
+              />
+            </div>
+            <ErrorForm error={errors?.photo} />
+          </div>
+          <div className="mb-4 col-md-8">
+            <Controller
+              control={control}
+              defaultValue=""
+              render={({ field: { onChange, value } }) => (
+                // @ts-ignore
                 <PhoneInput
                   placeholder="Enter your phone number"
                   value={value}
                   onChange={onChange}
                   name="phone"
                 />
-              </>
-            )}
-            name="phone"
-          />
-          <ErrorForm error={errors?.phone} />
-        </div>
+              )}
+              name="phone"
+            />
+            <ErrorForm error={errors?.phone} />
+          </div>
+        </Row>
         <div className="mb-4">
           <Controller
             control={control}
