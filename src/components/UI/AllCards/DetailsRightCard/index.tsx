@@ -51,7 +51,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
 
   const addToCart = () => {
     if (loggedIn) {
-      if (quantity.length > 0 && color.length > 0) {
+      if (quantity.length > 0 && +quantity > 0 && color.length > 0) {
         axios
           .post(AppURL.AddToCart, {
             product_id: product.id,
@@ -69,6 +69,8 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
       } else {
         if (quantity.length <= 0) {
           ErrorToast("Please insert the quantity before adding to the cart");
+        } else if (+quantity <= 0) {
+          ErrorToast("Please insert a valid quantity before adding to the cart");
         } else {
           ErrorToast("Please choose the color before adding to the cart");
         }

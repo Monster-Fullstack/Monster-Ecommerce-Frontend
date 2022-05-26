@@ -3,10 +3,9 @@ import cl from "./index.module.scss";
 import { motion, AnimatePresence } from "framer-motion";
 import { FieldError } from "react-hook-form";
 import { AlertFormAni } from "./Animations";
-import { Toast } from "react-bootstrap";
 
 interface AlertProps {
-  error: FieldError;
+  error: any;
   className?: string;
 }
 

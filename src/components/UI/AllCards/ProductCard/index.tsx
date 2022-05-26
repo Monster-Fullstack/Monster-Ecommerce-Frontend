@@ -5,6 +5,7 @@ import { ProductImages } from "../../Images";
 import Product from "../../../../interfaces/Product";
 import { ButtonBig } from "../../Buttons";
 import { Link } from "react-router-dom";
+import StarRatings from "react-star-ratings";
 
 const ProductCard: React.FC<Product> = ({
   name,
@@ -27,6 +28,13 @@ const ProductCard: React.FC<Product> = ({
           <p className={cl.description}>
             {description.slice(0, 45)}
             {description.length > 55 && "..."}
+          </p>
+          <p>
+            <StarRatings
+              rating={2.403}
+              starDimension="30px"
+              starSpacing="5px"
+            />
           </p>
           <p className={cl.price}>
             <span className={cl.dollar}>$</span>

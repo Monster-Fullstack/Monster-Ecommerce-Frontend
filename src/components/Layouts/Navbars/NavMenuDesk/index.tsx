@@ -19,12 +19,13 @@ import AuthContext from "../../../../store/Auth";
 import { motion } from "framer-motion";
 import { dropdownAvatarAni } from "../../../UI/NavMenu/NavAnimation";
 import { AiOutlineHistory } from "react-icons/ai";
-import AppURL from "../../../../api/AppURL";
+import profileImagePath from "../../../../Functions/profileImagePath";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
   const { loggedIn, user, Logout } = useContext(AuthContext);
   const [showDrop, setShowDrop] = useState(false);
+  const profileUrl = profileImagePath(user?.profile_photo_url);
   const toggleNav = () => {
     setOpenNav(!openNav);
   };
@@ -36,9 +37,6 @@ const NavMenuDeskTop: React.FC = () => {
   const hidePhotoDrop = () => {
     setShowDrop(false);
   };
-
-  const imageArray = user?.profile_photo_url.split("/").length;
-  const imageName = user?.profile_photo_url.split("/")[imageArray - 1];
 
   return (
     <TopNav className="w-100">
@@ -128,7 +126,7 @@ const NavMenuDeskTop: React.FC = () => {
                 >
                   {loggedIn && user?.id ? (
                     <img
-                      src={`${AppURL.UserPhoto}/${imageName}`}
+                      src={profileUrl}
                       alt="Your Avatar"
                       className={cl.avatar}
                     />

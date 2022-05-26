@@ -20,6 +20,7 @@ class AppURL {
   static RemoveFromCartURL = this.CompileURL("cart_delete");
   static CartCountURL = this.CompileURL("cart/count");
   static CheckoutURL = this.CompileURL("pay/");
+  static ReviewsProduct = this.CompileURL("reviews/product");
   static UserPhoto = `${this.Base}/storage/photos/users`;
   // End Authentication Routes
   static VisitorDetails = AppURL.CompileURL("visitor");

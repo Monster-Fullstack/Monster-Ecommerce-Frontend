@@ -35,7 +35,7 @@ const useGet = (
   }, [sessionName, setInSessionAndSetData, type]);
   const isDataReady = data && !loading;
 
-  return { data, loading, isDataReady };
+  return { data, loading, isDataReady, setData };
 };
 
 export default useGet;

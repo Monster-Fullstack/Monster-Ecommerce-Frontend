@@ -1,17 +1,12 @@
 import React, { Fragment } from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import { useParams } from "react-router-dom";
-import useGet from "../../../../hooks/useGet";
+import { Container, Row } from "react-bootstrap";
 import DetailsAndReviews from "../../../UI/AllCards/DetailsAndReviews";
 import DetailsCard from "../../../UI/AllCards/DetailsCard";
 import DetailsRightCard from "../../../UI/AllCards/DetailsRightCard";
 import Loader from "../../Loader/index";
 
-const ProductDetails: React.FC = () => {
-  const { id } = useParams();
-  const { isDataReady, data: AllProductData } = useGet(`product/${id}`);
+const ProductDetails = ({ isDataReady, AllProductData }) => {
   const product = isDataReady && AllProductData.product;
-  console.log(AllProductData);
   return (
     <Fragment>
       <Container className="BetweenTwoSection">

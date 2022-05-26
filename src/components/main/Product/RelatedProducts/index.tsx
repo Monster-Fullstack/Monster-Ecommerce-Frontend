@@ -5,8 +5,8 @@ import ShowProducts from "../../../UI/Products/ShowProducts";
 import useGet from "../../../../hooks/useGet";
 import Loader from "../../Loader";
 
-const RelatedProducts: React.FC = () => {
-  const { isDataReady, data } = useGet("new_products");
+const RelatedProducts = ({ subcatid }) => {
+  const { isDataReady, data } = useGet(`products/related/${subcatid}`);
 
   return (
     <MainContainer>
@@ -15,7 +15,7 @@ const RelatedProducts: React.FC = () => {
         content="Some Of Related Products, You May Like"
       />
       {isDataReady ? (
-        <ShowProducts products={data} slices={6} />
+        <ShowProducts products={data} slices={8} />
       ) : (
         <Loader many={6} type="items" />
       )}
