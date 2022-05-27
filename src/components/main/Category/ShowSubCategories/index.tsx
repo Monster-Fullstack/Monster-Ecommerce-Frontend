@@ -12,7 +12,7 @@ const ShowSubCateogories: React.FC<{ SubName: string; products: any[] }> = ({
       description={p.description}
       price={p.price}
       id={p.id}
-      src={p.main_image}
+      src={p.main_image.name}
     />
   ));
   return (

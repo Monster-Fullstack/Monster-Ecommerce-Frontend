@@ -37,3 +37,16 @@ export const WarningToast = (message: string) => {
     progress: undefined,
   });
 };
+
+export const WowToast = (message: string) => {
+  // show error toast
+  toast.info(message, {
+    position: "bottom-right",
+    autoClose: 2600,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+  });
+};

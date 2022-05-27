@@ -5,7 +5,7 @@ import NewArrival from "../components/main/Product/NewArrival";
 import ProductDetails from "../components/main/Product/ProductDetails";
 import RelatedProducts from "../components/main/Product/RelatedProducts";
 import useGet from "../hooks/useGet";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 
 const Product: React.FC = () => {
   const { id } = useParams();

@@ -14,8 +14,9 @@ import SiteInfoContext from "../../../store/SiteInfo";
 const FooterTemplate: React.FC = () => {
   const { HandlingData, isSiteInfoReady } = useContext(SiteInfoContext);
   const responsive = useResponsive();
+
   return (
-    <div className={`${cl.footerBack} shadow-sm mt-5 p-5`}>
+    <div className={`${cl.footerBack} p-5 shadow-sm mt-5`}>
       {isSiteInfoReady && (
         <Container>
           <Row className={cl.rowCustom}>

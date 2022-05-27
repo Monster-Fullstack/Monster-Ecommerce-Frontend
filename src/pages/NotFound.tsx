@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 
 const NotFound = () => {
   return (

@@ -1,5 +1,5 @@
 import React from "react";
-import PagesParent from "./../PagesParent";
+import PagesParent from "../Container/PagesParent";
 import ShowInPagination from "./../../components/UI/ShowInPagination/index";
 import ShowProductsNoSliders from "./../../components/main/Product/ShowProductsNoSliders/index";
 

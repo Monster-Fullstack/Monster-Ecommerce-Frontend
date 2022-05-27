@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import TextPages from "../../components/main/TextPages";
 import SiteInfoContext from "../../store/SiteInfo";
-import PagesParent from "../PagesParent";
+import PagesParent from "../Container/PagesParent";
 import Loader from "./../../components/main/Loader";
 
 const Privacy: React.FC = () => {

@@ -11,6 +11,8 @@ import { AuthProvider } from "./store/Auth";
 import axios from "axios";
 import Toast from "./components/UI/Toasts";
 import { CartProvider } from "./store/Cart";
+import { FavouritesProvider } from "./store/Favourites";
+
 const token = localStorage.getItem("token");
 axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
 
@@ -20,7 +22,9 @@ ReactDOM.render(
       <AuthProvider>
         <SiteInfoProvider>
           <CartProvider>
-            <App />
+            <FavouritesProvider>
+              <App />
+            </FavouritesProvider>
           </CartProvider>
           <Toast />
         </SiteInfoProvider>

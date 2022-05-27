@@ -12,8 +12,10 @@ const Loader: React.FC<{
     | "box"
     | "items"
     | "title"
-    | "search";
-}> = ({ many = 1, type = "main" }) => {
+    | "search"
+    | "product_card_1";
+  col?: number;
+}> = ({ many = 1, type = "main", col = 12 }) => {
   if (type === "main") {
     let allLoaders = "";
     for (let i = 0; i < many; i++) {
@@ -31,6 +33,39 @@ const Loader: React.FC<{
           </div>
         </div>
       </div>`;
+    }
+
+    const htmlLoader = parse(allLoaders);
+    return <MainContainer>{htmlLoader}</MainContainer>;
+  } else if (type === "product_card_1") {
+    let allLoaders = "";
+    for (let i = 0; i < many; i++) {
+      allLoaders += `
+      <div className="col-lg-${col} col-md-${col} col-sm-4 col-6 p-1">
+        <a href="" className="card image-box h-100 w-100">
+          <div className="ph-picture"></div>
+          <div className="ph-item">
+            <div className="ph-col-12">
+              <div className="ph-row">
+                <div className="ph-col-6 ms-auto me-auto big"></div>
+                <div className="ph-col-12 big"></div>
+                <div className="ph-col-12 empty"></div>
+                <div className="ph-col-12 big"></div>
+                <div className="ph-col-4 ms-auto me-auto small"></div>
+                <div className="ph-col-12 empty"></div>
+
+                <div className="ph-col-12 big">
+                  <div className="ph-col-12 big"></div>
+                </div>
+                <div className="ph-col-12 big">
+                </div>
+                </div>
+             
+            </div>
+          </div>
+        </a>
+      </div>
+      `;
     }
 
     const htmlLoader = parse(allLoaders);

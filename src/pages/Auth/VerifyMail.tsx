@@ -1,7 +1,7 @@
 import React from "react";
 import { MainImage } from "../../components/UI/Images";
 import MainContainer from "../../components/UI/MainContainer";
-import PagesParent from "../PagesParent";
+import PagesParent from "../Container/PagesParent";
 import mailPhoto from "../../assets/images/check_mail.jpg";
 import { Link } from "react-router-dom";
 

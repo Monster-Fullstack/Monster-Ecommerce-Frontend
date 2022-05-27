@@ -29,13 +29,6 @@ const ProductCard: React.FC<Product> = ({
             {description.slice(0, 45)}
             {description.length > 55 && "..."}
           </p>
-          <p>
-            <StarRatings
-              rating={2.403}
-              starDimension="30px"
-              starSpacing="5px"
-            />
-          </p>
           <p className={cl.price}>
             <span className={cl.dollar}>$</span>
             {price}

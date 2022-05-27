@@ -1,6 +1,6 @@
 import React from "react";
 import { NormalTitle } from "../components/UI/SectionTitle";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import { useParams } from "react-router-dom";
 import useGet from "./../hooks/useGet";
 import ShowProductsNoSliders from "./../components/main/Product/ShowProductsNoSliders/index";

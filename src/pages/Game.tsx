@@ -1,5 +1,5 @@
 import React from "react";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import GamePage from "./../components/main/Games/GamePage/index";
 
 const Game = ({ setGameMode }) => {

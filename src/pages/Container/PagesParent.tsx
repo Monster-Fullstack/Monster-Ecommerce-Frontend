@@ -1,11 +1,14 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { PagesAnimation } from "../components/Animations/PagesAnimation";
+import { PagesAnimation } from "../../components/Animations/PagesAnimation";
+import useResponsive from "./../../hooks/useResponsive";
 
 const PagesParent: React.FC<{ mode?: "normal" | "gaming" }> = ({
   mode = "normal",
   children,
 }) => {
+  const screenMode = useResponsive();
+  const check = screenMode === "phone" || screenMode === "tablet";
   useEffect(() => {
     window.scroll(0, 0);
     const body = document.querySelector("body") as HTMLElement;
@@ -21,7 +24,7 @@ const PagesParent: React.FC<{ mode?: "normal" | "gaming" }> = ({
       initial="hidden"
       animate="visible"
       exit="exit"
-      className="mt-pages"
+      className={check ? "mt-pages-phone" : "mt-pages"}
     >
       {children}
     </motion.div>

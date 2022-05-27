@@ -13,7 +13,7 @@ const Collection: React.FC = () => {
   const products =
     isDataReady &&
     data.map((product, idx) => (
-      <Col key={idx} xl={2} lg={3} md={3} sm={6} xs={10}>
+      <Col key={idx} xl={3} lg={3} md={3} sm={6} xs={10}>
         <ProductCard
           alt={product.alt}
           id={product.id}

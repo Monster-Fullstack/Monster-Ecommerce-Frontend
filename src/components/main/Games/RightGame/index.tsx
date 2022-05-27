@@ -10,7 +10,11 @@ const RightGame = ({ isDataReady, game }) => {
     <>
       {isDataReady ? (
         <>
-          <img className={cl.photo} alt={game.name} src={game.main_image} />
+          <img
+            className={cl.photo}
+            alt={game.name}
+            src={game.main_image.name}
+          />
           <PriceCard price={game.price} />
           <p className="text-start">{game.description}</p>
           <div>

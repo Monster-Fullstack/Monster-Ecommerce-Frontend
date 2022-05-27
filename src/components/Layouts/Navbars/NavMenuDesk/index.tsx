@@ -11,7 +11,7 @@ import Cart from "../../../UI/Cart";
 import TopNav from "../../../UI/TopSectionNav";
 import NotificationsNo from "../../../UI/NotificationsNo";
 import Hamburger from "./../../../UI/HamburgerMenu/index";
-import NavMenu, { NavMenu2 } from "./../../../UI/NavMenu/index";
+import NavMenu, { NavMenu2, NavMenu3 } from "./../../../UI/NavMenu/index";
 import { AnimatePresence } from "framer-motion";
 import { IoLogoGameControllerB } from "react-icons/io";
 import { SearchInput } from "./../../../UI/Inputs/index";
@@ -20,10 +20,12 @@ import { motion } from "framer-motion";
 import { dropdownAvatarAni } from "../../../UI/NavMenu/NavAnimation";
 import { AiOutlineHistory } from "react-icons/ai";
 import profileImagePath from "../../../../Functions/profileImagePath";
+import FavouritesContext from "../../../../store/Favourites";
 
 const NavMenuDeskTop: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
   const { loggedIn, user, Logout } = useContext(AuthContext);
+  const { count: countFav } = useContext(FavouritesContext);
   const [showDrop, setShowDrop] = useState(false);
   const profileUrl = profileImagePath(user?.profile_photo_url);
   const toggleNav = () => {
@@ -66,7 +68,9 @@ const NavMenuDeskTop: React.FC = () => {
                   </Col>
                 </Row>
                 <AnimatePresence>
-                  {openNav && <NavMenu toggleNav={toggleNav} />}
+                  {openNav && (
+                    <NavMenu profileUrl={profileUrl} toggleNav={toggleNav} />
+                  )}
                 </AnimatePresence>
               </TopNav>
             </Col>
@@ -76,7 +80,7 @@ const NavMenuDeskTop: React.FC = () => {
             <Col lg={4} md={5} sm={12} xs={12} className="p-1 mt-1 text-center">
               <Link to="/favourite">
                 <AiOutlineHeart className={`h4 ${cl.icon}`} />
-                <NotificationsNo many={10} />
+                <NotificationsNo many={countFav} />
               </Link>
               <Link to="/notification" className="btn none">
                 <AiOutlineBell
@@ -204,27 +208,8 @@ const NavMenuDeskTop: React.FC = () => {
           </AnimatePresence>
         </TopNav>
       </div>
-      <div className={cl.thirdNav}>
-        <Row className="justify-content-around w-50 align-items-center">
-          <Col sm={4}>
-            <Link className="text-white" to="/categories">
-              <ButtonSite>All Categories</ButtonSite>
-            </Link>
-          </Col>
-          <Col sm={4}>
-            <Link className="text-white" to="/subcategories">
-              <ButtonSite>All Subcategories</ButtonSite>
-            </Link>
-          </Col>
-          <Col sm={4}>
-            <Link className="text-white" to="/premium/products">
-              <ButtonSite>
-                <span className="text-warning">Premium</span> Products
-              </ButtonSite>
-            </Link>
-          </Col>
-        </Row>
-      </div>
+      {/* the third nav [ in the bottom ] */}
+      <NavMenu3 />
     </TopNav>
   );
 };

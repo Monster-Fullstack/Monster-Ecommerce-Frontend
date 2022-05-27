@@ -10,7 +10,7 @@ const ShowGames = ({ games }) => {
         GameNameClass="text-white"
         name={game.name}
         id={game.id}
-        src={game.main_image}
+        src={game.main_image.name}
         alt={game.name}
         price={game.price}
       />

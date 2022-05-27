@@ -1,6 +1,6 @@
 import React from "react";
 import ShowCategory from "../components/main/Category/ShowCategory";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import RelatedCategories from "./../components/main/Category/RelatedCategories/index";
 import BestSellerProducts from "../components/main/Product/BestSellerProducts";
 import UnderXDollars from "../components/main/Product/UnderXDollars";

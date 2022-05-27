@@ -8,7 +8,7 @@ const ShowSubCatsGames: React.FC<{ games: any[] }> = ({ games }) => {
     <Col key={idx} xl={3} lg={3} md={4} sm={6} xs={12}>
       <GameCard
         alt={game.name}
-        src={game.main_image}
+        src={game.main_image.name}
         name={game.name}
         id={game.id}
         price={game.price}

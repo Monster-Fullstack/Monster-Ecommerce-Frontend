@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import PagesParent from "../PagesParent";
+import PagesParent from "../Container/PagesParent";
 import TextPages from "../../components/main/TextPages";
 import SiteInfoContext from "../../store/SiteInfo";
 import Loader from "./../../components/main/Loader";

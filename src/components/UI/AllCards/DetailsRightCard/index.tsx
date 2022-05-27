@@ -7,12 +7,18 @@ import { InputSite } from "../../Inputs";
 import cl from "./index.module.scss";
 import PriceCard from "../PriceCard";
 import RemainCard from "../RemainCard";
-import { ErrorToast, SuccessToast, WarningToast } from "../../Toasts/ToastType";
+import {
+  ErrorToast,
+  SuccessToast,
+  WarningToast,
+  WowToast,
+} from "../../Toasts/ToastType";
 import AppURL from "../../../../api/AppURL";
 import axios from "axios";
 import CartContext from "../../../../store/Cart";
 import AuthContext from "../../../../store/Auth";
 import { useNavigate } from "react-router-dom";
+import FavouritesContext from "../../../../store/Favourites";
 
 const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   AllProductData,
@@ -22,6 +28,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
   const [quantity, setQuantity] = useState<string>("");
   const [color, setColor] = useState<string>("");
   const { changeCount } = useContext(CartContext);
+  const { changeCount: changeCountFav } = useContext(FavouritesContext);
   const { loggedIn } = useContext(AuthContext);
   const nav = useNavigate();
 
@@ -70,7 +77,9 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
         if (quantity.length <= 0) {
           ErrorToast("Please insert the quantity before adding to the cart");
         } else if (+quantity <= 0) {
-          ErrorToast("Please insert a valid quantity before adding to the cart");
+          ErrorToast(
+            "Please insert a valid quantity before adding to the cart"
+          );
         } else {
           ErrorToast("Please choose the color before adding to the cart");
         }
@@ -79,6 +88,18 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
       nav("/login");
       WarningToast("Please login first and try again");
     }
+  };
+
+  const addToFav = () => {
+    axios
+      .get(AppURL.CompileURL("products/favorites/add/" + product.id))
+      .then((response) => {
+        SuccessToast(response.data.message);
+        changeCountFav();
+      })
+      .catch((error) => {
+        WowToast(error.response.data.message);
+      });
   };
 
   return (
@@ -123,7 +144,7 @@ const DetailsRightCard: React.FC<{ AllProductData: any }> = ({
           <ButtonSite className="m-1">
             <AiFillDollarCircle className={cl.icon} /> Order Now
           </ButtonSite>
-          <ButtonSite className="m-1">
+          <ButtonSite onClick={addToFav} className="m-1">
             <AiFillHeart className={cl.icon} /> Favourite
           </ButtonSite>
         </div>

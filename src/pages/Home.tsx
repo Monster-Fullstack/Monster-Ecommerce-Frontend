@@ -3,7 +3,7 @@ import CategorySection from "../components/main/Category/CategorySection";
 import Collection from "../components/main/Collection";
 import NewArrival from "../components/main/Product/NewArrival";
 import HomeTopResponsive from "../components/main/HomeTop/HomeTopResponsive";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import axios from "axios";
 import AppURL from "../api/AppURL";
 import FeaturedProducts from "./../components/main/Product/FeaturedProducts/index";

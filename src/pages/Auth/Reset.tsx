@@ -1,5 +1,5 @@
 import React from "react";
-import PagesParent from "./../PagesParent";
+import PagesParent from "../Container/PagesParent";
 import MainForm from "./../../components/main/MainForm/index";
 import ResetForm from "./../../components/UI/Forms/ResetForm/index";
 import { MainImage } from "../../components/UI/Images";

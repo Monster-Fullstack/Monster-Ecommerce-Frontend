@@ -1,5 +1,5 @@
 import React from "react";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import ShowProductsSub from "./../components/main/Product/ShowProductsSub/index";
 import UnderXDollars from "../components/main/Product/UnderXDollars";
 import NewArrival from "../components/main/Product/NewArrival";

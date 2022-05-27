@@ -19,6 +19,7 @@ class AppURL {
   static GetProductOfCartURL = this.CompileURL("cart");
   static RemoveFromCartURL = this.CompileURL("cart_delete");
   static CartCountURL = this.CompileURL("cart/count");
+  static FavouritesCountURL = this.CompileURL("products/favorites/count");
   static CheckoutURL = this.CompileURL("pay/");
   static ReviewsProduct = this.CompileURL("reviews/product");
   static UserPhoto = `${this.Base}/storage/photos/users`;

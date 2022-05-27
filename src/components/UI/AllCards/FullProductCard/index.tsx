@@ -33,7 +33,7 @@ const FullProductCard: React.FC<{ product: any }> = ({ product }) => {
                   {product.sub}
                 </Card.Title>
                 <RemainCard
-                  quantity={productX.avilable_quantity}
+                  quantity={productX.quantity}
                   sells={productX.sells}
                 />
                 <PriceCard price={productX.price} />

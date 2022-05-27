@@ -2,7 +2,7 @@ import React from "react";
 import MainForm from "../components/main/MainForm";
 import ContactForm from "../components/UI/Forms/ContactForm";
 import Text from "../components/UI/Text";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 
 const Contact: React.FC = () => {
   return (

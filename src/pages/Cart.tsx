@@ -1,6 +1,6 @@
 import React from "react";
 import CartParent from "../components/main/CartParent";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 
 const Cart: React.FC<{ type: string }> = ({ type }) => {
   return (

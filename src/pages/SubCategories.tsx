@@ -1,5 +1,5 @@
 import React from "react";
-import PagesParent from "./PagesParent";
+import PagesParent from "./Container/PagesParent";
 import MainContainer from "./../components/UI/MainContainer/index";
 import ShowAllCategories from "../components/main/Category/ShowAllCategories";
 import useGet from "./../hooks/useGet";

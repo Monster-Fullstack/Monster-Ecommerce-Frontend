@@ -8,7 +8,7 @@ const GameCard: React.FC<{
   src: string;
   alt: string;
   name: string;
-  GameNameClass: string;
+  GameNameClass?: string;
   price: number;
 }> = ({ id, src, alt, name, price, GameNameClass }) => {
   return (

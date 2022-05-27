@@ -58,3 +58,82 @@
   color: $main-color;
   margin-top: 8px;
 }
+
+.logout {
+  cursor: pointer;
+  padding: 10px 15px;
+  border-top: 1px solid rgba(#000, 0.2);
+  margin-top: 5px;
+  &:hover {
+    background-color: rgba($main-color, 0.1);
+  }
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 120px;
+  height: 90px;
+  border-radius: 7px;
+}
+
+// the third navbar [in the bottom]
+
+.thirdNav {
+  display: flex;
+  flex-direction: row;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(223, 219, 219, 0.856);
+  height: 60px;
+  justify-content: center;
+  z-index: 100;
+  padding: 5px 30px;
+  .dad {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100% !important;
+    text-align: center;
+  }
+}
+
+@media (max-width: 580px) {
+  .thirdNav {
+    padding: 10px 15px;
+    .dad {
+      justify-content: space-around;
+      div {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .thirdNav {
+    padding: 0px 15px;
+    .dad {
+      div {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .thirdNav {
+    padding: 0px 5px;
+    .dad {
+      div {
+        font-size: 14px;
+        display: none;
+      }
+
+      div:first-child {
+        display: block;
+      }
+    }
+  }
+}

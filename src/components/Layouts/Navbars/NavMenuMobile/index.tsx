@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactDOM from "react-dom";
 import cl from "./index.module.scss";
 import { Col, Row } from "react-bootstrap";
@@ -7,11 +7,19 @@ import { Link } from "react-router-dom";
 import Logo from "../../../../assets/images/Logo.png";
 import Hamburger from "../../../UI/HamburgerMenu";
 import TopNav from "../../../UI/TopSectionNav";
-import NavMenu from "../../../UI/NavMenu";
+import NavMenu, { NavMenu3 } from "../../../UI/NavMenu";
 import { AnimatePresence } from "framer-motion";
+import { ButtonSite } from "../../../UI/Buttons";
+import profileImagePath from "./../../../../Functions/profileImagePath";
+import AuthContext from "../../../../store/Auth";
 
 const NavTemplate: React.FC = () => {
   const [openNav, setOpenNav] = useState(false);
+  const { user, loggedIn } = useContext(AuthContext);
+  const profilePhoto =
+    loggedIn &&
+    user?.profile_photo_url &&
+    profileImagePath(user.profile_photo_url);
   const toggleNav = () => {
     setOpenNav(!openNav);
   };
@@ -31,8 +39,10 @@ const NavTemplate: React.FC = () => {
         </Row>
       </MainContainer>
       <AnimatePresence>
-        {openNav && <NavMenu toggleNav={toggleNav} />}
+        {openNav && <NavMenu profileUrl={profilePhoto} toggleNav={toggleNav} />}
       </AnimatePresence>
+      {/* the third nav [ in the bottom ] */}
+      <NavMenu3 />
     </TopNav>
   );
 };
