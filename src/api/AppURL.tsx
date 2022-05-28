@@ -15,9 +15,11 @@ class AppURL {
   static ForgetURL = AppURL.CompileURL("forget");
   static ResetURL = AppURL.CompileURL("reset");
   static UserURL = this.CompileURL("user");
-  static AddToCart = this.CompileURL("cart");
-  static GetProductOfCartURL = this.CompileURL("cart");
-  static RemoveFromCartURL = this.CompileURL("cart_delete");
+  static AddToCart = this.CompileURL("cart/product");
+  static AddGameToCart = this.CompileURL("cart/game");
+  static GetItemOfCartURL = this.CompileURL("cart");
+  static RemoveFromCartURL = this.CompileURL("cart/product/delete");
+  static RemoveGameFromCartURL = this.CompileURL("cart/game/delete");
   static CartCountURL = this.CompileURL("cart/count");
   static FavouritesCountURL = this.CompileURL("products/favorites/count");
   static CheckoutURL = this.CompileURL("pay/");

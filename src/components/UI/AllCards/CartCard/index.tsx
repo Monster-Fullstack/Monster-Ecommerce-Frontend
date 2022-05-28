@@ -24,27 +24,54 @@ const CartCard = ({
   const { changeCount } = useContext(CartContext);
   const removeItem = () => {
     setIsDataReady(false);
-    axios
-      .post(AppURL.RemoveFromCartURL, {
-        product_id: id,
-      })
-      .then((response: any) => {
-        changeCount();
-        SuccessToast(response.data.message);
-        axios
-          .get(AppURL.GetProductOfCartURL)
-          .then((response) => {
-            setData(response.data);
-            setIsDataReady(true);
-          })
-          .catch((error) => {
-            ErrorToast(error.response.data.message);
-            setIsDataReady(true);
-          });
-      })
-      .catch((error) => {
-        ErrorToast(error.response.data.message);
-      });
+    // if the quantity is exist that means this is product not game
+    // if product
+    if (quantity) {
+      axios
+        .post(AppURL.RemoveFromCartURL, {
+          product_id: id,
+        })
+        .then((response: any) => {
+          changeCount();
+          SuccessToast(response.data.message);
+          axios
+            .get(AppURL.GetItemOfCartURL)
+            .then((response) => {
+              setData(response.data);
+              setIsDataReady(true);
+            })
+            .catch((error) => {
+              ErrorToast(error.response.data.message);
+              setIsDataReady(true);
+            });
+        })
+        .catch((error) => {
+          ErrorToast(error.response.data.message);
+        });
+    } // if game
+    else {
+      axios
+        .post(AppURL.RemoveGameFromCartURL, {
+          game_id: id,
+        })
+        .then((response: any) => {
+          changeCount();
+          SuccessToast(response.data.message);
+          axios
+            .get(AppURL.GetItemOfCartURL)
+            .then((response) => {
+              setData(response.data);
+              setIsDataReady(true);
+            })
+            .catch((error) => {
+              ErrorToast(error.response.data.message);
+              setIsDataReady(true);
+            });
+        })
+        .catch((error) => {
+          ErrorToast(error.response.data.message);
+        });
+    }
   };
   return (
     <Card className={cl.card}>
@@ -68,11 +95,10 @@ const CartCard = ({
                 <p onClick={removeItem} className="linkStyle">
                   Remove
                 </p>
-                <p className="linkStyle">Add To Favourite</p>
               </Col>
               <Col className="mt-3 text-start p-0" lg={2} xs={12}>
                 <Price price={price} />
-                <p className={cl.amount}>Amount: {quantity}</p>
+                {quantity && <p className={cl.amount}>Amount: {quantity}</p>}
               </Col>
             </Row>
           </Col>

@@ -51,7 +51,7 @@ const CardWithoutLogic = ({ status, name, price, src, quantity }) => {
                 </Col>
                 <Col className="mt-3 text-start p-0" lg={2} xs={12}>
                   <Price price={price} />
-                  <p className={cl.amount}>Amount: {quantity}</p>
+                  {quantity && <p className={cl.amount}>Amount: {quantity}</p>}
                 </Col>
               </Row>
             </Col>

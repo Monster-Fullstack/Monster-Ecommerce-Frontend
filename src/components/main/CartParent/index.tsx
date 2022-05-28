@@ -16,7 +16,7 @@ const CartParent = ({ type }) => {
 
   useEffect(() => {
     axios
-      .get(AppURL.GetProductOfCartURL)
+      .get(AppURL.GetItemOfCartURL)
       .then((response) => {
         setData(response.data);
         setIsDataReady(true);
@@ -31,15 +31,15 @@ const CartParent = ({ type }) => {
   }, [type]);
 
   const products = isDataReady ? (
-    data?.products?.map((product) => (
-      <Col key={product.id} xs={12}>
+    data?.all?.map((item) => (
+      <Col key={item.id} xs={12}>
         <CartCard
-          name={product.name}
-          id={product.id}
-          price={product.total}
-          description={product.description}
-          quantity={product.quantity}
-          src={product.main_image?.name}
+          name={item.name}
+          id={item.id}
+          price={item.quantity ? item.total : item.price}
+          description={item.description}
+          quantity={item?.quantity}
+          src={item.main_image?.name}
           setData={setData}
           setIsDataReady={setIsDataReady}
         />
@@ -53,7 +53,7 @@ const CartParent = ({ type }) => {
       <NormalTitle title="Shopping Cart" content="" />
       <Row className="mb-5">
         <Col lg={9} md={9} sm={12} xs={12} className="mt-3">
-          {isDataReady && data.products.length <= 0 ? (
+          {isDataReady && data.all.length <= 0 ? (
             <div className="notfound_img">
               <h3>Not found any products in your cart!</h3>
             </div>
@@ -63,9 +63,7 @@ const CartParent = ({ type }) => {
         </Col>
         <Col className="mt-3" lg={3} md={3} sm={12} xs={12}>
           {isDataReady ? (
-            <TotalPriceCard
-              price={data.products.length <= 0 ? 0 : data.total}
-            />
+            <TotalPriceCard price={data.all.length <= 0 ? 0 : data.total} />
           ) : (
             <Loader type="title" />
           )}

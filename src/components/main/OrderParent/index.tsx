@@ -9,15 +9,15 @@ import CardWithoutLogic from "../../UI/AllCards/CartCard/CardWithoutLogic";
 const OrderParent = () => {
   const { isDataReady, data } = useGet("orders");
 
-  const products = isDataReady ? (
-    data?.products?.map((product) => (
-      <Col key={product.id} xs={12}>
+  const items = isDataReady ? (
+    data?.all?.map((item, idx) => (
+      <Col key={idx} xs={12}>
         <CardWithoutLogic
-          name={product.name}
-          price={product.total}
-          quantity={product.quantity}
-          src={product.main_image?.name}
-          status={product.status}
+          name={item.name}
+          price={item.price}
+          quantity={item?.quantity}
+          src={item.main_image?.name}
+          status={item.status}
         />
       </Col>
     ))
@@ -29,12 +29,12 @@ const OrderParent = () => {
       <NormalTitle title="your orders" content="" />
       <Row className="mb-5">
         <Col lg={9} md={9} sm={12} xs={12} className="mt-3">
-          {isDataReady && data.products.length <= 0 ? (
+          {isDataReady && data.all.length <= 0 ? (
             <div className="notfound_img">
               <h3>Not found any orders!</h3>
             </div>
           ) : (
-            products
+            items
           )}
         </Col>
       </Row>

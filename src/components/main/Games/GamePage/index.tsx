@@ -14,6 +14,7 @@ import LeftPart from "../LeftPart/index";
 const GamePage = () => {
   const { id } = useParams();
   const { isDataReady, data: game } = useGet("game/" + id);
+
   return (
     <MainContainer fluid={false}>
       {isDataReady ? (
