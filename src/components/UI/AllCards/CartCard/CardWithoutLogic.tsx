@@ -31,23 +31,25 @@ const CardWithoutLogic = ({ status, name, price, src, quantity }) => {
                   <RateCard rate={4.5} />
                 </Col>
                 <Col className="mt-3 text-start" lg={4} xs={12}>
-                  <p
-                    className={`${cl.status} ${
-                      status ? "text-success" : "text-warning"
-                    }`}
-                  >
-                    {status ? (
-                      <>
-                        Delivered
-                        <IoMdCloudDone className="ms-2 fs-2" />
-                      </>
-                    ) : (
-                      <>
-                        <AiOutlineLoading3Quarters className="me-3 loading" />
-                        Preparation
-                      </>
-                    )}
-                  </p>
+                  {quantity && (
+                    <p
+                      className={`${cl.status} ${
+                        status ? "text-success" : "text-warning"
+                      }`}
+                    >
+                      {status ? (
+                        <>
+                          Delivered
+                          <IoMdCloudDone className="ms-2 fs-2" />
+                        </>
+                      ) : (
+                        <>
+                          <AiOutlineLoading3Quarters className="me-3 loading" />
+                          Preparation
+                        </>
+                      )}
+                    </p>
+                  )}
                 </Col>
                 <Col className="mt-3 text-start p-0" lg={2} xs={12}>
                   <Price price={price} />
